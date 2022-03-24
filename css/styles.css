@@ -1,0 +1,299 @@
+/* Estilos generales */
+html, body{
+    height: 100%;
+}
+/* Modificar el modelo de cajas css */
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+/* Resetear margenes y padding */
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+}
+/* Header */
+i.mainIcon{
+    color: #fff;
+    font-size: 3rem;
+    padding: 15px 0;
+}
+.container {
+    width: 93%;
+    margin: 0 auto;
+}
+header{
+    background-color: rgb(20, 1, 39);
+    border-bottom: 1px solid rgb(217, 233, 0);
+}
+#navigation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#navigation p{
+    color: #fff;
+    font-size: 1.9rem;
+}
+#nav{
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+}
+#nav li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 25px 0.9em;
+    display: inline-block;
+    letter-spacing: 0.1rem;
+}
+#nav li a:hover{
+    background-color: rgb(67, 0, 129);
+    border-radius: 10%;
+    transition: all 0.5s ease-in;
+}
+.htmltag::after{
+    content: " >";
+    color: rgb(217, 233, 0);
+}
+.htmltag::before{
+    content: "< ";
+    color: rgb(217, 233, 0);
+}
+section:nth-child(1){
+    background-image: linear-gradient(rgba(34, 2, 66, 0.9), rgba(0, 7, 6, 0.8)), url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+/* INTRO */
+#introduction{
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#introduction div{
+    text-align: center;
+
+}
+#introduction h1{
+    color: #fff;
+    margin: 40px 0;
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 0.4rem;
+}
+.rounded{
+    height: 30rem;
+    width: 30rem;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    object-fit: cover;
+}
+#introduction h2{
+    color: #fff;
+    font-family: 'Press Start 2P';
+    font-size: 1.5rem;
+    margin: 40px 0px 60px 0px;
+    letter-spacing: 0.4rem;
+    text-transform: uppercase;
+}
+
+/* ABOUT ME */
+section:nth-child(2){
+    background-color: rgb(10, 0, 19);
+}
+
+#aboutme{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 80px 2rem;
+    width: 100%;
+}
+#aboutmeImage {
+    display: flex;
+    width: 30%;
+    float: left;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    min-width: 250px
+}
+#aboutmeImage img{
+    border-radius: 10%;
+    width: 100%;
+}
+#aboutmeletter{
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    height: auto;
+    float: right;
+    width: 70%;
+}
+#aboutmeletter h1{
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: rgb(176, 255, 111);
+    font-family: 'Press Start 2P';
+    text-transform: uppercase;
+}
+#aboutmeletter h1 i{
+    font-size: 2.9rem;
+}
+#aboutmeletter h2{
+    font-size: 2rem;
+    padding-bottom: 5px;
+    color: rgb(221, 104, 250);
+}
+#aboutmeletter p{
+    padding-bottom: 5px;
+    font-weight: normal;
+    text-align: justify;
+    color: #fff;
+}
+#aboutmeletter p a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.25rem;
+}
+#aboutmeletter p a:hover{
+    color: rgb(221, 104, 250);
+}
+
+
+/* Education */
+section:nth-child(3){
+    background-color: rgb(10, 0, 19);
+}
+#education.container{
+    padding:20px 0;
+}
+#education h1{
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    padding-top: 30px;
+    color: rgb(176, 255, 111);
+    font-family: 'Press Start 2P';
+    text-transform: uppercase;
+}
+#education h1 i{
+    font-size: 2.9rem;
+}
+#studiesIcons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-bottom: 30px;
+}
+.studyDate i{
+    font-size: 0.1rem;
+}
+.studyIcon{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 420px;
+}
+.studyIcon p i {
+    font-size: 1.5rem;
+}
+.studyIcon h3{
+    color: rgb(221, 104, 250);
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+.studyIcon img{
+    max-width: 200px;
+}
+.studyIcon i{
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom:  5px;
+}
+.studyIcon .dateIcon p {
+    font-size: 1rem;
+    color: #fff;
+    display: inline-block;
+    margin: auto;
+    border-radius: 10%;
+    border: 1px solid;
+    padding: 10px 10px;
+    margin: 20px 0;
+}
+.studyIcon p{
+    font-size: 1rem;
+    color: #fff;
+}
+
+/* skills */
+section:nth-child(4){
+    background-color: rgb(10, 0, 19);
+}
+#skills h1{
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    padding-top: 30px;
+    color: rgb(176, 255, 111);
+    font-family: 'Press Start 2P';
+    text-transform: uppercase;
+    letter-spacing: 0.rem;
+}
+#skills h1 i{
+    font-size: 2.9rem;
+}
+#skillList{
+    display: flex;
+    flex-direction: column;
+}
+.skill{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+.skillGraphics{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0;
+}
+.skillDescription{
+    color: #fff;
+}
+.skill img{
+    max-width: 70px;
+}
+.progressBar{
+    width: 100%;
+    padding: 0 40px;
+    color: #fff;
+}
+.details{
+    width: 100%;
+    display: flex;  
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.bar{
+    position: relative;
+    border: 2px solid #0d96e0;
+    border-radius: 20px;
+
+}
+.bar div{
+    position: relative;
+    width: 0;
+    height: 9px;
+    border-radius: 10px;
+    background-color: #0d96e0;
+}
