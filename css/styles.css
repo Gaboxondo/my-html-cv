@@ -179,7 +179,7 @@ section:nth-child(3){
 }
 #education h1{
     font-size: 1.4rem;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     padding-top: 30px;
     color: rgb(176, 255, 111);
     font-family: 'Press Start 2P';
@@ -248,7 +248,7 @@ section:nth-child(4){
 }
 #skillsCourses h1{
     font-size: 1.4rem;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     padding-top: 30px;
     color: rgb(176, 255, 111);
     font-family: 'Press Start 2P';
@@ -256,9 +256,11 @@ section:nth-child(4){
     letter-spacing: 0.rem;
 }
 .skillBlock {
-    display: none;
     flex-direction: row;
     flex-wrap: wrap;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease-out;
 }
 #skillsCourses h1 i{
     font-size: 2.9rem;
@@ -271,14 +273,23 @@ section:nth-child(4){
 #skillList h4{
     font-size: 1.4rem;
     color: rgb(221, 104, 250);
-    letter-spacing: 0.rem;
 }
-#skillList a{
+a.accordion {
     font-size: 1.4rem;
     color: rgb(221, 104, 250);
-    letter-spacing: 0.rem;
     cursor: pointer;
+    background-color: #0f1846;
+    display: inline-block;
+    padding: 10px 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    margin-right: 3rem;
 }
+.active a.accordion:hover{
+    color: rgb(241, 185, 255);
+    background-color: #2c3563;;
+}
+
 .skill{
     display: flex;
     flex-direction: column;
