@@ -122,59 +122,382 @@
             </div>
         </section>
         <section>
-            <div id="skills" class="container">
+            <div id="skillsCourses" class="container">
                 <h1>Skills <i class="fa fa-microchip" aria-hidden="true"></i></h1>
                 <div id="skillsContainer">
                     <div id="skillList">
-                        <div class="skill">
-                            <div class="skillGraphics">
-                                <div>
-                                    <img src="images/javalogo.png" alt="logo spring boot">
-                                </div>
-                                <div class="progressBar">
-                                    <div class="details">
-                                        <span>Java</span>
-                                        <span>90%</span>
+                        <a onClick="toggleMenu()">Programming languajes</a>
+                        <div id="progangBlock" class="skillBlock">
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/javalogo.png" alt="">
                                     </div>
-                                    <div class="bar">
-                                        <div class="bartoogle" style="--m: 90%"></div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Java</span>
+                                            <span>90%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/pythonlogo.png" alt="">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Python</span>
+                                            <span>70%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 70%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/csharplogo.png" alt="">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>C#</span>
+                                            <span>65%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 65%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/javascriptlogo.png" alt="">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>JavaScript</span>
+                                            <span>40%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 40%"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="skill">
-                            <div class="skillGraphics">
-                                <div>
-                                    <img src="images/springbootlogo.png" alt="logo spring boot">
-                                </div>
-                                <div class="progressBar">
-                                    <div class="details">
-                                        <span>Spring boot</span>
-                                        <span>95%</span>
+                        <h4>DDBB</h4>
+                        <div class="skillBlock">
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/oracleddbblogo.png" alt="">
                                     </div>
-                                    <div class="bar">
-                                        <div class="bartoogle" style="--m: 95%"></div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Oracle DDBB</span>
+                                            <span>75%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 75%"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="skillDescription">
-                                <p>Spring boot modules as: Spirng-data (jpa and mongodb), spring cloud, spring and much
-                                    more
-                                </p>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/mongodblogo.png" alt="">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Mongo DB</span>
+                                            <span>95%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 95%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/postgreslogo.png" alt="l">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Postgres SQL</span>
+                                            <span>85%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 85%"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill">
-                            <div class="skillGraphics">
-                                <div>
-                                    <img src="images/kuberneteslogo.png" alt="logo spring boot">
-                                </div>
-                                <div class="progressBar">
-                                    <div class="details">
-                                        <span>Kubernetes</span>
-                                        <span>80%</span>
+                        <h4>Back-End Frameworks</h4>
+                        <div class="skillBlock">
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/springbootlogo.png" alt="">
                                     </div>
-                                    <div class="bar">
-                                        <div class="bartoogle" style="--m: 80%"></div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Spring boot</span>
+                                            <span>95%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 95%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/djangologo.png" alt="">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Django</span>
+                                            <span>40%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 40%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/quarkuslogo.png" alt="">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Quarkus</span>
+                                            <span>20%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 20%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/sparklogo.png" alt="">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Spark</span>
+                                            <span>60%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Front-End</h4>
+                        <div class="skillBlock">
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/javalogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Java</span>
+                                            <span>90%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/springbootlogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Spring boot</span>
+                                            <span>95%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 95%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/kuberneteslogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Kubernetes</span>
+                                            <span>80%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 80%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Infrastructure</h4>
+                        <div class="skillBlock">
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/javalogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Java</span>
+                                            <span>90%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/springbootlogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Spring boot</span>
+                                            <span>95%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 95%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/kuberneteslogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Kubernetes</span>
+                                            <span>80%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 80%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Devops</h4>
+                        <div class="skillBlock">
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/javalogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Jenkins</span>
+                                            <span>90%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/springbootlogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Spring boot</span>
+                                            <span>95%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 95%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Cloud</h4>
+                        <div class="skillBlock">
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/javalogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Java</span>
+                                            <span>90%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/springbootlogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Spring boot</span>
+                                            <span>95%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 95%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Others</h4>
+                        <div class="skillBlock">
+                            <div class="skill">
+                                <div class="skillGraphics">
+                                    <div class="skillImage">
+                                        <img src="images/javalogo.png" alt="logo spring boot">
+                                    </div>
+                                    <div class="progressBar">
+                                        <div class="details">
+                                            <span>Unity</span>
+                                            <span>50%</span>
+                                        </div>
+                                        <div class="bar">
+                                            <div class="bartoogle" style="--m: 50%"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -195,6 +518,34 @@
                                 <div class="courseDescriptionContainer">
                                     <p class="additionalCouserInfo">Associated with Minsait</p>
                                     <img src="images/minsaitWhiteLogo.png" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <h4>Angular from 0 to expert</h4>
+                                <div class="courseDescriptionContainer">
+                                    <p class="additionalCouserInfo">M001 (Mongo University)</p>
+                                    <img src="images/mongoDarLogo.png" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <h4>Angular from 0 to expert</h4>
+                                <div class="courseDescriptionContainer">
+                                    <p class="additionalCouserInfo">M001 (Mongo University)</p>
+                                    <img src="images/mongoDarLogo.png" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <h4>Angular from 0 to expert</h4>
+                                <div class="courseDescriptionContainer">
+                                    <p class="additionalCouserInfo">M001 (Mongo University)</p>
+                                    <img src="images/mongoDarLogo.png" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <h4>Angular from 0 to expert</h4>
+                                <div class="courseDescriptionContainer">
+                                    <p class="additionalCouserInfo">M001 (Mongo University)</p>
+                                    <img src="images/mongoDarLogo.png" alt="">
                                 </div>
                             </li>
                             <li>

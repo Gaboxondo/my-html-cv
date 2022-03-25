@@ -1,3 +1,4 @@
+//Lo suyo seria un trigger por cada una. Ver como hacerlo con un For
 const barList = document.querySelectorAll('.bartoogle');
 for (let i = 0; i < barList.length; i++) {
   barList[i].classList.remove('animateddBar');
@@ -16,7 +17,7 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 });
-observer.observe(document.querySelector('.bar'));
+observer.observe(document.querySelector('#skillList'));
 
 
 const studiyImageList = document.querySelectorAll('.educationImageToogle');
@@ -37,7 +38,7 @@ const observerStydies = new IntersectionObserver(entries => {
     }
   });
 });
-observerStydies.observe(document.querySelector('.studyIconImage'));
+observerStydies.observe(document.querySelector('#studiesIcons'));
 
 
 const titleWriter = document.querySelector('.titleText');
@@ -54,3 +55,13 @@ const observerTitleWritter = new IntersectionObserver(entries => {
   });
 });
 observerTitleWritter.observe(document.querySelector('.titleText'));
+
+function toggleMenu() {
+  var x = document.getElementById("progangBlock");
+  if (x.style.display === "none") {
+    x.style.display = "flex";
+  } else {
+    x.style.display = "none";
+  }
+
+}
