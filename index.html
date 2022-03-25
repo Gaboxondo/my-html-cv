@@ -42,17 +42,17 @@
     <main>
         <section>
             <div id="introduction" class="container">
-                <div>
+                <div class="introContainer">
                     <h1>Gabriel García Garrido</h1>
                     <img src="images/profilePhoto.jpg" alt="profile picture" class="rounded">
-                    <h2 class="typewriter">Software Engineer</h2>
+                    <h2 class="titleText">Software Engineer</h2>
                 </div>
             </div>
         </section>
         <section>
             <div id="aboutme" class="container">
                 <div id="aboutmeImage" class="animate__animated animate__backInLeft">
-                    <img src="images/aboutme.jpg" alt="me photo" >
+                    <img src="images/aboutme.jpg" alt="me photo">
                 </div>
                 <div id="aboutmeletter" class="animate__animated animate__fadeInRight">
                     <div>
@@ -124,58 +124,87 @@
         <section>
             <div id="skills" class="container">
                 <h1>Skills <i class="fa fa-microchip" aria-hidden="true"></i></h1>
-                <div id="skillList">
-                    <div class="skill">
-                        <div class="skillGraphics">
-                            <div>
-                                <img src="images/javalogo.png" alt="logo spring boot">
-                            </div>
-                            <div class="progressBar">
-                                <div class="details">
-                                    <span>Java</span>
-                                    <span>90%</span>
+                <div id="skillsContainer">
+                    <div id="skillList">
+                        <div class="skill">
+                            <div class="skillGraphics">
+                                <div>
+                                    <img src="images/javalogo.png" alt="logo spring boot">
                                 </div>
-                                <div class="bar">
-                                    <div class="bartoogle" style="--m: 90%"></div>
+                                <div class="progressBar">
+                                    <div class="details">
+                                        <span>Java</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div class="bar">
+                                        <div class="bartoogle" style="--m: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skillGraphics">
+                                <div>
+                                    <img src="images/springbootlogo.png" alt="logo spring boot">
+                                </div>
+                                <div class="progressBar">
+                                    <div class="details">
+                                        <span>Spring boot</span>
+                                        <span>95%</span>
+                                    </div>
+                                    <div class="bar">
+                                        <div class="bartoogle" style="--m: 95%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skillDescription">
+                                <p>Spring boot modules as: Spirng-data (jpa and mongodb), spring cloud, spring and much
+                                    more
+                                </p>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skillGraphics">
+                                <div>
+                                    <img src="images/kuberneteslogo.png" alt="logo spring boot">
+                                </div>
+                                <div class="progressBar">
+                                    <div class="details">
+                                        <span>Kubernetes</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="bar">
+                                        <div class="bartoogle" style="--m: 80%"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="skill">
-                        <div class="skillGraphics">
-                            <div>
-                                <img src="images/springbootlogo.png" alt="logo spring boot">
-                            </div>
-                            <div class="progressBar">
-                                <div class="details">
-                                    <span>Spring boot</span>
-                                    <span>95%</span>
+                    <div id="courseList">
+                        <h3>Courses</h3>
+                        <ul>
+                            <li>
+                                <h4>Angular from 0 to expert</h4>
+                                <div class="courseDescriptionContainer">
+                                    <p class="additionalCouserInfo">M001 (Mongo University)</p>
+                                    <img src="images/udemyLogo.png" alt="">
                                 </div>
-                                <div class="bar">
-                                    <div class="bartoogle" style="--m: 95%"></div>
+                            </li>
+                            <li>
+                                <h4>Angular from 0 to expert</h4>
+                                <div class="courseDescriptionContainer">
+                                    <p class="additionalCouserInfo">Associated with Minsait</p>
+                                    <img src="images/minsaitWhiteLogo.png" alt="">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="skillDescription">
-                            <p>Spring boot modules as: Spirng-data (jpa and mongodb), spring cloud, spring and much more
-                            </p>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <div class="skillGraphics">
-                            <div>
-                                <img src="images/kuberneteslogo.png" alt="logo spring boot">
-                            </div>
-                            <div class="progressBar">
-                                <div class="details">
-                                    <span>Kubernetes</span>
-                                    <span>80%</span>
+                            </li>
+                            <li>
+                                <h4>Angular from 0 to expert</h4>
+                                <div class="courseDescriptionContainer">
+                                    <p class="additionalCouserInfo">M001 (Mongo University)</p>
+                                    <img src="images/mongoDarLogo.png" alt="">
                                 </div>
-                                <div class="bar">
-                                    <div class="bartoogle" style="--m: 80%"></div>
-                                </div>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

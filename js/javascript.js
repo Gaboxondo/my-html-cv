@@ -1,10 +1,7 @@
-// Remove the transition class
 const barList = document.querySelectorAll('.bartoogle');
 for (let i = 0; i < barList.length; i++) {
   barList[i].classList.remove('animateddBar');
 }
-
-// Create the observer, same as before:
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -19,18 +16,13 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 });
-
 observer.observe(document.querySelector('.bar'));
 
 
-
-// Remove the transition class
 const studiyImageList = document.querySelectorAll('.educationImageToogle');
 for (let i = 0; i < studiyImageList.length; i++) {
   studiyImageList[i].classList.remove('animate__bounceIn');
 }
-
-// Create the observer, same as before:
 const observerStydies = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -45,5 +37,20 @@ const observerStydies = new IntersectionObserver(entries => {
     }
   });
 });
-
 observerStydies.observe(document.querySelector('.studyIconImage'));
+
+
+const titleWriter = document.querySelector('.titleText');
+titleWriter.classList.remove('typewriter');
+// Create the observer, same as before:
+const observerTitleWritter = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      titleWriter.classList.add('typewriter');
+      return;
+    }
+
+    titleWriter.classList.remove('typewriter');
+  });
+});
+observerTitleWritter.observe(document.querySelector('.titleText'));

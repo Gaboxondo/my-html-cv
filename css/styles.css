@@ -93,11 +93,10 @@ section:nth-child(1){
     letter-spacing: 0.4rem;
 }
 .rounded{
-    height: 30rem;
-    width: 30rem;
+    height: 25rem;
+    width: 25rem;
     border-radius: 50%;
     border: 5px solid #fff;
-    object-fit: cover;
 }
 #introduction h2{
     color: #fff;
@@ -240,6 +239,16 @@ section:nth-child(3){
 section:nth-child(4){
     background-color: rgb(10, 0, 19);
 }
+#skillsContainer{
+    display: flex;
+    flex-direction: row;
+}
+#skillList{
+    flex-basis: 75%;
+}
+#courseList{
+    flex-basis: 25%;
+}
 #skills h1{
     font-size: 1.4rem;
     margin-bottom: 20px;
@@ -296,4 +305,36 @@ section:nth-child(4){
     height: 9px;
     border-radius: 10px;
     background-color: #0d96e0;
+}
+
+#courseList h3{
+    color: rgb(221, 104, 250);
+    font-size: 1.9rem;
+}
+#courseList ul{
+    padding: 30px 1.5rem;
+}
+#courseList ul li{
+    color: #fff;
+    font-size: 1.2rem;
+    padding-bottom: 20px;
+    list-style: none;
+}
+#courseList h4{
+    margin-bottom: 5px;
+}
+.courseDescriptionContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.courseDescriptionContainer p{
+    font-size: 0.9rem;
+    font-weight: lighter;
+    padding-left: 20px;
+}
+.courseDescriptionContainer img{
+    width: 20%;
+    height: 20%;
+    padding-left: 10px;
 }
