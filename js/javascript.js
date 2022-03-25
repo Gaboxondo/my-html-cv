@@ -64,15 +64,21 @@ for (i = 0; i < acc.length; i++) {
     for(j = 0; j < acc.length; j++) {
       acc[j].nextElementSibling.style.maxHeight = null;
       acc[j].nextElementSibling.style.display = "none";
+      acc[j].nextElementSibling.style.marginBottom = "0";
     }
     this.classList.toggle("active");
     var panel = this.nextElementSibling;
     panel.style.display = "flex";
     if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
+      panel.style.marginBottom = "0"
     } else {
       panel.style.maxHeight = panel.scrollHeight + "px";
       panel.style.marginBottom = "10px"
     } 
   });
 }
+var firstPannel = document.getElementById('firstaccordion').nextElementSibling;
+firstPannel.style.maxHeight = firstPannel.scrollHeight + "px";
+firstPannel.style.marginBottom = "10px";
+firstPannel.style.display = "flex";
