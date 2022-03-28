@@ -82,3 +82,20 @@ var firstPannel = document.getElementById('firstaccordion').nextElementSibling;
 firstPannel.style.maxHeight = firstPannel.scrollHeight + "px";
 firstPannel.style.marginBottom = "10px";
 firstPannel.style.display = "flex";
+
+
+
+    // Comportamientos para el men� de navegaci�n.
+    let mainNav=document.getElementById('nav');
+    let navbarToggle=document.getElementById("navbar-toogle");
+    navbarToggle.addEventListener("click", function() {
+
+    if (this.classList.contains('active')){
+        mainNav.style.display="none";
+        this.classList.remove('active');
+    }
+    else {
+        mainNav.style.display="flex";
+        this.classList.add('active');
+    }
+    });

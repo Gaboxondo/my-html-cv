@@ -135,23 +135,18 @@ section:nth-child(2) {
 #aboutme {
     display: flex;
     flex-wrap: wrap;
-    padding: 80px 2rem;
+    padding: 12px 2rem;
     width: 100%;
 }
 
 #aboutmeImage {
     display: flex;
-    width: 30%;
     float: left;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    min-width: 250px
-}
-
-#aboutmeImage img {
+    min-width: 250px;
     border-radius: 10%;
-    width: 100%;
+    width: 30rem;
+    padding: 10px 1.6rem;
+    margin-right: 20px;
 }
 
 #aboutmeletter {
@@ -160,12 +155,13 @@ section:nth-child(2) {
     padding: 0 2rem;
     height: auto;
     float: right;
-    width: 70%;
+    width: 100%;
 }
 
 #aboutmeletter h1 {
     font-size: 1.4rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin-top: 30px;
     color: rgb(176, 255, 111);
     font-family: 'Press Start 2P';
     text-transform: uppercase;
@@ -210,8 +206,8 @@ section:nth-child(3) {
 
 #education h1 {
     font-size: 1.4rem;
-    margin-bottom: 40px;
-    padding-top: 30px;
+    margin-bottom: 30px;
+    margin-top: 30px;
     color: rgb(176, 255, 111);
     font-family: 'Press Start 2P';
     text-transform: uppercase;
@@ -437,4 +433,107 @@ a.accordion:after {
 .courseDescriptionContainer img {
     width: 15%;
     padding-left: 10px;
+}
+
+#navbar-toogle{
+    color: #fff;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 20px;
+    right: 55px;
+    display: none;
+}
+
+
+/* MEDIA QUERYS */
+@media screen and (max-width:1350px) {
+    #skillsContainer{
+        flex-direction: column;
+    }
+    #skillList{
+        flex-basis: 100%;
+    }
+    #courseList{
+        flex-basis: 100%;
+    }
+    a.accordion{
+        margin-right: 0;
+    }
+    .details span{
+        font-size: 1.1rem;
+    }
+    .courseDescriptionContainer img{
+        width: 56px
+    }
+}
+@media screen and (max-width:1090px) {
+    #nav li a {
+        color: #fff;
+        padding: 15px 0.5em;
+        display: inline-block;
+        letter-spacing: 0.1rem;
+        font-size: 0.8rem;
+    }
+    .details span{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:840px) {
+    #navigation{
+        display: block;
+    }
+    #nav{
+        flex-direction: column;
+        display: none;
+    }
+    .rounded{
+        margin-bottom: 40px;
+    }
+    #navbar-toogle{
+        display: block;
+    }
+    .details span{
+        font-size: 0.6rem;
+    }
+    a.accordion{
+        padding: 10px 1rem;
+        font-size: 1rem;
+    }
+    .skillBlock{
+        padding-right: 0.2rem;
+    }
+    .progressBar{
+        padding-right: 1.3rem;
+    }
+}
+
+@media screen and (max-width:600px) {
+    #introduction h2 {
+        font-size: 1.05rem;
+        margin: 25px 0 40px 0;
+        letter-spacing: 0.1rem;
+    }
+    .skill{
+        min-width: 100%;
+    }
+    .rounded{
+        height: 20rem;
+        width: 20rem;
+    }
+    #introduction h1{
+        margin-bottom: 30px;
+        font-size: 2rem;
+        letter-spacing: 0.1rem;
+    }
+    #aboutme{
+        padding: 10px 1rem;
+    }
+    #aboutmeletter{
+        padding: 0;
+        width: 100%;
+    }
+    #aboutmeImage {
+        width: 100%;
+    }
 }
