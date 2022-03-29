@@ -45,3 +45,19 @@
     width: var(--m, 100%);
   }
 }
+
+.blink {
+  animation: blink 1.33s ease-out infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -96,6 +96,7 @@ section:nth-child(1) {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 #introduction div {
@@ -409,7 +410,6 @@ a.accordion:after {
     color: #fff;
     font-size: 1rem;
     padding-bottom: 5px;
-    list-style: none;
 }
 
 #courseList h4 {
@@ -431,7 +431,7 @@ a.accordion:after {
 }
 
 .courseDescriptionContainer img {
-    width: 15%;
+    width: 50px;
     padding-left: 10px;
 }
 
@@ -440,7 +440,7 @@ a.accordion:after {
     font-size: 1.5rem;
     position: absolute;
     top: 20px;
-    right: 55px;
+    right: 30px;
     display: none;
 }
 
@@ -465,6 +465,28 @@ a.accordion:after {
     .courseDescriptionContainer img{
         width: 56px
     }
+    #skillsContainer{
+        text-align: center;
+    }
+    #courseList h4{
+        flex-basis: 100%;
+    }
+    .courseDescriptionContainer{
+        justify-content: center;
+    }
+    .courseDescriptionContainer p{
+        font-size: 0.8rem;
+    }
+    .courseDescriptionContainer img {
+        width: 40px;
+    }
+    #courseList li {
+        background-color: #0c1027;
+        margin-bottom: 12px;
+    }
+    #courseList ul li {
+        list-style: none;
+    }
 }
 @media screen and (max-width:1090px) {
     #nav li a {
@@ -482,6 +504,9 @@ a.accordion:after {
 @media screen and (max-width:840px) {
     #navigation{
         display: block;
+    }
+    i.mainIcon{
+        font-size: 3rem;
     }
     #nav{
         flex-direction: column;
@@ -513,6 +538,9 @@ a.accordion:after {
         font-size: 1.05rem;
         margin: 25px 0 40px 0;
         letter-spacing: 0.1rem;
+    }
+    i.mainIcon{
+        font-size: 2.4rem;
     }
     .skill{
         min-width: 100%;
