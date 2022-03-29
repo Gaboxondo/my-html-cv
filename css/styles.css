@@ -459,8 +459,24 @@ a.accordion:after {
     color: #fff;
     font-size: 1.5rem;
 }
-.certification img{
-    
+
+/* Experience */
+
+section:nth-child(5) {
+    background-color: rgb(10, 0, 19);
+}
+
+#experience h1 {
+    font-size: 1.4rem;
+    margin-bottom: 50px;
+    padding-top: 30px;
+    color: rgb(176, 255, 111);
+    font-family: 'Press Start 2P';
+    text-transform: uppercase;
+    letter-spacing: 0.rem;
+}
+#experience h1 i {
+    font-size: 2.9rem;
 }
 
 #navbar-toogle{
