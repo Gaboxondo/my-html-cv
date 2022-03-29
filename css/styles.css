@@ -406,7 +406,7 @@ a.accordion:after {
     padding: 10px 1rem;
 }
 
-#courseList ul li {
+#courseList ul {
     color: #fff;
     font-size: 1rem;
     padding-bottom: 5px;
@@ -435,6 +435,34 @@ a.accordion:after {
     padding-left: 10px;
 }
 
+#certifications h3 {
+    color: rgb(221, 104, 250);
+    font-size: 1.9rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#certificationsContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    justify-content: space-around;
+}
+.certification{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+}
+.certification p{
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+}
+.certification img{
+    
+}
+
 #navbar-toogle{
     color: #fff;
     font-size: 1.5rem;
@@ -455,6 +483,10 @@ a.accordion:after {
     }
     #courseList{
         flex-basis: 100%;
+    }
+    #courseList h3{
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
     a.accordion{
         margin-right: 0;
@@ -486,6 +518,9 @@ a.accordion:after {
     }
     #courseList ul li {
         list-style: none;
+    }
+    #certifications h3 {
+        text-align: center;
     }
 }
 @media screen and (max-width:1090px) {
