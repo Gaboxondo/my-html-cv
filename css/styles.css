@@ -467,7 +467,7 @@ section:nth-child(5) {
 }
 
 #experience{
-    padding-bottom: 50px;
+    padding-bottom: 10px;
 }
 #experience h1 {
     font-size: 1.4rem;
@@ -479,6 +479,25 @@ section:nth-child(5) {
     letter-spacing: 0.rem;
 }
 #experience h1 i {
+    font-size: 2.9rem;
+}
+
+section:nth-child(6) {
+    background-color: rgb(10, 0, 19);
+}
+#projects{
+    padding-bottom: 50px;
+}
+#projects h1 {
+    font-size: 1.4rem;
+    margin-bottom: 50px;
+    padding-top: 30px;
+    color: rgb(176, 255, 111);
+    font-family: 'Press Start 2P';
+    text-transform: uppercase;
+    letter-spacing: 0.rem;
+}
+#projects h1 i {
     font-size: 2.9rem;
 }
 
@@ -591,6 +610,12 @@ section:nth-child(5) {
     #experience h1{
         margin-left: 1.6rem;
     }
+    #projects {
+        margin: 0 1rem 0 1rem;
+    }
+    #projects h1{
+        margin-left: 1.6rem;
+    }
 }
 
 @media screen and (max-width:600px) {
@@ -631,6 +656,12 @@ section:nth-child(5) {
         margin: 0 1.9rem 0 0.4rem;
     }
     #experience h1{
+        margin-left: 1.6rem;
+    }
+    #projects {
+        margin: 0 1.9rem 0 0.4rem;
+    }
+    #projects h1{
         margin-left: 1.6rem;
     }
 }
