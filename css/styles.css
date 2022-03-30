@@ -136,8 +136,7 @@ section:nth-child(2) {
 #aboutme {
     display: flex;
     flex-wrap: wrap;
-    padding: 12px 2rem;
-    width: 100%;
+    padding: 12px 0;
 }
 
 #aboutmeImage {
@@ -152,7 +151,6 @@ section:nth-child(2) {
 
 #aboutmeletter {
     align-items: center;
-    padding: 0 2rem;
     height: auto;
     float: right;
     width: 100%;
