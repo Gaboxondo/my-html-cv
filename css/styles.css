@@ -506,6 +506,9 @@ section:nth-child(6) {
 #projects h1 i {
     font-size: 2.9rem;
 }
+#projectList ul li{
+    color: #fff;
+}
 
 /* contact */
 
