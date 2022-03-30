@@ -645,9 +645,6 @@ section:nth-child(7) {
     #experience h1{
         margin-left: 1.6rem;
     }
-    #projects {
-        margin: 0 1rem 0 1rem;
-    }
     #projects h1{
         margin-left: 1.6rem;
     }
@@ -698,9 +695,6 @@ section:nth-child(7) {
     }
     #experience h1{
         margin-left: 1.6rem;
-    }
-    #projects {
-        margin: 0 1.9rem 0 0.4rem;
     }
     #projects h1{
         margin-left: 1.6rem;
