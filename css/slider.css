@@ -106,6 +106,7 @@
     background-clip: padding-box, text;
     background-repeat: no-repeat;
     animation:b .7s infinite steps(1),t calc(var(--n)*.04s) steps(var(--n)) forwards;
+    font-size: 1.4rem;
 }
 
 @keyframes t {
