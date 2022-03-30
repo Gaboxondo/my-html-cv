@@ -510,6 +510,12 @@ section:nth-child(6) {
     color: #fff;
 }
 
+#projects h2 {
+    font-size: 1.9rem;
+    color: rgb(221, 104, 250);
+    text-align: center;
+}
+
 /* contact */
 
 section:nth-child(7) {
