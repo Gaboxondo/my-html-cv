@@ -31,6 +31,10 @@
     border-radius: 20px;
 }
 
+#slider li:first-child {
+    display: inline;
+}
+
 #slider li:target {
     display: block;
 }
