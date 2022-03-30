@@ -34,8 +34,6 @@
     border-radius: 20px;
 }
 
-
-
 #slider li:target {
     opacity: 1;
     display: block;
@@ -116,8 +114,8 @@
     background-clip:padding-box,text;
     background-repeat:no-repeat;
     animation: 
-     b .7s infinite steps(1),   
-     t calc(var(--n)*.1s) steps(var(--n)) forwards;
+     b .5s infinite steps(1),   
+     t calc(var(--n)*.04s) steps(var(--n)) forwards;
   }
   
   @keyframes t{
