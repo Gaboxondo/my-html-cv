@@ -191,6 +191,13 @@ section:nth-child(2) {
 #aboutmeletter p a:hover {
     color: rgb(221, 104, 250);
 }
+#galeryButton{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    justify-content: center;
+    display: flex;
+}
 
 
 /* Education */
