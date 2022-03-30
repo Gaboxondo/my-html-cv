@@ -139,14 +139,23 @@ section:nth-child(2) {
     padding: 12px 0;
 }
 
+#aboutme h1 {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    color: rgb(176, 255, 111);
+    font-family: 'Press Start 2P';
+    text-transform: uppercase;
+}
+
 #aboutmeImage {
     display: flex;
     float: left;
     min-width: 250px;
     border-radius: 10%;
     width: 30rem;
-    padding: 10px 1.6rem;
-    margin-right: 20px;
+    margin-right: 50px;
+    margin-bottom: 15px;
 }
 
 #aboutmeletter {
@@ -154,15 +163,6 @@ section:nth-child(2) {
     height: auto;
     float: right;
     width: 100%;
-}
-
-#aboutmeletter h1 {
-    font-size: 1.4rem;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    color: rgb(176, 255, 111);
-    font-family: 'Press Start 2P';
-    text-transform: uppercase;
 }
 
 #aboutmeletter h1 i {
@@ -635,6 +635,15 @@ section:nth-child(7) {
     #projects h1{
         margin-left: 1.6rem;
     }
+    #aboutmeletter{
+        padding: 0 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    #aboutmeImage{
+        margin-right: 0;
+    }
 }
 
 @media screen and (max-width:600px) {
@@ -658,11 +667,8 @@ section:nth-child(7) {
         font-size: 2rem;
         letter-spacing: 0.1rem;
     }
-    #aboutme{
-        padding: 10px 3rem;
-    }
     #aboutmeletter{
-        padding: 0;
+        padding: 0 20px;
         width: 100%;
     }
     #aboutmeImage {
