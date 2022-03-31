@@ -22,23 +22,43 @@ observer.observe(document.querySelector('#skillList'));
 
 const studiyImageList = document.querySelectorAll('.educationImageToogle');
 for (let i = 0; i < studiyImageList.length; i++) {
-  studiyImageList[i].classList.remove('animate__bounceIn');
+  studiyImageList[i].classList.remove('bounce-in');
 }
 const observerStydies = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       for (let i = 0; i < studiyImageList.length; i++) {
-        studiyImageList[i].classList.add('animate__bounceIn');
+        studiyImageList[i].classList.add('bounce-in');
       }
       return;
     }
 
     for (let i = 0; i < studiyImageList.length; i++) {
-      studiyImageList[i].classList.remove('animate__bounceIn');
+      studiyImageList[i].classList.remove('bounce-in');
     }
   });
 });
 observerStydies.observe(document.querySelector('#studiesIcons'));
+
+const certImageList = document.querySelectorAll('.certification');
+for (let i = 0; i < studiyImageList.length; i++) {
+  studiyImageList[i].classList.remove('flip');
+}
+const observerCertifications = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      for (let i = 0; i < certImageList.length; i++) {
+        certImageList[i].classList.add('flip');
+      }
+      return;
+    }
+
+    for (let i = 0; i < certImageList.length; i++) {
+      certImageList[i].classList.remove('flip');
+    }
+  });
+});
+observerCertifications.observe(document.querySelector('#certifications'));
 
 
 const titleWriter = document.querySelector('.titleText');
