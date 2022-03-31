@@ -1,0 +1,74 @@
+/* Pie de pagina */
+footer{
+    background-color: #140127;
+}
+#pieDePagina{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+#logoAndName{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+footer h3{
+    color: #9f9f9f;
+    font-size: 0.90rem;
+    text-transform: uppercase;
+}
+footer ul{
+    margin: 20px 0;
+}
+footer li{
+    list-style: none;
+    padding: 5px 0;
+}
+footer ul li a{
+    color: #9f9f9f;
+    text-decoration: none;
+    font-size: 0.88rem;
+}
+footer ul li a:hover{
+    color: #c0bebe;
+    text-decoration: none;
+    font-size: 0.88rem;
+}
+footer a img{
+    width: 160px;
+}
+#social{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#social i.fa{
+    color: #fff;
+    margin-left: 1em;
+    font-size: 5rem;
+    text-align: center;
+}
+#pieDePagina{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+#copyright{
+    color: #9f9f9f;
+    text-align: center;
+    font-size: 1rem;
+    border-top: 1px solid #272323;
+    padding: 12px 0;
+}
+
+@media screen and (max-width:500px) {
+    #pieDePagina{
+        flex-direction: column;
+    }
+    #social a{
+        padding-right: 68px;
+        padding-top: 30px;
+    }
+}
