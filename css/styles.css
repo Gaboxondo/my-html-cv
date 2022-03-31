@@ -710,3 +710,13 @@ section:nth-child(7) {
         font-size: 1.2rem !important;
     }
 }
+
+@media screen and (max-width:335px){
+    .rounded{
+        height: 14rem;
+        width: 14rem;
+    }
+    #introduction h2 {
+        font-size: 0.7rem;
+    }
+}
