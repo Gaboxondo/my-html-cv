@@ -73,13 +73,13 @@ for (i = 0; i < acc.length; i++) {
       panel.style.maxHeight = null;
       panel.style.marginBottom = "0"
     } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
+      panel.style.maxHeight = panel.scrollHeight + "90px";
       panel.style.marginBottom = "10px"
     } 
   });
 }
 var firstPannel = document.getElementById('firstaccordion').nextElementSibling;
-firstPannel.style.maxHeight = firstPannel.scrollHeight + "px";
+firstPannel.style.maxHeight = firstPannel.scrollHeight + "90px";
 firstPannel.style.marginBottom = "10px";
 firstPannel.style.display = "flex";
 
