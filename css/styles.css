@@ -535,6 +535,10 @@ section:nth-child(7) {
 #contact h1 i {
     font-size: 2.9rem;
 }
+#contact h2{
+    text-align: center;
+    color: rgb(221, 104, 250);
+}
 
 #navbar-toogle{
     color: #fff;
@@ -646,6 +650,9 @@ section:nth-child(7) {
         margin-left: 1.6rem;
     }
     #projects h1{
+        margin-left: 1.6rem;
+    }
+    #contact h1{
         margin-left: 1.6rem;
     }
     #aboutmeletter{
