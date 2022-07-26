@@ -123,9 +123,13 @@ section:nth-child(1) {
     color: #fff;
     font-family: 'Press Start 2P';
     font-size: 1.5rem;
-    margin: 40px 0px 60px 0px;
+    margin: 40px 0px 5px 0px;
     letter-spacing: 0.4rem;
     text-transform: uppercase;
+}
+
+#introduction .lastH2 {
+    margin-bottom: 50px;
 }
 
 /* ABOUT ME */
@@ -666,10 +670,10 @@ section:nth-child(7) {
     }
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:500px) {
     #introduction h2 {
-        font-size: 1.05rem;
-        margin: 25px 0 40px 0;
+        font-size: 0.95rem;
+        margin: 25px 0 0px 0;
         letter-spacing: 0.1rem;
     }
     i.mainIcon{
@@ -711,12 +715,24 @@ section:nth-child(7) {
     }
 }
 
-@media screen and (max-width:335px){
+@media screen and (max-width:495px){
     .rounded{
         height: 14rem;
         width: 14rem;
     }
     #introduction h2 {
         font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width:460px){
+    #introduction .lastH2{
+        font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width:710px){
+    #introduction h2 {
+        font-size: 1rem;
     }
 }

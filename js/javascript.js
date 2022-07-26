@@ -76,6 +76,21 @@ const observerTitleWritter = new IntersectionObserver(entries => {
 });
 observerTitleWritter.observe(document.querySelector('.titleText'));
 
+const titleWriter2 = document.querySelector('.titleText2');
+titleWriter2.classList.remove('typewriter');
+// Create the observer, same as before:
+const observerTitleWritter2 = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      titleWriter2.classList.add('typewriter');
+      return;
+    }
+
+    titleWriter2.classList.remove('typewriter');
+  });
+});
+observerTitleWritter2.observe(document.querySelector('.titleText2'));
+
 
 var acc = document.getElementsByClassName("accordion");
 var i;
