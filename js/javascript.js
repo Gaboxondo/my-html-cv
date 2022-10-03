@@ -60,7 +60,7 @@ const observerCertifications = new IntersectionObserver(entries => {
 });
 observerCertifications.observe(document.querySelector('#certifications'));
 
-
+// esto se puede poner con un bucle bastante mas mejor
 const titleWriter = document.querySelector('.titleText');
 titleWriter.classList.remove('typewriter');
 // Create the observer, same as before:
@@ -90,6 +90,36 @@ const observerTitleWritter2 = new IntersectionObserver(entries => {
   });
 });
 observerTitleWritter2.observe(document.querySelector('.titleText2'));
+
+const titleWriter3 = document.querySelector('.titleText3');
+titleWriter3.classList.remove('typewriter');
+// Create the observer, same as before:
+const observerTitleWritter3 = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      titleWriter3.classList.add('typewriter');
+      return;
+    }
+
+    titleWriter3.classList.remove('typewriter');
+  });
+});
+observerTitleWritter3.observe(document.querySelector('.titleText3'));
+
+const titleWriter4 = document.querySelector('.titleText4');
+titleWriter4.classList.remove('typewriter');
+// Create the observer, same as before:
+const observerTitleWritter4 = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      titleWriter4.classList.add('typewriter');
+      return;
+    }
+
+    titleWriter4.classList.remove('typewriter');
+  });
+});
+observerTitleWritter4.observe(document.querySelector('.titleText4'));
 
 
 var acc = document.getElementsByClassName("accordion");
