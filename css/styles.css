@@ -731,11 +731,14 @@ section:nth-child(7) {
 @media screen and (max-width:460px){
     #introduction .lastH2{
         font-size: 0.7rem;
+        margin-bottom: 10px;
     }
 }
 
 @media screen and (max-width:710px){
     #introduction h2 {
         font-size: 1rem;
+        margin-bottom: 30px;
+        margin-top: 0;
     }
 }
