@@ -181,8 +181,8 @@ section:nth-child(1) {
     height: 100%;
     z-index: 1;
     /* Behind content */
-    opacity: 0.3;
-    /* Subtle effect */
+    opacity: 0.6;
+    /* Higher contrast with black background */
 }
 
 #introduction {
@@ -833,48 +833,112 @@ footer {
 }
 
 /* =========================================
-   MOBILE
+   MOBILE & ULTRATHIN FIXES
    ========================================= */
 @media (max-width: 768px) {
+    :root {
+        --spacing-container: 100%;
+    }
+
+    .container {
+        padding: 0 15px;
+        /* Fixed consistent padding */
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    section {
+        padding: 40px 0 !important;
+        overflow-x: hidden;
+    }
+
+    .introContainer h1 {
+        font-size: 1.8rem;
+        /* Scaled down for tiny screens */
+    }
+
+    .introContainer .titleText {
+        font-size: 0.95rem;
+        border-right: none;
+        border-bottom: 2px solid var(--accent-primary);
+        padding-bottom: 5px;
+    }
+
     #aboutme {
         grid-template-columns: 1fr;
+        gap: 25px;
     }
 
     #aboutmeImage {
+        width: 100%;
+        max-width: 260px;
         margin: 0 auto;
     }
 
-    #skillsContainer {
-        grid-template-columns: 1fr;
+    /* EXPERIENCE: The big fix for thin screens */
+    .timeline {
+        padding-left: 0;
+        margin-left: 0;
+        border-left: none;
     }
 
-    /* Reset course list height on mobile so it shows correctly */
+    .timeline-container {
+        margin-bottom: 35px;
+        padding-left: 0;
+    }
+
+    .timeline-icon {
+        position: static;
+        /* No more floating icons that clip outside */
+        margin-bottom: 15px;
+        width: 42px;
+        height: 42px;
+    }
+
+    .timeline-body {
+        padding: 20px;
+        margin-left: 0;
+        border-left: 4px solid var(--accent-primary);
+    }
+
+    #skillsContainer,
+    #studiesIcons,
+    #projectsGrid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+
     #courseList {
         height: auto;
         min-height: 0;
         max-height: 400px;
-        /* Optional cap on mobile */
+        margin-top: 15px;
     }
 
-    /* Hide header completely on mobile */
     header {
         display: none;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
     }
 
     .footer-content {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 40px;
+        gap: 35px;
     }
 
     .footer-info p {
         margin: 0 auto;
+        max-width: 100%;
     }
 
     .footer-bottom {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
         text-align: center;
     }
 }
