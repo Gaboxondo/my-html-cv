@@ -112,15 +112,16 @@ for (let i = 0; i < acc.length; i++) {
 // --- 5. Scroll Fade-In Animation ---
 const fadeElements = document.querySelectorAll('.fade-in-section');
 const appearOptions = {
-  threshold: 0.15,
-  rootMargin: "0px 0px -50px 0px"
+  threshold: [0, 0.1], // Trigger at 0 for exits and 0.1 for entries
+  rootMargin: "0px"
 };
 
 const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('is-visible');
-    } else {
+    } else if (entry.intersectionRatio <= 0) {
+      // Only remove if completely gone to prevent black zones during transition
       entry.target.classList.remove('is-visible');
     }
   });
