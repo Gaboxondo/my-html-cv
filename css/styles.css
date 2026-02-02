@@ -465,18 +465,61 @@ a.accordion.active {
     width: 100%;
 }
 
+@keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes growGlow {
+    0% {
+        box-shadow: 0 0 5px var(--accent-primary);
+    }
+
+    50% {
+        box-shadow: 0 0 15px var(--accent-primary);
+    }
+
+    100% {
+        box-shadow: 0 0 5px var(--accent-primary);
+    }
+}
+
 .bartoogle {
     height: 100%;
-    background: var(--accent-primary);
-    /* SOLID RED */
+    background: linear-gradient(90deg,
+            var(--accent-primary) 0%,
+            #ff5a80 50%,
+            var(--accent-primary) 100%);
+    background-size: 200% 100%;
     width: 0;
-    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
     box-shadow: 0 0 10px var(--accent-dim);
+    animation: shimmer 2s linear infinite, growGlow 1.5s ease-in-out infinite;
+}
+
+/* Glowing leading edge */
+.bartoogle::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: #fff;
+    box-shadow: 0 0 15px #fff, 0 0 5px var(--accent-primary);
+    opacity: 0.8;
 }
 
 .animateddBar {
     width: var(--m) !important;
 }
+
 
 /* Courses Sidebar */
 #courseList {
@@ -563,92 +606,153 @@ section:nth-child(5) {
     padding: 80px 0;
 }
 
+/* --- TREE STYLE TIMELINE (CENTERED) --- */
 .timeline {
-    border-left: 1px solid var(--border-color);
-    margin-left: 20px;
-    padding-left: 40px;
     position: relative;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Central Line */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--accent-primary), var(--accent-primary), transparent);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    /* Keep it behind icons */
 }
 
 .timeline-container {
+    padding: 10px 40px;
     position: relative;
-    margin-bottom: 60px;
-    transition: transform 0.3s ease;
+    background-color: inherit;
+    width: 50%;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    min-height: 150px;
+    z-index: 10;
+    /* Create a stacking context */
 }
 
-/* Subtle hover for container */
-.timeline-container:hover .timeline-icon {
-    border-color: var(--accent-primary);
-    background: var(--accent-primary);
-}
 
+/* The circles on the line */
 .timeline-icon {
     position: absolute;
-    left: -61px;
-    width: 40px;
-    height: 40px;
-    background: var(--bg-dark);
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-dark);
+    border: 2px solid var(--accent-primary);
+    top: 20px;
     border-radius: 50%;
-    padding: 5px;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--accent-dim);
+}
+
+/* Side Specific Positions */
+.fade-left {
+    left: 0;
+    text-align: right;
+}
+
+.fade-right {
+    left: 50%;
+    text-align: left;
+}
+
+/* Icon on the line */
+.fade-left .timeline-icon {
+    right: -25px;
+}
+
+.fade-right .timeline-icon {
+    left: -25px;
+}
+
+.timeline-container:hover .timeline-icon {
+    transform: scale(1.2);
+    box-shadow: 0 0 25px var(--accent-primary);
+    background: var(--accent-primary);
 }
 
 .timeline-icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: grayscale(1);
-    transition: all 0.3s ease;
-}
-
-.timeline-container:hover .timeline-icon img {
-    filter: grayscale(0) brightness(1.2);
 }
 
 .timeline-body {
     background: var(--bg-panel);
-    padding: 30px;
+    padding: 25px;
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    border-left: 4px solid transparent;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Mirror the accent borders */
+.fade-left .timeline-body {
+    border-right: 4px solid var(--accent-primary);
+}
+
+.fade-right .timeline-body {
+    border-left: 4px solid var(--accent-primary);
 }
 
 .timeline-body:hover {
-    border-left-color: var(--accent-primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     background: #0f0f0f;
+}
+
+/* Directional Animations with overrides */
+.fade-in-section.fade-left {
+    opacity: 0;
+    transform: translateX(-100px) translateY(0);
+}
+
+.fade-in-section.fade-right {
+    opacity: 0;
+    transform: translateX(100px) translateY(0);
+}
+
+.fade-in-section.fade-left.is-visible,
+.fade-in-section.fade-right.is-visible {
+    opacity: 1 !important;
+    transform: translateX(0) translateY(0) !important;
+    visibility: visible !important;
 }
 
 .timeline-title .badge {
     color: var(--accent-primary);
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 700;
     text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
 }
 
 .timeline-date {
     font-family: var(--font-mono);
     color: var(--accent-primary);
     font-size: 0.85rem;
-    margin: 5px 0 15px 0;
+    margin: 8px 0;
+    display: block;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
 .timeline-job {
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
     color: #fff;
-    border-left: 3px solid var(--accent-primary);
-    padding-left: 10px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
 }
 
 .timeline-desc {
@@ -658,10 +762,54 @@ section:nth-child(5) {
 }
 
 .timeline-divider {
-    border: 0;
-    border-top: 1px solid #222;
-    margin: 30px 0;
+    border: none;
+    border-top: 1px dashed #333;
+    margin: 15px 0;
 }
+
+/* Mobile responsive for tree timeline */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 30px;
+        margin-left: 0;
+    }
+
+    .timeline-container {
+        width: 100% !important;
+        padding-left: 65px !important;
+        padding-right: 15px !important;
+        text-align: left !important;
+        left: 0 !important;
+        margin-bottom: 25px;
+    }
+
+    .fade-right {
+        left: 0% !important;
+    }
+
+    .timeline-icon {
+        left: 8px !important;
+        right: auto !important;
+        width: 44px;
+        height: 44px;
+        top: 15px;
+        z-index: 100;
+    }
+
+    .fade-left .timeline-body,
+    .fade-right .timeline-body {
+        border-right: none !important;
+        border-left: 4px solid var(--accent-primary) !important;
+    }
+}
+
+
+.shadowBlink:hover {
+    box-shadow: 0 0 20px var(--accent-dim);
+    animation: growGlow 1.5s ease-in-out infinite;
+}
+
+
 
 #projectsGrid {
     display: grid;
@@ -828,21 +976,22 @@ footer {
     margin: 0 5px;
 }
 
+
 /* =========================================
-   SCROLL ANIMATIONS
+   SCROLL ANIMATIONS (VISIBILITY FIX)
    ========================================= */
 .fade-in-section {
     opacity: 0;
     transform: translateY(15px);
-    /* Subtler jump */
     transition: opacity 1.0s ease, transform 1.0s ease;
-    /* Slower, smoother transition */
     will-change: opacity, transform;
 }
 
-.fade-in-section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+.fade-in-section.is-visible,
+.is-exporting .fade-in-section {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
 }
 
 /* =========================================
@@ -855,7 +1004,6 @@ footer {
 
     .container {
         padding: 0 15px;
-        /* Fixed consistent padding */
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
@@ -868,7 +1016,6 @@ footer {
 
     .introContainer h1 {
         font-size: 1.8rem;
-        /* Scaled down for tiny screens */
     }
 
     .introContainer .titleText {
@@ -889,7 +1036,6 @@ footer {
         margin: 0 auto;
     }
 
-    /* EXPERIENCE: The big fix for thin screens */
     .timeline {
         padding-left: 0;
         margin-left: 0;
@@ -903,7 +1049,6 @@ footer {
 
     .timeline-icon {
         position: static;
-        /* No more floating icons that clip outside */
         margin-bottom: 15px;
         width: 42px;
         height: 42px;
@@ -920,6 +1065,10 @@ footer {
     #projectsGrid {
         grid-template-columns: 1fr !important;
         gap: 20px;
+    }
+
+    .skill {
+        flex: 1 1 100% !important;
     }
 
     #courseList {
@@ -944,11 +1093,6 @@ footer {
         gap: 35px;
     }
 
-    .footer-info p {
-        margin: 0 auto;
-        max-width: 100%;
-    }
-
     .footer-bottom {
         flex-direction: column;
         gap: 12px;
@@ -957,249 +1101,158 @@ footer {
 }
 
 /* =========================================
-   PROFESSIONAL PDF EXPORT STYLES
+   EXECUTIVE PRINT ENGINE (2-COLUMN)
    ========================================= */
-
 @media print {
-    :root {
-        --bg-dark: #ffffff !important;
-        --bg-panel: #ffffff !important;
-        --text-main: #000000 !important;
-        --accent-primary: #ff003c !important;
-    }
 
+    /* 1. Reset Environment */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
 
-    #matrixCanvas,
     header,
+    footer,
+    #matrixCanvas,
     #pdf-loader,
     button,
-    .footer-links,
-    .built-with,
+    .social-float,
     .accent-glow,
-    .glitch-text::after,
-    .glitch-text::before,
-    .timeline-icon {
+    hr,
+    .timeline-icon,
+    #galeryButton,
+    .blink {
         display: none !important;
     }
 
     body {
-        background: white !important;
-        color: black !important;
-        font-size: 10pt !important;
-        line-height: 1.2 !important;
+        background: black !important;
+        color: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 2. Transform into 2-Column Layout */
+    main {
+        display: block !important;
+        background: black !important;
     }
 
     .fade-in-section {
         opacity: 1 !important;
         transform: none !important;
         visibility: visible !important;
-        transition: none !important;
     }
 
-    .container {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 10mm !important;
+    /* Sidebar Columns (Red) */
+    #hero,
+    #contact,
+    #skillsCourses {
+        background: #ff003c !important;
+        color: white !important;
+        width: 75mm !important;
+        padding: 10mm 5mm !important;
+        float: left !important;
+        clear: left !important;
+        box-sizing: border-box !important;
     }
 
-    section {
-        padding: 4mm 0 !important;
-        border-bottom: 1px solid #eee !important;
-        page-break-inside: avoid;
-        background: white !important;
+    /* Main Content Columns (Black) */
+    #aboutme,
+    #education,
+    #experience,
+    #projects {
+        background: black !important;
+        padding: 10mm !important;
+        margin-left: 75mm !important;
+        width: calc(210mm - 75mm) !important;
+        box-sizing: border-box !important;
+        color: white !important;
     }
 
-    #hero {
-        height: auto !important;
-        min-height: 0 !important;
-    }
-
-    .introContainer {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        gap: 20px !important;
-    }
-
-    .introContainer img.rounded {
-        width: 60px !important;
-        height: 60px !important;
-        border: 2px solid #ff003c !important;
-    }
-
-    .introContainer h1 {
-        font-size: 18pt !important;
-        margin: 0 !important;
-    }
-
-    .titleText {
-        border: none !important;
-        font-size: 10pt !important;
-        color: #444 !important;
-    }
-
-    #studiesIcons,
-    #projectsGrid,
-    .contact-grid,
-    #skillsContainer {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 10px !important;
-    }
-
-    .studyIcon,
-    .project-card,
-    .contact-card {
-        padding: 6px !important;
-        border: 1px solid #ddd !important;
+    /* 3. Global Print Styling */
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: white !important;
+        text-transform: uppercase !important;
     }
 
     .timeline {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .timeline::after {
+        left: 2mm !important;
+        margin-left: 0 !important;
+        background: #ff003c !important;
+    }
+
+    .timeline-container {
+        width: 100% !important;
+        padding-left: 8mm !important;
+        padding-right: 0 !important;
+        left: 0 !important;
+        text-align: left !important;
+        margin-bottom: 5mm !important;
+    }
+
+    .fade-left .timeline-body,
+    .fade-right .timeline-body {
+        border-right: none !important;
         border-left: 2px solid #ff003c !important;
-        margin-left: 5mm !important;
-        padding-left: 5mm !important;
     }
 
-    .timeline-body {
-        padding: 2px 0 !important;
-        border: none !important;
+
+    .skill {
+        margin-bottom: 4mm !important;
+        page-break-inside: avoid !important;
     }
 
-    #experience {
-        page-break-before: always !important;
+    .bartoogle {
+        background: white !important;
     }
 
-    #courseList {
-        height: auto !important;
-        max-height: none !important;
+    .project-card {
+        border: 1px solid #333 !important;
+        page-break-inside: avoid !important;
     }
 
-    footer {
-        padding: 5mm 0 !important;
-        border-top: 1px solid #eee !important;
+    #projectsGrid {
+        grid-template-columns: 1fr !important;
+    }
+
+    @page {
+        margin: 0;
+        size: A4;
+    }
+
+    #reconstructed-pdf-wrapper {
+        display: none !important;
     }
 }
 
-/* Fallback and Layout for the JS-driven PDF generator */
-body.is-exporting {
-    background: white !important;
-    background-color: white !important;
-    color: black !important;
-    font-size: 10pt !important;
-    --bg-dark: #ffffff !important;
-    --bg-panel: #ffffff !important;
-    --text-main: #000000 !important;
-    --accent-primary: #ff003c !important;
+/* Export Reconstruction Support */
+.is-exporting #reconstructed-pdf-wrapper {
+    display: block !important;
+    position: relative !important;
+    margin: 0 auto !important;
+    z-index: 99999 !important;
 }
 
-.is-exporting #matrixCanvas,
-.is-exporting header,
-.is-exporting #pdf-loader,
-.is-exporting button,
-.is-exporting .footer-links,
-.is-exporting .built-with,
-.is-exporting .accent-glow,
-.is-exporting .glitch-text::after,
-.is-exporting .glitch-text::before,
-.is-exporting .timeline-icon {
-    display: none !important;
-}
-
-.is-exporting .fade-in-section {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-    transition: none !important;
-}
-
-.is-exporting .container {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 10mm !important;
-}
-
-.is-exporting section {
-    padding: 4mm 0 !important;
-    border-bottom: 1px solid #eee !important;
-    page-break-inside: avoid;
-    background: white !important;
-}
-
-.is-exporting #hero {
-    height: auto !important;
-    min-height: 0 !important;
-}
-
-.is-exporting .introContainer {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 20px !important;
-}
-
-.is-exporting .introContainer img.rounded {
-    width: 60px !important;
-    height: 60px !important;
-    border: 2px solid #ff003c !important;
-}
-
-.is-exporting .introContainer h1 {
-    font-size: 18pt !important;
-    margin: 0 !important;
-}
-
-.is-exporting .titleText {
-    border: none !important;
-    font-size: 10pt !important;
-    color: #444 !important;
-}
-
-.is-exporting #studiesIcons,
-.is-exporting #projectsGrid,
-.is-exporting .contact-grid,
-.is-exporting #skillsContainer {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 10px !important;
-}
-
-.is-exporting .studyIcon,
-.is-exporting .project-card,
-.is-exporting .contact-card {
-    padding: 6px !important;
-    border: 1px solid #ddd !important;
-}
-
-.is-exporting .timeline {
-    border-left: 2px solid #ff003c !important;
-    margin-left: 5mm !important;
-    padding-left: 5mm !important;
-}
-
-.is-exporting .timeline-body {
-    padding: 2px 0 !important;
+.is-exporting .accordion {
+    display: block !important;
+    padding: 2mm 0 !important;
+    font-weight: bold !important;
+    color: white !important;
     border: none !important;
 }
 
-.is-exporting #experience {
-    page-break-before: always !important;
-}
-
-.is-exporting #courseList {
-    height: auto !important;
+.is-exporting .skillBlock {
+    display: block !important;
     max-height: none !important;
-}
-
-.is-exporting footer {
-    padding: 5mm 0 !important;
-    border-top: 1px solid #eee !important;
-}
-
-@page {
-    margin: 1cm;
-    size: A4;
+    overflow: visible !important;
+    padding: 0 !important;
 }

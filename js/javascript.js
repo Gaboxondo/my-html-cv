@@ -132,43 +132,143 @@ fadeElements.forEach(fader => {
 });
 // --- 7. Robust PDF Download Function ---
 function downloadPDF() {
-  console.log("Initiating PDF Export...");
   const loader = document.getElementById('pdf-loader');
-  const mainContent = document.querySelector('main');
+  const mainOrigin = document.querySelector('main');
 
   if (loader) loader.style.display = 'flex';
   document.body.classList.add('is-exporting');
   window.scrollTo(0, 0);
 
+  // 1. Create a container for the 2-page document
+  const pdfWrapper = document.createElement('div');
+  pdfWrapper.id = 'reconstructed-pdf-wrapper';
+
+  // Reusable function to clone sections
+  const getClone = (id) => {
+    const el = mainOrigin.querySelector(`#${id}`);
+    if (!el) return null;
+    const clone = el.cloneNode(true);
+    clone.style.display = 'block';
+    clone.style.marginBottom = '5mm';
+    return clone;
+  };
+
+  // Build Page 1
+  const page1 = document.createElement('div');
+  page1.className = 'pdf-page';
+  page1.id = 'page-1';
+  page1.innerHTML = `
+    <div class="pdf-sidebar">
+      <div class="pdf-hero-area"></div>
+      <div class="pdf-contact-area"></div>
+      <div class="pdf-skills-half-1"></div>
+    </div>
+    <div class="pdf-main-content">
+      <div class="pdf-edu-area"></div>
+      <div class="pdf-exp-area"></div>
+    </div>
+  `;
+
+  // Build Page 2
+  const page2 = document.createElement('div');
+  page2.className = 'pdf-page';
+  page2.id = 'page-2';
+  page2.innerHTML = `
+    <div class="pdf-sidebar">
+      <div class="pdf-skills-half-2"></div>
+    </div>
+    <div class="pdf-main-content">
+      <div class="pdf-projects-area"></div>
+      <div class="pdf-courses-area"></div>
+      <div class="pdf-aboutme-area"></div>
+    </div>
+  `;
+
+  // Populate Page 1
+  const heroClone = getClone('hero');
+  if (heroClone) page1.querySelector('.pdf-hero-area').appendChild(heroClone);
+
+  const contactClone = getClone('contact');
+  if (contactClone) page1.querySelector('.pdf-contact-area').appendChild(contactClone);
+
+  const eduClone = getClone('education');
+  if (eduClone) page1.querySelector('.pdf-edu-area').appendChild(eduClone);
+
+  const expClone = getClone('experience');
+  if (expClone) page1.querySelector('.pdf-exp-area').appendChild(expClone);
+
+  // Populate Page 2
+  const projectsClone = getClone('projects');
+  if (projectsClone) page2.querySelector('.pdf-projects-area').appendChild(projectsClone);
+
+  const coursesClone = getClone('courseList');
+  if (coursesClone) page2.querySelector('.pdf-courses-area').appendChild(coursesClone);
+
+  const aboutmeClone = getClone('aboutme');
+  if (aboutmeClone) page2.querySelector('.pdf-aboutme-area').appendChild(aboutmeClone);
+
+  // Split Skills
+  const skillsBase = mainOrigin.querySelector('#skillsCourses');
+  if (skillsBase) {
+    const allSkills = Array.from(skillsBase.querySelectorAll('.skill'));
+    const midpoint = Math.ceil(allSkills.length / 2);
+
+    const skills1 = page1.querySelector('.pdf-skills-half-1');
+    const skills2 = page2.querySelector('.pdf-skills-half-2');
+
+    // Add Skills Header to both
+    const h1_1 = document.createElement('h1'); h1_1.innerHTML = 'Skills <i class="fa fa-microchip"></i>';
+    const h1_2 = document.createElement('h1'); h1_2.innerHTML = 'Skills (cont.) <i class="fa fa-microchip"></i>';
+    skills1.appendChild(h1_1);
+    skills2.appendChild(h1_2);
+
+    allSkills.slice(0, midpoint).forEach(s => skills1.appendChild(s.cloneNode(true)));
+    allSkills.slice(midpoint).forEach(s => skills2.appendChild(s.cloneNode(true)));
+  }
+
+  pdfWrapper.appendChild(page1);
+  pdfWrapper.appendChild(page2);
+  document.body.appendChild(pdfWrapper);
+
   const opt = {
-    margin: [10, 5, 10, 5],
+    margin: 0,
     filename: 'Gabriel_Garcia_Resume.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
+    image: { type: 'jpeg', quality: 1 },
     html2canvas: {
-      scale: 1.5, // Safer scale for large pages
-      useCORS: true,
+      scale: 2,
+      useCORS: false,
+      allowTaint: true,
+      scrollY: 0,
       letterRendering: true,
       logging: false
     },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'legacy'] }
   };
 
-  // Give time for classes to apply
+  // Capture
   setTimeout(() => {
-    html2pdf().from(mainContent).set(opt).save()
+    html2pdf().from(pdfWrapper).set(opt).save()
       .then(() => {
-        console.log("PDF saved successfully");
-        finish();
+        setTimeout(finish, 500);
       })
       .catch(err => {
-        console.error("PDF Export failed:", err);
-        alert("Browser security blocks automatic PDF generation when running from local files. \n\nPlease use 'Ctrl + P' and select 'Save as PDF' - it's already optimized for a perfect 2-page result!");
+        console.warn("Auto-PDF failed or blocked:", err);
+        alert("The automatic download was blocked by browser security (local files).\n\nOpening Print Dialog: Please select 'Save as PDF'.\n(The layout is already optimized for a perfect 2-page result!)");
+        window.print();
         finish();
       });
   }, 1200);
 
   function finish() {
     document.body.classList.remove('is-exporting');
+    if (pdfWrapper.parentNode) document.body.removeChild(pdfWrapper);
     if (loader) loader.style.display = 'none';
   }
+
+  // Safety cleanup: ensure loader disappears after 20 seconds regardless of success
+  setTimeout(finish, 20000);
 }
+
+
+

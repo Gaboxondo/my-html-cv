@@ -1,0 +1,353 @@
+/* =========================================
+   PREMIUM 2-COLUMN DARK PDF EXPORT
+   ========================================= */
+
+@media print {
+    :root {
+        --bg-side: #ff0033 !important;
+        --bg-main: #000000 !important;
+        --accent: #ff0033 !important;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        box-sizing: border-box !important;
+    }
+
+    #matrixCanvas,
+    header,
+    footer,
+    #pdf-loader,
+    button,
+    .footer-links,
+    .built-with,
+    .accent-glow,
+    .glitch-text::after,
+    .glitch-text::before,
+    .timeline-icon,
+    #galeryButton,
+    .blink,
+    #navbar-toogle,
+    .mainIcon {
+        display: none !important;
+    }
+
+    body {
+        background: #000 !important;
+        color: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: 'Segoe UI', sans-serif !important;
+    }
+
+    main {
+        display: grid !important;
+        grid-template-columns: 70mm 1fr !important;
+        min-height: 297mm !important;
+    }
+
+    #hero,
+    #contact,
+    #skillsCourses {
+        grid-column: 1 !important;
+        background: var(--bg-side) !important;
+        color: white !important;
+        padding: 10mm 5mm !important;
+    }
+
+    #hero {
+        text-align: center !important;
+    }
+
+    #hero img.rounded {
+        width: 40mm !important;
+        height: 40mm !important;
+        border: 3px solid white !important;
+        margin-bottom: 5mm !important;
+        display: block !important;
+        margin: 0 auto !important;
+    }
+
+    #hero h1 {
+        font-size: 15pt !important;
+        margin: 0 !important;
+    }
+
+    #hero h2 {
+        font-size: 10pt !important;
+        opacity: 0.9 !important;
+        border: none !important;
+    }
+
+    .contact-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2mm !important;
+        margin-top: 5mm !important;
+    }
+
+    .contact-card {
+        color: white !important;
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 2mm !important;
+    }
+
+    .contact-card i {
+        font-size: 10pt !important;
+    }
+
+    .contact-card span,
+    .contact-card p {
+        font-size: 8pt !important;
+        margin: 0 !important;
+    }
+
+    #skillsCourses h1 {
+        font-size: 12pt !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3) !important;
+        margin: 5mm 0 !important;
+    }
+
+    .skill {
+        margin-bottom: 3mm !important;
+    }
+
+    .skillGrid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 2mm !important;
+    }
+
+    .skillImage {
+        display: none !important;
+    }
+
+    .details {
+        display: flex !important;
+        justify-content: space-between !important;
+        font-size: 8pt !important;
+    }
+
+    .bar {
+        height: 3px !important;
+        background: rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .bartoogle {
+        background: white !important;
+    }
+
+    #aboutme,
+    #education,
+    #experience,
+    #projects {
+        grid-column: 2 !important;
+        background: black !important;
+        padding: 10mm !important;
+    }
+
+    #aboutme h1 {
+        font-size: 18pt !important;
+        color: var(--accent) !important;
+        margin-bottom: 3mm !important;
+    }
+
+    #aboutme img {
+        display: none !important;
+    }
+
+    #aboutmeletter p {
+        font-size: 9.5pt !important;
+        line-height: 1.4 !important;
+        color: #eee !important;
+    }
+
+    #education h1,
+    #experience h1,
+    #projects h1 {
+        font-size: 16pt !important;
+        color: var(--accent) !important;
+        border-bottom: 1px solid #333 !important;
+    }
+
+    .timeline {
+        border-left: 2px solid var(--accent) !important;
+        padding-left: 5mm !important;
+    }
+
+    .badge {
+        background: var(--accent) !important;
+        color: white !important;
+        font-size: 10pt !important;
+    }
+
+    .timeline-date {
+        color: #888 !important;
+        font-size: 8.5pt !important;
+        margin: 1mm 0 !important;
+    }
+
+    .timeline-job {
+        font-size: 11pt !important;
+        color: white !important;
+        font-weight: bold !important;
+    }
+
+    .timeline-desc {
+        font-size: 9pt !important;
+        opacity: 0.8 !important;
+        line-height: 1.3 !important;
+    }
+
+    #projectsGrid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 4mm !important;
+    }
+
+    .project-card {
+        border: 1px solid #222 !important;
+        background: #0a0a0a !important;
+        padding: 3mm !important;
+    }
+
+    .project-card h3 {
+        font-size: 10pt !important;
+        color: var(--accent) !important;
+    }
+
+    #courseList {
+        grid-column: 1 / span 2 !important;
+        background: black !important;
+        padding: 10mm !important;
+        border-top: 1px solid #333 !important;
+    }
+
+    #courseList h3 {
+        font-size: 14pt !important;
+        color: var(--accent) !important;
+    }
+
+    #courseList ul {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 4mm !important;
+        list-style: none !important;
+        padding: 0 !important;
+    }
+
+    #courseList li {
+        border-left: 2px solid var(--accent) !important;
+        padding-left: 2mm !important;
+    }
+
+    #courseList h4 {
+        font-size: 8.5pt !important;
+        color: white !important;
+        margin: 0 !important;
+    }
+
+    .courseDescriptionContainer {
+        display: none !important;
+    }
+
+    #experience {
+        page-break-before: always !important;
+    }
+
+    @page {
+        margin: 0;
+        size: A4;
+    }
+}
+
+/* Match the Print Styles for the Export Class */
+body.is-exporting {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+body.is-exporting main {
+    display: grid !important;
+    grid-template-columns: 70mm 1fr !important;
+    min-height: 297mm !important;
+}
+
+body.is-exporting #hero,
+body.is-exporting #contact,
+body.is-exporting #skillsCourses {
+    grid-column: 1 !important;
+    background: #ff0033 !important;
+    color: white !important;
+    padding: 10mm 5mm !important;
+}
+
+body.is-exporting #aboutme,
+body.is-exporting #education,
+body.is-exporting #experience,
+body.is-exporting #projects {
+    grid-column: 2 !important;
+    background: black !important;
+    padding: 10mm !important;
+}
+
+body.is-exporting #courseList {
+    grid-column: 1 / span 2 !important;
+    background: black !important;
+    padding: 10mm !important;
+    border-top: 1px solid #333 !important;
+}
+
+body.is-exporting #courseList ul {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 4mm !important;
+    list-style: none !important;
+}
+
+body.is-exporting #hero img.rounded {
+    width: 35mm !important;
+    height: 35mm !important;
+    border: 3px solid white !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+body.is-exporting .contact-card {
+    color: white !important;
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    font-size: 8pt !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 2mm !important;
+}
+
+body.is-exporting .timeline {
+    border-left: 2px solid #ff0033 !important;
+    padding-left: 5mm !important;
+}
+
+body.is-exporting .badge {
+    background: #ff0033 !important;
+}
+
+body.is-exporting #experience {
+    page-break-before: always !important;
+}
+
+body.is-exporting #matrixCanvas,
+body.is-exporting header,
+body.is-exporting footer,
+body.is-exporting #pdf-loader,
+body.is-exporting button,
+body.is-exporting .footer-links,
+body.is-exporting #galeryButton {
+    display: none !important;
+}
