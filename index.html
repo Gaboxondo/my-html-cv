@@ -9,10 +9,6 @@
     <!-- Styles -->
     <!-- Estilos css -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/efects.css">
-    <link rel="stylesheet" href="css/timeline.css">
-    <link rel="stylesheet" href="css/slider.css">
-    <link rel="stylesheet" href="css/footer.css">
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- js -->
     <script src="js/javascript.js" defer></script>
+    <script src="js/matrix.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
@@ -45,34 +42,26 @@
     </header>
 
     <main>
-        <section>
+        <section id="hero">
+            <canvas id="matrixCanvas"></canvas>
             <div id="introduction" class="container">
                 <div class="introContainer">
-                    <h1>Gabriel García Garrido</h1>
-                    <img src="images/profilePhoto.jpg" alt="profile picture" class="rounded">
-                </div>
-                <div class="introContainer">
-                    <h2 class="titleText">Software Engineer</h2>
-                </div>
-                <div class="introContainer">
-                    <h2 class="titleText2 lastH2">Microservices Architect</h2>
-                </div>
-                <div class="introContainer">
-                    <h2 class="titleText3 lastH2">DevOps Engineering</h2>
-                </div>
-                <div class="introContainer">
-                    <h2 class="titleText4 lastH2">FullStack Dev</h2>
+                    <img src="images/profile.jpg" alt="Gabriel Garcia" class="rounded">
+                    <h1 class="glitch-text" data-text="Gabriel García Garrido">Gabriel García Garrido</h1>
+                    <h2 class="titleText lastH2">Software and Electronic Engineer</h2>
                 </div>
             </div>
         </section>
         <section>
-            <div id="aboutme" class="container">
+            <div id="aboutme" class="container fade-in-section">
                 <h1>About me <i class="fa fa-child" aria-hidden="true"></i></h1>
+                <img id="aboutmeImage" src="images/aboutme.jpg" alt="me photo">
                 <div id="aboutmeletter">
-                    <img id="aboutmeImage" src="images/aboutme.jpg" alt="me photo">
                     <h2>My life</h2>
                     <p>Hi all, My name is Gabriel and I am from Spain. I was born in malaga a lovely coast city in
-                        the south of spain (Andalucia) but I have been living in Madrid since my last 12 years. I also have been live abroad in EEUU (Florida and new york city where I studied part of college with a scholarship) </p>
+                        the south of spain (Andalucia) but I have been living in Madrid since my last 12 years. I also
+                        have been live abroad in EEUU (Florida and new york city where I studied part of college with a
+                        scholarship) </p>
                     <h2>Hobbies</h2>
                     <p>Some people tell about me that I have too many hobbies. <br> of my favourites are, playing
                         guitar or drums, skiing, coding is also one of my hobbies (I love learning new stuffs by
@@ -89,55 +78,51 @@
                         In personal proyects that are private, but also I have some github Pocs that you can see here.
                         I am still publishing more and more
                     </p>
-                    <p id="galeryButton"><a href="https://github.com/Gaboxondo" class="blink"
-                        target="_blank"><i class="fa fa-github" aria-hidden="true"></i> My Github</a></p>
+                    <p id="galeryButton"><a href="https://github.com/Gaboxondo" class="blink" target="_blank"><i
+                                class="fa fa-github" aria-hidden="true"></i> My Github</a></p>
                     </p>
                 </div>
             </div>
         </section>
         <section>
-            <div id="education" class="container">
+            <div id="education" class="container fade-in-section">
                 <h1>Education <i class="fa fa-graduation-cap" aria-hidden="true"></i></h1>
                 <div id="studiesIcons">
                     <div class="studyIcon">
-                        <h3>School</h3>
                         <div class="educationImageToogle">
                             <img src="images/SanEstanislaoLogo.png" alt="logo san estanislao" class="studyIconImage">
                         </div>
-                        <div class="dateIcon">
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp&nbsp 1996-2008</p>
-                        </div>
-                        <div>
+                        <div class="studyInfo">
+                            <h3>School</h3>
+                            <div class="dateIcon">
+                                <p><i class="fa fa-calendar" aria-hidden="true"></i> 1996-2008</p>
+                            </div>
                             <p class="schoolName">San Estanislao de kostka (Málaga)</p>
                         </div>
                     </div>
                     <div class="studyIcon">
-                        <h3>College</h3>
                         <div class="educationImageToogle">
                             <img src="images/comillasLogo.png" alt="logo comillas" class="studyIconImage">
                         </div>
-                        <div class="dateIcon">
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp&nbsp 2008-2014</p>
-                        </div>
-                        <div>
+                        <div class="studyInfo">
+                            <h3>College</h3>
+                            <div class="dateIcon">
+                                <p><i class="fa fa-calendar" aria-hidden="true"></i> 2008-2014</p>
+                            </div>
                             <p class="schoolName">Universidad pontificia comillas (Madrid)</p>
-                        </div>
-                        <div>
                             <p class="title">Bachelor Industrial Engineering (Electronics speciality)</p>
                         </div>
                     </div>
                     <div class="studyIcon">
-                        <h3>College</h3>
                         <div class="educationImageToogle">
                             <img src="images/new paltz.png" alt="logo comillas" class="studyIconImage">
                         </div>
-                        <div class="dateIcon">
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp&nbsp 2012-2013</p>
-                        </div>
-                        <div>
+                        <div class="studyInfo">
+                            <h3>College</h3>
+                            <div class="dateIcon">
+                                <p><i class="fa fa-calendar" aria-hidden="true"></i> 2012-2013</p>
+                            </div>
                             <p class="schoolName">New paltz State univeristy of New York (New York)</p>
-                        </div>
-                        <div>
                             <p class="title">Bachelor Industrial Engineering</p>
                         </div>
                     </div>
@@ -145,7 +130,7 @@
             </div>
         </section>
         <section>
-            <div id="skillsCourses" class="container">
+            <div id="skillsCourses" class="container fade-in-section">
                 <h1>Skills <i class="fa fa-microchip" aria-hidden="true"></i></h1>
                 <div id="skillsContainer">
                     <div id="skillList">
@@ -1207,220 +1192,195 @@
             </div>
         </section>
         <section>
-            <div id="experience" class="container">
+            <div id="experience" class="container fade-in-section">
                 <h1>Experience <i class="fa fa-code-fork" aria-hidden="true"></i></h1>
                 <div class="timeline">
+                    <!-- GFT -->
                     <div class="timeline-container">
                         <div class="timeline-icon">
-                            <img src="images/gftLogo.png" alt="">
+                            <img src="images/gftLogo.png" alt="GFT">
                         </div>
                         <div class="timeline-body shadowBlink">
                             <h4 class="timeline-title"><span class="badge">GFT</span></h4>
                             <p class="timeline-date">Apr 2024 - Current</p>
                             <p class="timeline-job">Backend Developer and Devops</p>
-                            <p class="timeline-desc"> TODO
-                            </p>
+                            <p class="timeline-desc">TODO</p>
                         </div>
                     </div>
+
+                    <!-- Cognizant -->
                     <div class="timeline-container">
                         <div class="timeline-icon">
-                            <img src="images/cognizantLogo.png" alt="">
+                            <img src="images/cognizantLogo.png" alt="Cognizant">
                         </div>
                         <div class="timeline-body shadowBlink">
                             <h4 class="timeline-title"><span class="badge">Cognizant</span></h4>
                             <p class="timeline-date">Jun 2022 - Apr 2024</p>
                             <p class="timeline-job">Full stack / MS backend and devops main architect</p>
-                            <p class="timeline-desc">Working for a importnat insurance germany company in: Migration from cloud foundry to 
-                                K8S Kubernetes infrastructure (generation of all helm charts, modification of all devops system and so on), 
-                                improvement of microservice arquitecture and also design and refactor of a completely wrong microservices 
-                                (distributed monolith error with tons of design errors) architecture dealing with all types of things 
-                                (authentication, DDD, MS scopes, logging, versioning, MS patterns). Redesign of all devops system with 
-                                jenkins, helm, kubernetes and all tools I mention in my skills almost
+                            <p class="timeline-desc">Working for a importnat insurance germany company in: Migration
+                                from cloud foundry to K8S Kubernetes infrastructure (generation of all helm charts,
+                                modification of all devops system and so on), improvement of microservice arquitecture
+                                and also design and refactor of a completely wrong microservices (distributed monolith
+                                error with tons of design errors) architecture dealing with all types of things
+                                (authentication, DDD, MS scopes, logging, versioning, MS patterns). Redesign of all
+                                devops system with jenkins, helm, kubernetes and all tools I mention in my skills almost
                             </p>
                         </div>
                     </div>
+
+                    <!-- Minsait (Grouped) -->
                     <div class="timeline-container">
                         <div class="timeline-icon">
-                            <img src="images/minsaitlogo.jpg" alt="">
+                            <img src="images/minsaitlogo.jpg" alt="Minsait">
                         </div>
                         <div class="timeline-body shadowBlink">
                             <h4 class="timeline-title"><span class="badge">Minsait</span></h4>
-                            <p class="timeline-date">Jan 2022 - Jun 2022</p>
-                            <p class="timeline-job">Azure B2C Developer</p>
-                            <p class="timeline-desc">Creating all the Authentication for clients users of an important french 
-                                insurance company with Azure B2C custom policies user flows developer with a complex logic 
-                                (All typical ones like recover passwords, sms sends with otps and so on). Usisng azure fuctions also
-                            </p>
+
+                            <!-- Role 1 -->
+                            <div class="timeline-role">
+                                <p class="timeline-date">Jan 2022 - Jun 2022</p>
+                                <p class="timeline-job">Azure B2C Developer</p>
+                                <p class="timeline-desc">Creating all the Authentication for clients users of an
+                                    important french insurance company with Azure B2C custom policies user flows
+                                    developer with a complex logic (All typical ones like recover passwords, sms sends
+                                    with otps and so on). Usisng azure fuctions also</p>
+                            </div>
+                            <hr class="timeline-divider">
+
+                            <!-- Role 2 -->
+                            <div class="timeline-role">
+                                <p class="timeline-date">Oct 2019 - Jun 2022</p>
+                                <p class="timeline-job">Microservice developer and architect</p>
+                                <p class="timeline-desc">Microservices architectures with spring boot with asynchronous
+                                    non-blocking architecture patterns such as CQRS and domain modeling following
+                                    domain-driven design (DDD),</p>
+                            </div>
+                            <hr class="timeline-divider">
+
+                            <!-- Role 3 -->
+                            <div class="timeline-role">
+                                <p class="timeline-date">Dec 2019 - Jun 2022</p>
+                                <p class="timeline-job">DevOps Engineer</p>
+                                <p class="timeline-desc">Continuous integration systems with jenkins and bamboo with
+                                    auto-versioning, auto-deployment, auto-execution of tests and quality tests
+                                    following gitflow patterns. development of helm charts in centralized repos for
+                                    different technologies</p>
+                            </div>
+                            <hr class="timeline-divider">
+
+                            <!-- Role 4 -->
+                            <div class="timeline-role">
+                                <p class="timeline-date">Nov 2019 - Jun 2022</p>
+                                <p class="timeline-job">Cloud engineer</p>
+                                <p class="timeline-desc">management and creation of cloud architectures with kubernetes
+                                    in azure with authentication management with azure AD. Also starting to deal with
+                                    task of Microservices architectures</p>
+                            </div>
+                            <hr class="timeline-divider">
+
+                            <!-- Role 5 -->
+                            <div class="timeline-role">
+                                <p class="timeline-date">Oct 2017 - Jun 2022</p>
+                                <p class="timeline-job">Back-End Programmer</p>
+                                <p class="timeline-desc">Web service back end coding with java and spring boot framework
+                                </p>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Tecnatom (Grouped) -->
                     <div class="timeline-container">
                         <div class="timeline-icon">
-                            <img src="images/minsaitlogo.jpg" alt="">
-                        </div>
-                        <div class="timeline-body shadowBlink">
-                            <h4 class="timeline-title"><span class="badge">Minsait</span></h4>
-                            <p class="timeline-date">Oct 2019 - Jun 2022</p>
-                            <p class="timeline-job">Microservice developer and architect</p>
-                            <p class="timeline-desc">Microservices architectures with spring boot with asynchronous
-                                non-blocking architecture patterns such as CQRS and domain modeling following
-                                domain-driven design (DDD),</p>
-                        </div>
-                    </div>
-                    <div class="timeline-container">
-                        <div class="timeline-icon">
-                            <img src="images/minsaitlogo.jpg" alt="">
-                        </div>
-                        <div class="timeline-body shadowBlink">
-                            <h4 class="timeline-title"><span class="badge">Minsait</span></h4>
-                            <p class="timeline-date">Dec 2019 - Jun 2022</p>
-                            <p class="timeline-job">DevOps Engineer</p>
-                            <p class="timeline-desc">Continuous integration systems with jenkins and bamboo with
-                                auto-versioning, auto-deployment, auto-execution of tests and quality tests following
-                                gitflow patterns. development of helm charts in centralized repos for different
-                                technologies</p>
-                        </div>
-                    </div>
-                    <div class="timeline-container">
-                        <div class="timeline-icon">
-                            <img src="images/minsaitlogo.jpg" alt="">
-                        </div>
-                        <div class="timeline-body shadowBlink">
-                            <h4 class="timeline-title"><span class="badge">Minsait</span></h4>
-                            <p class="timeline-date">Nov 2019 - Jun 2022</p>
-                            <p class="timeline-job">Cloud engineer</p>
-                            <p class="timeline-desc">management and creation of cloud architectures with kubernetes in
-                                azure with authentication management with azure AD. </p>
-                            <p class="timeline-desc">Also starting to deal with task of Microservices architectures</p>
-                        </div>
-                    </div>
-                    <div class="timeline-container">
-                        <div class="timeline-icon">
-                            <img src="images/minsaitlogo.jpg" alt="">
-                        </div>
-                        <div class="timeline-body shadowBlink">
-                            <h4 class="timeline-title"><span class="badge">Minsait</span></h4>
-                            <p class="timeline-date">Oct 2017 - Jun 2022</p>
-                            <p class="timeline-job">Back-End Programmer</p>
-                            <p class="timeline-desc">Web service back end coding with java and spring boot framework</p>
-                        </div>
-                    </div>
-                    <div class="timeline-container">
-                        <div class="timeline-icon">
-                            <img src="images/tenatomLogo.png" alt="">
+                            <img src="images/tenatomLogo.png" alt="Tecnatom">
                         </div>
                         <div class="timeline-body shadowBlink">
                             <h4 class="timeline-title"><span class="badge">Tecnatom</span></h4>
-                            <p class="timeline-date">Aug 2015 - Oct 2017</p>
-                            <p class="timeline-job">Product Development Engineer (robotics)</p>
-                            <p class="timeline-desc">Dealing with firmware developing task and also with 3D modeling and
-                                PCB design Ultrasounds techniques to inspect manufacturing defects.</p>
-                            <p class="timeline-desc">Also robotics development task as mechanical design, electronics
-                                design and robotics software programming (also firmware</p>
-                        </div>
-                    </div>
-                    <div class="timeline-container">
-                        <div class="timeline-icon">
-                            <img src="images/tenatomLogo.png" alt="">
-                        </div>
-                        <div class="timeline-body shadowBlink">
-                            <h4 class="timeline-title"><span class="badge">Tecnatom</span></h4>
-                            <p class="timeline-date">Feb 2015 - Aug 2015</p>
-                            <p class="timeline-job">Techniques and product development department</p>
-                            <p class="timeline-desc">Intership</p>
+
+                            <!-- Role 1 -->
+                            <div class="timeline-role">
+                                <p class="timeline-date">Aug 2015 - Oct 2017</p>
+                                <p class="timeline-job">Product Development Engineer (robotics)</p>
+                                <p class="timeline-desc">Dealing with firmware developing task and also with 3D modeling
+                                    and PCB design Ultrasounds techniques to inspect manufacturing defects. Also
+                                    robotics development task as mechanical design, electronics design and robotics
+                                    software programming (also firmware</p>
+                            </div>
+                            <hr class="timeline-divider">
+
+                            <!-- Role 2 -->
+                            <div class="timeline-role">
+                                <p class="timeline-date">Feb 2015 - Aug 2015</p>
+                                <p class="timeline-job">Techniques and product development department</p>
+                                <p class="timeline-desc">Intership</p>
+                            </div>
                         </div>
                     </div>
                 </div>
         </section>
         <section>
-            <div id="projects" class="container">
+            <div id="projects" class="container fade-in-section">
                 <h1>Projects <i class="fa fa-terminal" aria-hidden="true"></i></h1>
-                <div id="sliderContainer">
-                    <ul id="slider">
-                        <li class="slideContent">
-                            <div class="aditionalMargin">
-                                <span class="type" style="--n:300">Click on any button </span>
-                            </div>
-                        </li>
-                        <li id="slide1" class="slideContent">
-                            <div class="aditionalMargin">
-                                <h3>Ultrasound Inpection Robot</h3>
-                                <span class="type" style="--n:300">Autonomous ultrasonic inspection robot for gasoline
-                                    tank floors. Equipped with Lidar, bidirectional wheels, cameras, etc. <br>
-                                    Participation in mechanical design, firmware and software </span>
-                            </div>
-                        </li>
-                        <li id="slide2" class="slideContent">
-                            <div class="aditionalMargin">
-                                <h3>Electrical incident management software</h3>
-                                <span class="type" style="--n:300">Software in charge of automatically controlling and
-                                    managing the incidents of the electrical network of a country, as well as managing
-                                    field work and operations on said incidents. <br> Participation in the backend of
-                                    the system </span>
-                            </div>
-                        </li>
-                        <li id="slide3" class="slideContent">
-                            <div class="aditionalMargin">
-                                <h3>Software for the purchase and sale of energy</h3>
-                                <span class="type" style="--n:300">Software for the purchase and sale of energy in the
-                                    Spanish markets with automation. Role as software backend MS architect,
-                                    infrastructure architect with Kubernetes and devops system </span>
-                            </div>
-                        </li>
-                        <li id="slide4" class="slideContent">
-                            <div class="aditionalMargin">
-                                <h3>Electrical network incidents quality measurement software</h3>
-                                <span class="type" style="--n:300">Software for measuring the quality of resolution of
-                                    incidents in the electrical network. <br> Role as software backend MS architect and
-                                    also backend developer, front end developer and consultant on the implemented devops
-                                    system </span>
-                            </div>
-                        </li>
-                        <li id="slide5" class="slideContent">
-                            <div class="aditionalMargin">
-                                <h3>Azure B2C custom policies company flow</h3>
-                                <span class="type" style="--n:300">Design of complex flows for (login, reset password
-                                    and register in the same unique flow) with OTP SMS and email customizations,
-                                    multifactor, google reCAPTCHA and including ROPC flow. All using Aouth2 authcode
-                                    protocol and using azure function as a middleware (Also using another Azure
-                                    services))</span>
-                            </div>
-                        </li>
-                        <li id="slide6" class="slideContent">
-                            <div class="aditionalMargin">
-                                <h3>Insurance "Microservices" system for large fleets</h3>
-                                <span class="type" style="--n:300">Design of Microservice architecture for the new Features
-                                    within a ball of mud previous architecture refactoring the old usisng also proper DDD approach
-                                    teaching new devs without almost any experience. Devops redesign and infrasturcture management.
-                                    Dealing directly with PO for managing expectations 
-                            </span>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul id="slideMenu">
-                        <li>
-                            <a href="#slide1">1</a>
-                        </li>
-                        <li>
-                            <a href="#slide2">2</a>
-                        </li>
-                        <li>
-                            <a href="#slide3">3</a>
-                        </li>
-                        <li>
-                            <a href="#slide4">4</a>
-                        </li>
-                        <li>
-                            <a href="#slide5">5</a>
-                        </li>
-                        <li>
-                            <a href="#slide6">6</a>
-                        </li>
-                    </ul>
+                <div id="projectsGrid">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <span class="project-type">// ROBOTICS</span>
+                        <h3>Ultrasound Inpection Robot</h3>
+                        <p>Autonomous ultrasonic inspection robot for gasoline tank floors. Equipped with Lidar,
+                            bidirectional wheels, cameras, etc.</p>
+                        <p>Participation in mechanical design, firmware and software.</p>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <span class="project-type">// ENERGY_SOFTWARE</span>
+                        <h3>Electrical incident management software</h3>
+                        <p>Software in charge of automatically controlling and managing the incidents of the electrical
+                            network of a country, as well as managing field work and operations on said incidents.</p>
+                        <p>Participation in the backend of the system.</p>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <span class="project-type">// ARCHITECTURE</span>
+                        <h3>Software for the purchase and sale of energy</h3>
+                        <p>Software for the purchase and sale of energy in the Spanish markets with automation. Role as
+                            software backend MS architect, infrastructure architect with Kubernetes and devops system.
+                        </p>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card">
+                        <span class="project-type">// METRICS</span>
+                        <h3>Electrical network incidents quality measurement software</h3>
+                        <p>Software for measuring the quality of resolution of incidents in the electrical network.</p>
+                        <p>Role as software backend MS architect and also backend developer, front end developer and
+                            consultant on the implemented devops system.</p>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="project-card">
+                        <span class="project-type">// SECURITY</span>
+                        <h3>Azure B2C custom policies company flow</h3>
+                        <p>Design of complex flows for (login, reset password and register in the same unique flow) with
+                            OTP SMS and email customizations, multifactor, google reCAPTCHA and including ROPC flow. All
+                            using Aouth2 authcode protocol and using azure function as a middleware (Also using another
+                            Azure services)).</p>
+                    </div>
+
+                    <!-- Project 6 -->
+                    <div class="project-card">
+                        <span class="project-type">// MICROSERVICES</span>
+                        <h3>Insurance "Microservices" system for large fleets</h3>
+                        <p>Design of Microservice architecture for the new Features within a ball of mud previous
+                            architecture refactoring the old usisng also proper DDD approach teaching new devs without
+                            almost any experience. Devops redesign and infrasturcture management. Dealing directly with
+                            PO for managing expectations.</p>
+                    </div>
                 </div>
             </div>
         </section>
         <section>
-            <div id="contact" class="container">
+            <div id="contact" class="container fade-in-section">
                 <h1>Contact <i class="fa fa-gamepad" aria-hidden="true"></i></h1>
                 <h2>Right now you can contact me by Linkedin or email</h2>
                 <!--<h2>You can also download my PDF CV</h2>
@@ -1436,7 +1396,8 @@
                 <p>Gabriel Garcia Garrido CV</p>
             </div>
             <div id="social">
-                <a  href="https://www.linkedin.com/in/gabriel-garcia-garrido-9aa911b5/?originalSubdomain=es"><i class="fa fa-linkedin-square" target="_blank"></i></a>
+                <a href="https://www.linkedin.com/in/gabriel-garcia-garrido-9aa911b5/?originalSubdomain=es"><i
+                        class="fa fa-linkedin-square" target="_blank"></i></a>
             </div>
         </div>
         <div id="copyright">

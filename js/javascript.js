@@ -1,166 +1,131 @@
-//Lo suyo seria un trigger por cada una. Ver como hacerlo con un For
-const barList = document.querySelectorAll('.bartoogle');
-for (let i = 0; i < barList.length; i++) {
-  barList[i].classList.remove('animateddBar');
-}
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      for (let i = 0; i < barList.length; i++) {
-        barList[i].classList.add('animateddBar');
-      }
-      return;
-    }
+// JavaScript for CV Interactions
 
-    for (let i = 0; i < barList.length; i++) {
-      barList[i].classList.remove('animateddBar');
-    }
-  });
-});
-observer.observe(document.querySelector('#skillList'));
-
-
+// --- 1. Education Icons Animation ---
 const studiyImageList = document.querySelectorAll('.educationImageToogle');
+// Reset state
 for (let i = 0; i < studiyImageList.length; i++) {
   studiyImageList[i].classList.remove('bounce-in');
 }
+
 const observerStydies = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      for (let i = 0; i < studiyImageList.length; i++) {
-        studiyImageList[i].classList.add('bounce-in');
-      }
-      return;
-    }
-
-    for (let i = 0; i < studiyImageList.length; i++) {
-      studiyImageList[i].classList.remove('bounce-in');
+      studiyImageList.forEach(img => img.classList.add('bounce-in'));
+    } else {
+      // Optional: remove if you want it to re-animate every time
+      studiyImageList.forEach(img => img.classList.remove('bounce-in'));
     }
   });
 });
-observerStydies.observe(document.querySelector('#studiesIcons'));
+const studiesSection = document.querySelector('#studiesIcons');
+if (studiesSection) observerStydies.observe(studiesSection);
 
+
+// --- 2. Certifications Animation ---
 const certImageList = document.querySelectorAll('.certification');
-for (let i = 0; i < studiyImageList.length; i++) {
-  studiyImageList[i].classList.remove('flip');
-}
+// Reset state
+certImageList.forEach(cert => cert.classList.remove('flip'));
+
 const observerCertifications = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      for (let i = 0; i < certImageList.length; i++) {
-        certImageList[i].classList.add('flip');
-      }
-      return;
-    }
-
-    for (let i = 0; i < certImageList.length; i++) {
-      certImageList[i].classList.remove('flip');
+      certImageList.forEach(cert => cert.classList.add('flip'));
+    } else {
+      certImageList.forEach(cert => cert.classList.remove('flip'));
     }
   });
 });
-observerCertifications.observe(document.querySelector('#certifications'));
+const certSection = document.querySelector('#certificationsContainer'); // ensure ID matches HTML
+if (certSection) observerCertifications.observe(certSection);
+// Fallback if ID is just specific container
+const skillsSection = document.querySelector('#skillsCourses');
+if (skillsSection) observerCertifications.observe(skillsSection);
 
-// esto se puede poner con un bucle bastante mas mejor
+
+// --- 3. Typewriter Effect ---
 const titleWriter = document.querySelector('.titleText');
-titleWriter.classList.remove('typewriter');
-// Create the observer, same as before:
-const observerTitleWritter = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      titleWriter.classList.add('typewriter');
-      return;
-    }
-
-    titleWriter.classList.remove('typewriter');
+if (titleWriter) {
+  titleWriter.classList.remove('typewriter');
+  const observerTitleWritter = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        titleWriter.classList.add('typewriter');
+      } else {
+        titleWriter.classList.remove('typewriter');
+      }
+    });
   });
-});
-observerTitleWritter.observe(document.querySelector('.titleText'));
-
-const titleWriter2 = document.querySelector('.titleText2');
-titleWriter2.classList.remove('typewriter');
-// Create the observer, same as before:
-const observerTitleWritter2 = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      titleWriter2.classList.add('typewriter');
-      return;
-    }
-
-    titleWriter2.classList.remove('typewriter');
-  });
-});
-observerTitleWritter2.observe(document.querySelector('.titleText2'));
-
-const titleWriter3 = document.querySelector('.titleText3');
-titleWriter3.classList.remove('typewriter');
-// Create the observer, same as before:
-const observerTitleWritter3 = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      titleWriter3.classList.add('typewriter');
-      return;
-    }
-
-    titleWriter3.classList.remove('typewriter');
-  });
-});
-observerTitleWritter3.observe(document.querySelector('.titleText3'));
-
-const titleWriter4 = document.querySelector('.titleText4');
-titleWriter4.classList.remove('typewriter');
-// Create the observer, same as before:
-const observerTitleWritter4 = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      titleWriter4.classList.add('typewriter');
-      return;
-    }
-
-    titleWriter4.classList.remove('typewriter');
-  });
-});
-observerTitleWritter4.observe(document.querySelector('.titleText4'));
+  observerTitleWritter.observe(titleWriter);
+}
 
 
+// --- 4. Accordion & Skill Bars Animation ---
 var acc = document.getElementsByClassName("accordion");
-var i;
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    for(j = 0; j < acc.length; j++) {
-      acc[j].nextElementSibling.style.maxHeight = null;
-      acc[j].nextElementSibling.style.display = "none";
-      acc[j].nextElementSibling.style.marginBottom = "0";
+
+for (let i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function () {
+
+    // A. Close all other panels
+    for (let j = 0; j < acc.length; j++) {
+      if (acc[j] !== this) {
+        acc[j].classList.remove("active");
+        let otherPanel = acc[j].nextElementSibling;
+        if (otherPanel) {
+          otherPanel.style.maxHeight = null;
+          otherPanel.style.display = "none";
+          // Reset bars in other panels
+          let otherBars = otherPanel.querySelectorAll('.bartoogle');
+          otherBars.forEach(bar => bar.classList.remove('animateddBar'));
+        }
+      }
     }
+
+    // B. Toggle CURRENT panel
     this.classList.toggle("active");
     var panel = this.nextElementSibling;
-    panel.style.display = "flex";
+
     if (panel.style.maxHeight) {
+      // Closing
       panel.style.maxHeight = null;
-      panel.style.marginBottom = "0"
+      setTimeout(() => panel.style.display = "none", 300);
+
+      // Reset bars
+      let bars = panel.querySelectorAll('.bartoogle');
+      bars.forEach(bar => bar.classList.remove('animateddBar'));
+
     } else {
-      panel.style.maxHeight = panel.scrollHeight + "90px";
-      panel.style.marginBottom = "10px"
-    } 
+      // Opening
+      panel.style.display = "flex";
+      panel.style.maxHeight = panel.scrollHeight + "px";
+
+      // Animate bars with a slight delay to allow rendering
+      setTimeout(() => {
+        let bars = panel.querySelectorAll('.bartoogle');
+        bars.forEach(bar => {
+          bar.classList.add('animateddBar');
+        });
+      }, 50);
+    }
   });
 }
-var firstPannel = document.getElementById('firstaccordion').nextElementSibling;
-firstPannel.style.maxHeight = firstPannel.scrollHeight + "90px";
-firstPannel.style.marginBottom = "10px";
-firstPannel.style.display = "flex";
 
+// --- 5. Scroll Fade-In Animation ---
+const fadeElements = document.querySelectorAll('.fade-in-section');
+const appearOptions = {
+  threshold: 0.15,
+  rootMargin: "0px 0px -50px 0px"
+};
 
-
-    // Comportamientos para el men� de navegaci�n.
-    let mainNav=document.getElementById('nav');
-    let navbarToggle=document.getElementById("navbar-toogle");
-    navbarToggle.addEventListener("click", function() {
-
-    if (this.classList.contains('active')){
-        mainNav.style.display="none";
-        this.classList.remove('active');
+const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+    } else {
+      entry.target.classList.remove('is-visible');
     }
-    else {
-        mainNav.style.display="flex";
-        this.classList.add('active');
-    }
-    });
+  });
+}, appearOptions);
+
+fadeElements.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
