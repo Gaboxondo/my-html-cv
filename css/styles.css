@@ -151,6 +151,19 @@ header {
     color: #fff;
 }
 
+#nav li a[onclick*="downloadPDF"] {
+    border: 1px solid var(--accent-primary);
+    padding: 5px 15px !important;
+    border-radius: 4px;
+    margin-left: 10px;
+    color: var(--accent-primary);
+}
+
+#nav li a[onclick*="downloadPDF"]:hover {
+    background: var(--accent-primary);
+    color: #fff !important;
+}
+
 #nav li a:hover::after {
     width: 100%;
 }
@@ -944,17 +957,35 @@ footer {
 }
 
 /* =========================================
-   PRINT STYLES (PDF Export - 2 Pages Max)
+   PRINT & EXPORT STYLES
    ========================================= */
+
 @media print {
 
-    /* Reset colors for paper */
+    #matrixCanvas,
+    header,
+    button,
+    .footer-links,
+    .built-with {
+        display: none !important;
+    }
+}
+
+/* Helper for JS Export Library */
+.is-exporting #matrixCanvas,
+.is-exporting header,
+.is-exporting button,
+.is-exporting .footer-links,
+.is-exporting .built-with {
+    display: none !important;
+}
+
+@media print {
     :root {
         --bg-dark: #ffffff !important;
-        --bg-panel: #f9f9f9 !important;
-        --text-main: #1a1a1a !important;
-        --text-muted: #444444 !important;
-        --border-color: #dddddd !important;
+        --bg-panel: #ffffff !important;
+        --text-main: #000000 !important;
+        --accent-primary: #ff003c !important;
     }
 
     body {
@@ -963,177 +994,120 @@ footer {
         font-size: 10pt;
     }
 
-    /* Hide web-only/dark-mode decorative elements */
-    #matrixCanvas,
-    header,
-    .fade-in-section,
-    .contact-card i,
-    .footer-links,
-    .footer-bottom .built-with,
-    button,
-    .accent-glow {
-        display: none !important;
-    }
-
-    /* Remove animations and shifts */
-    .fade-in-section {
-        opacity: 1 !important;
-        transform: none !important;
-    }
-
-    /* Section management */
-    section {
-        padding: 15mm 0 !important;
-        page-break-inside: avoid;
-        border-bottom: 1px solid #eee;
-    }
-
     .container {
         width: 100% !important;
         max-width: 100% !important;
-        padding: 0 10mm !important;
+        padding: 0 15mm !important;
     }
 
-    /* Hero Print Version */
+    section {
+        padding: 5mm 0 !important;
+        border-bottom: 1px solid #eee !important;
+        page-break-inside: avoid;
+    }
+
     #hero {
         height: auto !important;
-        min-height: 0 !important;
-        padding: 10mm 0 !important;
         background: white !important;
     }
 
     .introContainer {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-        gap: 20px;
+        display: flex !important;
+        gap: 20px !important;
+        align-items: center !important;
     }
 
     .introContainer img.rounded {
-        width: 100px !important;
-        height: 100px !important;
-        filter: grayscale(1);
+        width: 70px !important;
+        height: 70px !important;
     }
 
     .introContainer h1 {
-        font-size: 24pt !important;
-        margin: 0;
-        color: black !important;
+        font-size: 20pt !important;
     }
 
     .titleText {
-        border-right: none !important;
-        margin: 5px 0 0 0 !important;
-        font-size: 14pt !important;
+        font-size: 11pt !important;
+        border: none !important;
     }
 
-    /* Experience & Education: Compact Resumé Style */
     #studiesIcons,
     #projectsGrid,
-    .contact-grid {
+    .contact-grid,
+    #skillsContainer {
+        display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: 10pt;
-    }
-
-    .studyIcon,
-    .timeline-body,
-    .project-card,
-    .contact-card {
-        background: white !important;
-        border: 1px solid #ccc !important;
-        padding: 10pt !important;
-        box-shadow: none !important;
-        transform: none !important;
+        gap: 10px !important;
     }
 
     .timeline {
-        border-left: 2px solid #ddd !important;
-        padding-left: 20pt !important;
+        border-left: 2px solid var(--accent-primary) !important;
+        padding-left: 10pt !important;
+        margin-left: 10pt !important;
     }
 
     .timeline-icon {
+        display: none !important;
+    }
+
+    .timeline-body {
+        padding: 5px !important;
         background: white !important;
-        border: 1px solid #ddd !important;
     }
 
-    .timeline-icon img {
-        filter: grayscale(1) !important;
-    }
-
-    .timeline-job {
-        color: #000 !important;
-        font-size: 11pt !important;
-    }
-
-    .timeline-date {
-        color: var(--accent-primary) !important;
-        margin-bottom: 5px !important;
-    }
-
-    .timeline-body:hover {
-        transform: none !important;
-        border-left-color: var(--accent-primary) !important;
-    }
-
-    /* Skills column layouts */
-    #skillsContainer {
-        display: grid;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 15pt;
-    }
-
-    #courseList {
-        max-height: none !important;
-        height: auto !important;
-        border: none !important;
-        padding: 0 !important;
-    }
-
-    /* Contact & Footer */
-    #contact {
+    #experience {
         page-break-before: always;
     }
 
-    .contact-grid {
-        grid-template-columns: 1fr 1fr 1fr !important;
-    }
-
-    .contact-card p {
-        font-size: 9pt !important;
-    }
-
     footer {
-        padding: 10mm 0 !important;
-        border-top: 1px solid #eee !important;
-    }
-
-    .footer-content {
-        justify-content: center !important;
-        margin-bottom: 5mm !important;
-    }
-
-    .footer-logo span {
-        font-size: 12pt !important;
-    }
-
-    /* Force 2 pages limit hints */
-    h1 {
-        font-size: 18pt !important;
-        margin-bottom: 10pt !important;
-    }
-
-    h2 {
-        font-size: 12pt !important;
-        margin-top: 8pt !important;
-    }
-
-    p {
-        line-height: 1.4 !important;
+        padding: 5mm 0 !important;
     }
 
     @page {
-        margin: 1cm;
+        margin: 0.5cm;
         size: A4;
     }
+}
+
+/* Styles specifically for the PDF Generator class */
+.is-exporting {
+    background: white !important;
+    color: black !important;
+}
+
+.is-exporting :root {
+    --bg-dark: #ffffff !important;
+    --bg-panel: #ffffff !important;
+    --text-main: #000000 !important;
+    --accent-primary: #ff003c !important;
+}
+
+.is-exporting .container {
+    padding: 0 15mm !important;
+}
+
+.is-exporting section {
+    padding: 5mm 0 !important;
+    border-bottom: 1px solid #eee !important;
+}
+
+.is-exporting #hero {
+    height: auto !important;
+}
+
+.is-exporting .introContainer {
+    display: flex !important;
+    gap: 20px !important;
+}
+
+.is-exporting #studiesIcons,
+.is-exporting #projectsGrid,
+.is-exporting .contact-grid,
+.is-exporting #skillsContainer {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+}
+
+.is-exporting #experience {
+    page-break-before: always;
 }

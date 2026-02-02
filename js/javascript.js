@@ -130,3 +130,44 @@ const appearOnScroll = new IntersectionObserver(function (entries, appearOnScrol
 fadeElements.forEach(fader => {
   appearOnScroll.observe(fader);
 });
+// --- 7. "Silent" PDF Download Function ---
+function downloadPDF() {
+  // 1. Create a clone of the content to work "behind the scenes"
+  const content = document.body.cloneNode(true);
+
+  // 2. Create a hidden worker and apply the export class
+  const worker = document.createElement('div');
+  worker.style.position = 'absolute';
+  worker.style.left = '-9999px';
+  worker.style.top = '0';
+  worker.style.width = '1024px';
+  worker.className = 'is-exporting';
+  worker.appendChild(content);
+  document.body.appendChild(worker);
+
+  // 3. Force visibility on the clone (remove lazy animations)
+  worker.querySelectorAll('.fade-in-section').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.style.visibility = 'visible';
+  });
+
+  const opt = {
+    margin: [10, 0, 10, 0],
+    filename: 'Gabriel_Garcia_CV.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      letterRendering: true
+    },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+  };
+
+  // 4. Generate PDF from the hidden worker
+  html2pdf().set(opt).from(worker).save().then(() => {
+    // 5. Cleanup the worker
+    document.body.removeChild(worker);
+  });
+}
