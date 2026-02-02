@@ -130,44 +130,45 @@ const appearOnScroll = new IntersectionObserver(function (entries, appearOnScrol
 fadeElements.forEach(fader => {
   appearOnScroll.observe(fader);
 });
-// --- 7. "Silent" PDF Download Function ---
+// --- 7. Robust PDF Download Function ---
 function downloadPDF() {
-  // 1. Create a clone of the content to work "behind the scenes"
-  const content = document.body.cloneNode(true);
+  console.log("Initiating PDF Export...");
+  const loader = document.getElementById('pdf-loader');
+  const mainContent = document.querySelector('main');
 
-  // 2. Create a hidden worker and apply the export class
-  const worker = document.createElement('div');
-  worker.style.position = 'absolute';
-  worker.style.left = '-9999px';
-  worker.style.top = '0';
-  worker.style.width = '1024px';
-  worker.className = 'is-exporting';
-  worker.appendChild(content);
-  document.body.appendChild(worker);
-
-  // 3. Force visibility on the clone (remove lazy animations)
-  worker.querySelectorAll('.fade-in-section').forEach(el => {
-    el.style.opacity = '1';
-    el.style.transform = 'none';
-    el.style.visibility = 'visible';
-  });
+  if (loader) loader.style.display = 'flex';
+  document.body.classList.add('is-exporting');
+  window.scrollTo(0, 0);
 
   const opt = {
-    margin: [10, 0, 10, 0],
-    filename: 'Gabriel_Garcia_CV.pdf',
+    margin: [10, 5, 10, 5],
+    filename: 'Gabriel_Garcia_Resume.pdf',
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: {
-      scale: 2,
+      scale: 1.5, // Safer scale for large pages
       useCORS: true,
-      letterRendering: true
+      letterRendering: true,
+      logging: false
     },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
   };
 
-  // 4. Generate PDF from the hidden worker
-  html2pdf().set(opt).from(worker).save().then(() => {
-    // 5. Cleanup the worker
-    document.body.removeChild(worker);
-  });
+  // Give time for classes to apply
+  setTimeout(() => {
+    html2pdf().from(mainContent).set(opt).save()
+      .then(() => {
+        console.log("PDF saved successfully");
+        finish();
+      })
+      .catch(err => {
+        console.error("PDF Export failed:", err);
+        alert("Browser security blocks automatic PDF generation when running from local files. \n\nPlease use 'Ctrl + P' and select 'Save as PDF' - it's already optimized for a perfect 2-page result!");
+        finish();
+      });
+  }, 1200);
+
+  function finish() {
+    document.body.classList.remove('is-exporting');
+    if (loader) loader.style.display = 'none';
+  }
 }

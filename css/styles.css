@@ -957,28 +957,8 @@ footer {
 }
 
 /* =========================================
-   PRINT & EXPORT STYLES
+   PROFESSIONAL PDF EXPORT STYLES
    ========================================= */
-
-@media print {
-
-    #matrixCanvas,
-    header,
-    button,
-    .footer-links,
-    .built-with {
-        display: none !important;
-    }
-}
-
-/* Helper for JS Export Library */
-.is-exporting #matrixCanvas,
-.is-exporting header,
-.is-exporting button,
-.is-exporting .footer-links,
-.is-exporting .built-with {
-    display: none !important;
-}
 
 @media print {
     :root {
@@ -988,47 +968,78 @@ footer {
         --accent-primary: #ff003c !important;
     }
 
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    #matrixCanvas,
+    header,
+    #pdf-loader,
+    button,
+    .footer-links,
+    .built-with,
+    .accent-glow,
+    .glitch-text::after,
+    .glitch-text::before,
+    .timeline-icon {
+        display: none !important;
+    }
+
     body {
         background: white !important;
         color: black !important;
-        font-size: 10pt;
+        font-size: 10pt !important;
+        line-height: 1.2 !important;
+    }
+
+    .fade-in-section {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+        transition: none !important;
     }
 
     .container {
         width: 100% !important;
         max-width: 100% !important;
-        padding: 0 15mm !important;
+        padding: 0 10mm !important;
     }
 
     section {
-        padding: 5mm 0 !important;
+        padding: 4mm 0 !important;
         border-bottom: 1px solid #eee !important;
         page-break-inside: avoid;
+        background: white !important;
     }
 
     #hero {
         height: auto !important;
-        background: white !important;
+        min-height: 0 !important;
     }
 
     .introContainer {
         display: flex !important;
-        gap: 20px !important;
+        flex-direction: row !important;
         align-items: center !important;
+        gap: 20px !important;
     }
 
     .introContainer img.rounded {
-        width: 70px !important;
-        height: 70px !important;
+        width: 60px !important;
+        height: 60px !important;
+        border: 2px solid #ff003c !important;
     }
 
     .introContainer h1 {
-        font-size: 20pt !important;
+        font-size: 18pt !important;
+        margin: 0 !important;
     }
 
     .titleText {
-        font-size: 11pt !important;
         border: none !important;
+        font-size: 10pt !important;
+        color: #444 !important;
     }
 
     #studiesIcons,
@@ -1040,64 +1051,111 @@ footer {
         gap: 10px !important;
     }
 
-    .timeline {
-        border-left: 2px solid var(--accent-primary) !important;
-        padding-left: 10pt !important;
-        margin-left: 10pt !important;
+    .studyIcon,
+    .project-card,
+    .contact-card {
+        padding: 6px !important;
+        border: 1px solid #ddd !important;
     }
 
-    .timeline-icon {
-        display: none !important;
+    .timeline {
+        border-left: 2px solid #ff003c !important;
+        margin-left: 5mm !important;
+        padding-left: 5mm !important;
     }
 
     .timeline-body {
-        padding: 5px !important;
-        background: white !important;
+        padding: 2px 0 !important;
+        border: none !important;
     }
 
     #experience {
-        page-break-before: always;
+        page-break-before: always !important;
+    }
+
+    #courseList {
+        height: auto !important;
+        max-height: none !important;
     }
 
     footer {
         padding: 5mm 0 !important;
-    }
-
-    @page {
-        margin: 0.5cm;
-        size: A4;
+        border-top: 1px solid #eee !important;
     }
 }
 
-/* Styles specifically for the PDF Generator class */
-.is-exporting {
+/* Fallback and Layout for the JS-driven PDF generator */
+body.is-exporting {
     background: white !important;
+    background-color: white !important;
     color: black !important;
-}
-
-.is-exporting :root {
+    font-size: 10pt !important;
     --bg-dark: #ffffff !important;
     --bg-panel: #ffffff !important;
     --text-main: #000000 !important;
     --accent-primary: #ff003c !important;
 }
 
+.is-exporting #matrixCanvas,
+.is-exporting header,
+.is-exporting #pdf-loader,
+.is-exporting button,
+.is-exporting .footer-links,
+.is-exporting .built-with,
+.is-exporting .accent-glow,
+.is-exporting .glitch-text::after,
+.is-exporting .glitch-text::before,
+.is-exporting .timeline-icon {
+    display: none !important;
+}
+
+.is-exporting .fade-in-section {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    transition: none !important;
+}
+
 .is-exporting .container {
-    padding: 0 15mm !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 10mm !important;
 }
 
 .is-exporting section {
-    padding: 5mm 0 !important;
+    padding: 4mm 0 !important;
     border-bottom: 1px solid #eee !important;
+    page-break-inside: avoid;
+    background: white !important;
 }
 
 .is-exporting #hero {
     height: auto !important;
+    min-height: 0 !important;
 }
 
 .is-exporting .introContainer {
     display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
     gap: 20px !important;
+}
+
+.is-exporting .introContainer img.rounded {
+    width: 60px !important;
+    height: 60px !important;
+    border: 2px solid #ff003c !important;
+}
+
+.is-exporting .introContainer h1 {
+    font-size: 18pt !important;
+    margin: 0 !important;
+}
+
+.is-exporting .titleText {
+    border: none !important;
+    font-size: 10pt !important;
+    color: #444 !important;
 }
 
 .is-exporting #studiesIcons,
@@ -1106,8 +1164,42 @@ footer {
 .is-exporting #skillsContainer {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+}
+
+.is-exporting .studyIcon,
+.is-exporting .project-card,
+.is-exporting .contact-card {
+    padding: 6px !important;
+    border: 1px solid #ddd !important;
+}
+
+.is-exporting .timeline {
+    border-left: 2px solid #ff003c !important;
+    margin-left: 5mm !important;
+    padding-left: 5mm !important;
+}
+
+.is-exporting .timeline-body {
+    padding: 2px 0 !important;
+    border: none !important;
 }
 
 .is-exporting #experience {
-    page-break-before: always;
+    page-break-before: always !important;
+}
+
+.is-exporting #courseList {
+    height: auto !important;
+    max-height: none !important;
+}
+
+.is-exporting footer {
+    padding: 5mm 0 !important;
+    border-top: 1px solid #eee !important;
+}
+
+@page {
+    margin: 1cm;
+    size: A4;
 }
