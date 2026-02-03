@@ -250,7 +250,8 @@ section:nth-child(2) {
 
 #aboutme {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 480px 1fr;
+    /* Increased from 300px to fill vertical space */
     gap: 50px;
     align-items: start;
 }
@@ -264,7 +265,8 @@ section:nth-child(2) {
 
 #aboutmeImage {
     width: 100%;
-    max-width: 300px;
+    max-width: 100%;
+    /* Layout controlled by grid-column now */
     height: auto;
     border: 1px solid var(--border-color);
     padding: 10px;
@@ -1072,8 +1074,9 @@ footer {
 
     #aboutmeImage {
         width: 100%;
-        max-width: 260px;
-        margin: 0 auto;
+        max-width: 280px;
+        margin: 0 auto 25px auto;
+        display: block;
     }
 
     .timeline {
