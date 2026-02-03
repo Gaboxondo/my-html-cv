@@ -1146,21 +1146,55 @@ footer {
 }
 
 /* =========================================
-   ULTRA-COMPACT PRINT ENGINE (2-3 PAGES)
+   CYBER-DOSSIER HACKER-ELITE FINAL (2-3 PGS)
    ========================================= */
 @media print {
 
-    /* 1. Global Reset */
+    /* 1. Reset & Global Force */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
         box-sizing: border-box !important;
-        margin: 0;
-        padding: 0;
-        text-shadow: none !important;
-        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: transparent !important;
         animation: none !important;
         transition: none !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* Restore Essential Displays */
+    main,
+    section,
+    div,
+    h1,
+    h2,
+    h3,
+    p,
+    ul,
+    li {
+        display: block !important;
+    }
+
+    span,
+    i,
+    a,
+    img,
+    b,
+    strong {
+        display: inline !important;
+    }
+
+    #skillsContainer,
+    .skillBlock,
+    .skillGraphics {
+        display: block !important;
     }
 
     @page {
@@ -1173,44 +1207,60 @@ footer {
         background: #000 !important;
         color: #fff !important;
         width: 210mm !important;
-        font-size: 8.5pt;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Inter', system-ui, sans-serif !important;
+        font-size: 8pt !important;
+        overflow: visible !important;
     }
 
-    /* 2. Layer & Hide */
+    /* Icon Protection */
+    i,
+    .fa,
+    .fa::before {
+        font-family: FontAwesome !important;
+        font-style: normal !important;
+        display: inline-block !important;
+        visibility: visible !important;
+    }
+
+    /* 2. Nuclear Hide Artifacts */
     header,
     footer,
-    #matrixCanvas,
-    #pdf-loader,
+    canvas,
     button,
+    #pdf-loader,
     .social-float,
     .accent-glow,
     hr,
     .timeline-icon,
     #galeryButton,
     .blink,
-    #reconstructed-pdf-wrapper,
     #navbar-toogle,
     .footer-links,
     .built-with,
-    .mainIcon,
-    #nav,
-    .titleText i,
     #aboutmeImage,
     .educationImageToogle,
-    .timeline::after {
+    .timeline::after,
+    ::-webkit-scrollbar,
+    *::-webkit-scrollbar,
+    .accent-bar,
+    .glow-line,
+    .animateddBar,
+    .accent-bar-glow,
+    .scroll-indicator,
+    .mainIcon,
+    #nav {
         display: none !important;
     }
 
-    /* 3. Layout: Side-by-Side */
+    /* 3. Independent Column Grid Engine */
     main {
         display: grid !important;
         grid-template-columns: 65mm 145mm !important;
         width: 210mm !important;
-        background: #000 !important;
+        position: relative !important;
     }
 
-    /* Persistent Sidebar Background */
+    /* Sidebar Background Overlay */
     body::before {
         content: "";
         position: fixed;
@@ -1222,266 +1272,306 @@ footer {
         z-index: -1;
     }
 
-    /* Force all sections to behave as grid components */
-    section {
-        display: contents !important;
-    }
-
-    /* Map IDs to Grid Columns */
-    #hero,
-    #skillsCourses,
-    #contact {
+    /* Grid Row Mapping (Stacking Skills under Photo) */
+    #hero {
         grid-column: 1 !important;
-        padding: 8mm 4mm !important;
-        color: #fff !important;
+        grid-row: 1 !important;
+        padding: 5mm 4mm !important;
     }
 
-    #aboutme,
-    #education,
-    #experience,
-    #projects {
+    section:nth-child(2) {
         grid-column: 2 !important;
-        padding: 8mm 10mm !important;
-        background: #000 !important;
-        color: #fff !important;
+        grid-row: 1 !important;
+        padding: 5mm 8mm !important;
     }
 
-    /* 4. Left Column (Sidebar) Optimization */
+    /* AboutMe */
+    section:nth-child(3) {
+        grid-column: 2 !important;
+        grid-row: 2 / span 2 !important;
+        padding: 5mm 8mm !important;
+    }
+
+    /* Education */
+    section:nth-child(4) {
+        grid-column: 1 !important;
+        grid-row: 2 / span 2 !important;
+        padding: 5mm 4mm !important;
+    }
+
+    /* Skills */
+    section:nth-child(5) {
+        grid-column: 2 !important;
+        grid-row: 4 !important;
+        padding: 5mm 8mm !important;
+    }
+
+    /* Experience */
+    section:nth-child(6) {
+        grid-column: 2 !important;
+        grid-row: 5 !important;
+        padding: 5mm 8mm !important;
+    }
+
+    /* Projects */
+    section:nth-child(7) {
+        grid-column: 1 !important;
+        grid-row: 4 !important;
+        padding: 5mm 4mm !important;
+    }
+
+    /* Contact */
+
+    /* 4. Sidebar Refinement (LEFT) */
     .introContainer {
-        text-align: center;
-        margin-bottom: 4mm;
+        text-align: left !important;
     }
 
     .introContainer img.rounded {
-        width: 25mm !important;
-        height: 25mm !important;
-        border: 1.5pt solid #fff;
-        margin: 0 auto 2mm;
+        width: 32mm !important;
+        height: 32mm !important;
+        border: 2pt solid #fff !important;
+        margin-bottom: 2mm !important;
+        display: block !important;
     }
 
     .glitch-text {
         font-size: 11pt !important;
-        font-weight: bold;
+        font-weight: bold !important;
+        color: #fff !important;
+        margin: 0 !important;
     }
 
     .titleText {
-        font-size: 8pt !important;
-        margin-top: 1mm;
+        font-size: 9pt !important;
+        color: #fff !important;
+        border: none !important;
+        opacity: 1 !important;
     }
 
-    #skillsCourses h1 {
-        font-size: 9.5pt !important;
-        border-bottom: 1pt solid rgba(255, 255, 255, 0.4);
-        margin: 4mm 0 2mm 0;
+    #skillsCourses h1,
+    #contact h1 {
+        font-size: 10pt !important;
+        color: #fff !important;
+        border-bottom: 0.5pt solid rgba(255, 255, 255, 0.6) !important;
+        margin-top: 4mm !important;
+        padding-bottom: 1.5mm !important;
+        margin-bottom: 2mm !important;
     }
 
+    /* Hacker Skills Style - High Density */
     .accordion {
         display: block !important;
-        font-size: 7.5pt !important;
-        background: rgba(0, 0, 0, 0.2) !important;
-        padding: 1.5mm 2mm !important;
-        margin-top: 2mm;
-        font-weight: bold;
+        font-size: 8pt !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        color: #fff !important;
+        padding: 1mm 2mm !important;
+        margin-top: 2mm !important;
+        font-weight: 800 !important;
     }
 
     .skillBlock {
-        display: block !important;
-        max-height: none !important;
-        opacity: 1 !important;
-        padding: 1mm 2mm !important;
+        padding: 1mm 0 !important;
     }
 
     .skill {
         margin-bottom: 1.5mm !important;
-        page-break-inside: avoid;
+        page-break-inside: avoid !important;
+    }
+
+    .skillGraphics {
+        display: block !important;
+        width: 100% !important;
     }
 
     .details {
-        display: flex;
-        justify-content: space-between;
-        font-size: 7pt;
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        font-size: 6.5pt !important;
+        color: #fff !important;
+        font-weight: bold !important;
+        margin-bottom: 0.5mm !important;
+    }
+
+    .details span {
+        display: inline !important;
     }
 
     .bar {
-        height: 1mm;
-        background: rgba(0, 0, 0, 0.4);
-        margin-top: 0.5mm;
-    }
-
-    .bartoogle {
-        background: #fff !important;
-        height: 100% !important;
-        width: var(--m) !important;
-    }
-
-    #courseList {
-        margin-top: 3mm;
-        padding: 0 !important;
+        height: 1.2mm !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        width: 100% !important;
         border: none !important;
     }
 
+    .bartoogle {
+        background: #ff003c !important;
+        height: 100% !important;
+        width: var(--m) !important;
+        border: none !important;
+    }
+
+    .skillImage {
+        display: none !important;
+    }
+
+    /* Max density */
+
     #courseList h3 {
-        font-size: 8.5pt !important;
-        margin-bottom: 1mm !important;
+        font-size: 9pt !important;
+        color: #fff !important;
+        margin-top: 4mm !important;
+        font-weight: bold !important;
     }
 
     #courseList ul li {
-        font-size: 7pt !important;
-        margin-bottom: 0.5mm !important;
-        list-style: square inside;
-    }
-
-    #certifications {
-        margin-top: 3mm;
-    }
-
-    #certifications h3 {
-        font-size: 8.5pt !important;
+        font-size: 7.5pt !important;
+        color: #fff !important;
+        margin-bottom: 0.2mm !important;
+        list-style: square inside !important;
     }
 
     .certification {
-        display: flex;
-        align-items: center;
-        gap: 2mm;
-        padding: 1mm 0;
+        display: flex !important;
+        align-items: center !important;
+        gap: 2mm !important;
+        padding: 1mm 0 !important;
+    }
+
+    .certification img {
+        width: 4mm !important;
     }
 
     .certification p {
         font-size: 7.5pt !important;
-    }
-
-    .certification img {
-        width: 6mm !important;
-        height: auto;
+        color: #fff !important;
     }
 
     .contact-card {
-        padding: 1mm 0;
-        font-size: 7.5pt;
-        display: flex;
-        align-items: center;
-        gap: 2mm;
+        display: flex !important;
+        align-items: center !important;
+        gap: 3mm !important;
+        padding: 1.5mm 0 !important;
     }
 
     .contact-card i {
-        width: 3mm;
+        font-size: 11pt !important;
         color: #fff !important;
+        width: 5mm !important;
     }
 
     .contact-card p {
-        margin: 0;
+        font-size: 8pt !important;
+        color: #fff !important;
+        margin: 0 !important;
     }
 
-    /* 5. Right Column (Content) Optimization */
+    /* 5. Main Content Density (RIGHT) */
     h1 {
         font-size: 13pt !important;
         color: #ff003c !important;
-        border-bottom: 1.5pt solid #222;
+        border-bottom: 2pt solid #222 !important;
+        padding-bottom: 1.5mm !important;
         margin-bottom: 3mm !important;
-        padding-bottom: 1mm;
+        text-transform: uppercase !important;
     }
 
     h2 {
-        font-size: 10pt !important;
-        margin: 3mm 0 1mm 0;
+        font-size: 10.5pt !important;
         color: #fff !important;
+        margin-top: 4mm !important;
+        border-left: 3pt solid #ff003c !important;
+        padding-left: 3mm !important;
+        margin-bottom: 2mm !important;
+        font-weight: 800 !important;
     }
 
     p {
-        line-height: 1.3;
-        margin-bottom: 1.5mm;
+        line-height: 1.3 !important;
+        color: #ccc !important;
+        text-align: left !important;
+        margin-bottom: 3mm !important;
     }
 
     .studyIcon {
         display: block !important;
-        margin-bottom: 3mm;
-        page-break-inside: avoid;
+        margin-bottom: 4mm !important;
+        page-break-inside: avoid !important;
     }
 
-    .studyInfo h3 {
-        font-size: 9.5pt !important;
-        color: #fff;
+    .schoolName {
+        font-weight: 800 !important;
+        color: #ff003c !important;
+        font-size: 10pt !important;
     }
 
-    .studyInfo .schoolName {
-        font-weight: bold;
-        color: #ff003c;
+    .title {
+        font-size: 8.5pt !important;
+        color: #888 !important;
     }
 
-    .studyInfo .title {
-        font-size: 8pt;
-        color: #aaa;
-    }
-
-    /* Compact Timeline */
+    /* Linearized Experience */
     .timeline {
-        border-left: 1.5pt solid #ff003c !important;
-        margin: 0 !important;
-        padding-left: 3mm !important;
+        border-left: 2pt solid #ff003c !important;
+        padding-left: 4mm !important;
+        margin-top: 2mm !important;
     }
 
     .timeline-container {
+        margin-bottom: 2mm !important;
+        padding: 1mm 0 !important;
+        page-break-inside: avoid !important;
         width: 100% !important;
-        margin-bottom: 4mm !important;
-        page-break-inside: avoid;
-    }
-
-    .timeline-body {
-        padding: 0 !important;
+        text-align: left !important;
     }
 
     .timeline-title .badge {
-        font-size: 10pt !important;
+        font-size: 11pt !important;
         color: #ff003c !important;
-        font-weight: bold;
+        font-weight: 800 !important;
+        display: block !important;
+        text-align: left !important;
+        margin-bottom: 0.5mm !important;
     }
 
     .timeline-date {
-        color: #888 !important;
-        font-size: 7.5pt !important;
-        margin: 0.5mm 0 !important;
+        font-size: 8pt !important;
+        color: #777 !important;
+        display: block !important;
+        margin-bottom: 0.5mm !important;
     }
 
     .timeline-job {
-        font-weight: bold;
-        font-size: 9pt !important;
-        margin-bottom: 0.5mm;
+        font-size: 10pt !important;
+        font-weight: 800 !important;
+        color: #fff !important;
+        margin-bottom: 1mm !important;
+        text-align: left !important;
     }
 
     .timeline-desc {
-        font-size: 8pt !important;
-        color: #ccc;
+        font-size: 9pt !important;
+        color: #bbb !important;
+        line-height: 1.3 !important;
+        text-align: left !important;
     }
 
     .project-card {
-        border: 0.5pt solid #333;
-        padding: 2mm 3mm !important;
+        border: 1pt solid #222 !important;
+        padding: 3mm !important;
         margin-bottom: 3mm !important;
-        page-break-inside: avoid;
+        page-break-inside: avoid !important;
     }
 
     .project-card h3 {
-        font-size: 9.5pt !important;
-        margin: 0.5mm 0;
-    }
-
-    .project-card p {
-        font-size: 8pt !important;
-        line-height: 1.2;
+        font-size: 10.5pt !important;
+        color: #fff !important;
     }
 
     .project-type {
         color: #ff003c !important;
-        font-size: 7pt;
-        font-weight: bold;
-    }
-
-    /* Fix empty space at top of page 1 */
-    #hero {
-        padding-top: 10mm !important;
-    }
-
-    #aboutme {
-        padding-top: 10mm !important;
+        font-size: 8pt !important;
+        font-weight: 800 !important;
     }
 }
