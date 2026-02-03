@@ -123,6 +123,7 @@ Antes de dar por terminado cualquier cambio:
 4. Documenta brevemente:
    - Qué cambiaste
    - Cómo se valida visualmente
+5. Verifica siempre la version impresa que se generaria al imprimir la pagina
 
 > Regla: **no declares “listo” sin validarlo en el explorador interno**.
 
