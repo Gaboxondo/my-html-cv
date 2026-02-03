@@ -1146,127 +1146,16 @@ footer {
 }
 
 /* =========================================
-   EXECUTIVE PRINT ENGINE (2-COLUMN)
+   CYBER-DOSSIER HACKER-ELITE FINAL (2-3 PGS)
    ========================================= */
-@media print {
+@media print,
+.pdf-mode {
 
-    /* 1. Reset Environment */
+    /* 1. Global Reset & Dark Theme */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-    }
-
-    header,
-    footer,
-    #matrixCanvas,
-    #pdf-loader,
-    button,
-    .social-float,
-    .accent-glow,
-    hr,
-    .timeline-icon,
-    #galeryButton,
-    .blink {
-        display: none !important;
-    }
-
-    body {
-        background: black !important;
-        color: white !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* 2. Transform into 2-Column Layout */
-    main {
-        display: block !important;
-        background: black !important;
-    }
-
-    .fade-in-section {
-        opacity: 1 !important;
-        transform: none !important;
-        visibility: visible !important;
-    }
-
-    /* Sidebar Columns (Red) */
-    #hero,
-    #contact,
-    #skillsCourses {
-        background: #ff003c !important;
-        color: white !important;
-        width: 75mm !important;
-        padding: 10mm 5mm !important;
-        float: left !important;
-        clear: left !important;
         box-sizing: border-box !important;
-    }
-
-    /* Main Content Columns (Black) */
-    #aboutme,
-    #education,
-    #experience,
-    #projects {
-        background: black !important;
-        padding: 10mm !important;
-        margin-left: 75mm !important;
-        width: calc(210mm - 75mm) !important;
-        box-sizing: border-box !important;
-        color: white !important;
-    }
-
-    /* 3. Global Print Styling */
-    h1,
-    h2,
-    h3,
-    h4 {
-        color: white !important;
-        text-transform: uppercase !important;
-    }
-
-    .timeline {
-        margin-left: 0 !important;
-        padding-left: 0 !important;
-    }
-
-    .timeline::after {
-        left: 2mm !important;
-        margin-left: 0 !important;
-        background: #ff003c !important;
-    }
-
-    .timeline-container {
-        width: 100% !important;
-        padding-left: 8mm !important;
-        padding-right: 0 !important;
-        left: 0 !important;
-        text-align: left !important;
-        margin-bottom: 5mm !important;
-    }
-
-    .fade-left .timeline-body,
-    .fade-right .timeline-body {
-        border-right: none !important;
-        border-left: 2px solid #ff003c !important;
-    }
-
-
-    .skill {
-        margin-bottom: 4mm !important;
-        page-break-inside: avoid !important;
-    }
-
-    .bartoogle {
-        background: white !important;
-    }
-
-    .project-card {
-        border: 1px solid #333 !important;
-        page-break-inside: avoid !important;
-    }
-
-    #projectsGrid {
-        grid-template-columns: 1fr !important;
     }
 
     @page {
@@ -1274,30 +1163,397 @@ footer {
         size: A4;
     }
 
-    #reconstructed-pdf-wrapper {
+    /* Shared Page Styling */
+    html,
+    body,
+    .pdf-mode {
+        width: 210mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #000 !important;
+        color: #fff !important;
+        font-family: 'Inter', system-ui, sans-serif !important;
+        font-size: 7.5pt !important;
+    }
+
+    /* Specific overrides for the JS-generated container */
+    .pdf-mode {
+        position: relative;
+        min-height: 297mm;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    /* 2. Hide Everything Not Need */
+    header,
+    footer,
+    #pdf-loader,
+    .social-float,
+    .accent-glow,
+    hr,
+    #galeryButton,
+    .blink,
+    #navbar-toogle,
+    .footer-links,
+    .built-with,
+    .timeline::after,
+    ::-webkit-scrollbar,
+    .scroll-indicator,
+    #nav,
+    #matrixCanvas,
+    .typewriter {
         display: none !important;
     }
-}
 
-/* Export Reconstruction Support */
-.is-exporting #reconstructed-pdf-wrapper {
-    display: block !important;
-    position: relative !important;
-    margin: 0 auto !important;
-    z-index: 99999 !important;
-}
+    /* 3. Layout: Two Columns via Floats (Decoupled Heights) */
 
-.is-exporting .accordion {
-    display: block !important;
-    padding: 2mm 0 !important;
-    font-weight: bold !important;
-    color: white !important;
-    border: none !important;
-}
+    /* LEFT SIDEBAR (Red) */
+    #hero,
+    #sec-contact,
+    #sec-education,
+    #sec-skills {
+        float: left !important;
+        width: 65mm !important;
+        clear: left !important;
+        padding: 2mm 3mm !important;
+        background: #ff003c !important;
+        /* Red Sidebar Background */
+        color: #fff !important;
+    }
 
-.is-exporting .skillBlock {
-    display: block !important;
-    max-height: none !important;
-    overflow: visible !important;
-    padding: 0 !important;
+    body::before,
+    .pdf-mode::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 65mm;
+        background: #ff003c !important;
+        z-index: -1;
+    }
+
+    .pdf-mode::before {
+        position: absolute;
+        /* Absolute for container */
+    }
+
+    /* RIGHT MAIN CONTENT */
+    #sec-aboutme,
+    #sec-experience,
+    #sec-projects {
+        margin-left: 68mm !important;
+        /* 65mm sidebar + gap */
+        width: 135mm !important;
+        /* Rest of A4 */
+        padding: 0 !important;
+        padding-right: 5mm !important;
+        background: transparent !important;
+        color: #ddd !important;
+        display: block !important;
+    }
+
+
+    /* --- ELEMENT SPECIFICS --- */
+
+    /* Headings */
+    h1 {
+        font-size: 11pt !important;
+        margin-bottom: 2mm !important;
+        margin-top: 3mm !important;
+        text-transform: uppercase !important;
+        border-bottom: 1pt solid #444 !important;
+        color: #ff003c !important;
+        /* Accent inside black area */
+    }
+
+    /* Sidebar Headings (White on Red) */
+    #hero h1,
+    #sec-contact h1,
+    #sec-education h1,
+    #sec-skills h1,
+    #hero h2,
+    #sec-contact h2,
+    #sec-education h2,
+    #sec-skills h2 {
+        color: #fff !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* --- SIDEBAR COMPONENTS --- */
+
+    /* Hero */
+    #hero {
+        padding-top: 5mm !important;
+        text-align: center !important;
+    }
+
+    .introContainer img.rounded {
+        width: 30mm !important;
+        height: 30mm !important;
+        border: 2pt solid #fff !important;
+        display: block !important;
+        margin: 0 auto 2mm auto !important;
+    }
+
+    .glitch-text {
+        font-size: 12pt !important;
+        margin: 0 !important;
+        color: #fff !important;
+    }
+
+    .titleText {
+        font-size: 8pt !important;
+        color: #eee !important;
+        border: none !important;
+    }
+
+    /* Contact */
+    .contact-grid {
+        display: block !important;
+    }
+
+    .contact-card {
+        padding: 1mm 0 !important;
+        border: none !important;
+        text-align: left !important;
+        background: transparent !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 2mm !important;
+        margin-bottom: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .contact-card i {
+        font-size: 9pt !important;
+        color: #fff !important;
+        width: 4mm !important;
+    }
+
+    .contact-card p,
+    .contact-card span {
+        font-size: 7pt !important;
+        color: #fff !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    /* Education */
+    #studiesIcons {
+        display: block !important;
+    }
+
+    .studyIcon {
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        margin-bottom: 3mm !important;
+        display: block !important;
+    }
+
+    .educationImageToogle {
+        display: none !important;
+        /* Save space in sidebar */
+    }
+
+    .studyInfo h3 {
+        font-size: 8pt !important;
+        margin: 0 !important;
+        color: #fff !important;
+    }
+
+    .schoolName {
+        font-size: 7pt !important;
+        color: #eee !important;
+        font-weight: normal !important;
+    }
+
+    .title {
+        font-size: 6.5pt !important;
+        color: #ddd !important;
+        font-style: italic !important;
+    }
+
+    /* Skills (Sidebar) */
+    #skillsContainer {
+        display: block !important;
+    }
+
+    .accordion {
+        display: none !important;
+        /* Hide headers, show all content */
+    }
+
+    .skillBlock {
+        display: block !important;
+        max-height: none !important;
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        margin: 0 !important;
+    }
+
+    .skill {
+        padding: 0.5mm 0 !important;
+        flex: none !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .skillGraphics {
+        display: flex !important;
+        align-items: center !important;
+        gap: 1mm !important;
+    }
+
+    .skillImage {
+        display: block !important;
+        width: 3mm !important;
+        height: 3mm !important;
+    }
+
+    .skillImage img {
+        width: 100% !important;
+    }
+
+    .progressBar {
+        flex: 1 !important;
+    }
+
+    .details {
+        font-size: 6pt !important;
+        margin-bottom: 0 !important;
+        color: #eee !important;
+    }
+
+    .bar {
+        height: 1mm !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .bartoogle {
+        background: #fff !important;
+    }
+
+    /* --- MAIN CONTENT COMPONENTS --- */
+
+    /* About Me */
+    #aboutme {
+        display: block !important;
+    }
+
+    #aboutmeImage {
+        display: none !important;
+        /* Hide giant photo to save space? Or float it. Let's hide it to save space for 2 pages. */
+    }
+
+    #aboutmeletter h2 {
+        font-size: 9pt !important;
+        color: #ff003c !important;
+        margin: 2mm 0 1mm 0 !important;
+    }
+
+    #aboutmeletter p {
+        font-size: 8pt !important;
+        margin-bottom: 2mm !important;
+        text-align: justify !important;
+        color: #ccc !important;
+    }
+
+    /* Experience */
+    .timeline {
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    .timeline::after {
+        display: none !important;
+    }
+
+    /* No vertical line */
+    .timeline-container {
+        width: 100% !important;
+        margin: 0 0 3mm 0 !important;
+        padding: 0 !important;
+        left: 0 !important;
+        background: transparent !important;
+    }
+
+    .timeline-icon {
+        display: none !important;
+        /* Hide icons to stack text tightly */
+    }
+
+    .timeline-body {
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .timeline-title .badge {
+        font-size: 9pt !important;
+        color: #ff003c !important;
+        margin-bottom: 0 !important;
+    }
+
+    .timeline-date {
+        font-size: 7pt !important;
+        color: #888 !important;
+        margin: 0 !important;
+        display: inline-block !important;
+    }
+
+    .timeline-job {
+        font-size: 8.5pt !important;
+        color: #fff !important;
+        margin: 0 !important;
+    }
+
+    .timeline-desc {
+        font-size: 7.5pt !important;
+        color: #aaa !important;
+        line-height: 1.2 !important;
+    }
+
+    .timeline-role {
+        margin-top: 1mm !important;
+        padding-left: 0 !important;
+        border: none !important;
+    }
+
+    /* Projects */
+    #projectsGrid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        /* 2 cols for projects */
+        gap: 2mm !important;
+    }
+
+    .project-card {
+        padding: 2mm !important;
+        background: #111 !important;
+        /* Distinct dark bg */
+        border: 1px solid #333 !important;
+    }
+
+    .project-card h3 {
+        font-size: 8pt !important;
+        color: #fff !important;
+        margin: 0 !important;
+    }
+
+    .project-type {
+        font-size: 6.5pt !important;
+        margin-bottom: 1mm !important;
+    }
+
+    .project-card p {
+        font-size: 7pt !important;
+        line-height: 1.2 !important;
+    }
+
 }
