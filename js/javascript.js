@@ -64,7 +64,6 @@ var acc = document.getElementsByClassName("accordion");
 
 for (let i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function () {
-
     // A. Close all other panels
     for (let j = 0; j < acc.length; j++) {
       if (acc[j] !== this) {
@@ -72,8 +71,14 @@ for (let i = 0; i < acc.length; i++) {
         let otherPanel = acc[j].nextElementSibling;
         if (otherPanel) {
           otherPanel.style.maxHeight = null;
-          otherPanel.style.display = "none";
-          // Reset bars in other panels
+          otherPanel.style.paddingTop = "0px";
+          otherPanel.style.paddingBottom = "0px";
+          setTimeout(() => {
+            if (!acc[j].classList.contains('active')) {
+              otherPanel.style.display = "none";
+            }
+          }, 600);
+
           let otherBars = otherPanel.querySelectorAll('.bartoogle');
           otherBars.forEach(bar => bar.classList.remove('animateddBar'));
         }
@@ -87,27 +92,37 @@ for (let i = 0; i < acc.length; i++) {
     if (panel.style.maxHeight) {
       // Closing
       panel.style.maxHeight = null;
-      setTimeout(() => panel.style.display = "none", 300);
+      panel.style.paddingTop = "0px";
+      panel.style.paddingBottom = "0px";
+      setTimeout(() => {
+        if (!this.classList.contains('active')) {
+          panel.style.display = "none";
+        }
+      }, 600);
 
-      // Reset bars
       let bars = panel.querySelectorAll('.bartoogle');
       bars.forEach(bar => bar.classList.remove('animateddBar'));
-
     } else {
       // Opening
       panel.style.display = "flex";
-      panel.style.maxHeight = panel.scrollHeight + "px";
+      // Small timeout to allow display: flex to take effect before animating height
+      setTimeout(() => {
+        panel.style.maxHeight = (panel.scrollHeight + 40) + "px";
+        panel.style.paddingTop = "20px";
+        panel.style.paddingBottom = "20px";
+      }, 10);
 
-      // Animate bars with a slight delay to allow rendering
+      // Animate bars with a delay relative to the panel opening
       setTimeout(() => {
         let bars = panel.querySelectorAll('.bartoogle');
         bars.forEach(bar => {
           bar.classList.add('animateddBar');
         });
-      }, 50);
+      }, 400);
     }
   });
 }
+
 
 // --- 5. Scroll Fade-In Animation ---
 const fadeElements = document.querySelectorAll('.fade-in-section');
