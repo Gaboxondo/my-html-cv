@@ -1148,7 +1148,8 @@ footer {
 /* =========================================
    CYBER-DOSSIER HACKER-ELITE FINAL (2-3 PGS)
    ========================================= */
-@media print {
+@media print,
+.pdf-mode {
 
     /* 1. Global Reset & Dark Theme */
     * {
@@ -1162,18 +1163,25 @@ footer {
         size: A4;
     }
 
+    /* Shared Page Styling */
     html,
-    body {
+    body,
+    .pdf-mode {
         width: 210mm;
-        height: 100%;
         margin: 0 !important;
         padding: 0 !important;
         background-color: #000 !important;
-        /* Force Black Background */
         color: #fff !important;
         font-family: 'Inter', system-ui, sans-serif !important;
         font-size: 7.5pt !important;
-        /* Tiny font for max density */
+    }
+
+    /* Specific overrides for the JS-generated container */
+    .pdf-mode {
+        position: relative;
+        min-height: 297mm;
+        overflow: hidden;
+        margin: 0 auto;
     }
 
     /* 2. Hide Everything Not Need */
@@ -1213,10 +1221,8 @@ footer {
         color: #fff !important;
     }
 
-    /* Make the Sidebar extend visually? 
-       We use a massive border on the body or a pseudo element.
-       Let's stick to the pseudo element for the background strip. */
-    body::before {
+    body::before,
+    .pdf-mode::before {
         content: "";
         position: fixed;
         left: 0;
@@ -1225,6 +1231,11 @@ footer {
         width: 65mm;
         background: #ff003c !important;
         z-index: -1;
+    }
+
+    .pdf-mode::before {
+        position: absolute;
+        /* Absolute for container */
     }
 
     /* RIGHT MAIN CONTENT */
