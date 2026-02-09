@@ -224,19 +224,34 @@ section:nth-child(1) {
     font-family: var(--font-mono);
     color: var(--accent-primary);
     font-size: 1.2rem;
-    margin-top: 1rem;
+    margin: 1rem auto 0;
     border-right: 2px solid var(--accent-primary);
-    display: inline-block;
+    display: block;
     padding-right: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    text-align: left;
 }
 
 .typewriter {
-    animation: blink 1s step-end infinite;
+    width: 32ch;
+    animation: typing 3s steps(32, end), blink 1s step-end infinite !important;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 32ch
+    }
 }
 
 @keyframes blink {
     50% {
-        border-color: transparent;
+        border-color: transparent
     }
 }
 
@@ -1151,9 +1166,10 @@ footer {
 
     .introContainer .titleText {
         font-size: 0.95rem;
-        border-right: none;
-        border-bottom: 2px solid var(--accent-primary);
-        padding-bottom: 5px;
+        border-right: 2px solid var(--accent-primary);
+        border-bottom: none;
+        padding-bottom: 0px;
+        padding-right: 5px;
     }
 
     #aboutme {
