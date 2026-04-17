@@ -963,7 +963,7 @@ section:nth-child(5) {
 
 #projectsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(12, 1fr);
     gap: 30px;
 }
 
@@ -1000,6 +1000,7 @@ section:nth-child(5) {
 
 
 .project-card {
+    grid-column: span 4; /* Default for 3 per row */
     background: rgba(15, 15, 15, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -1011,6 +1012,41 @@ section:nth-child(5) {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+/* Symmetric 2-3-2 Layout Logic */
+/* First row: 2 items (6 units each) */
+.project-card:nth-child(1),
+.project-card:nth-child(2) {
+    grid-column: span 6;
+}
+
+/* Second row: 3 items (4 units each) - Already set by default */
+
+/* Third row: 2 items (6 units each) */
+.project-card:nth-child(6),
+.project-card:nth-child(7) {
+    grid-column: span 6;
+}
+
+@media (max-width: 1024px) {
+    .project-card,
+    .project-card:nth-child(1),
+    .project-card:nth-child(2),
+    .project-card:nth-child(6),
+    .project-card:nth-child(7) {
+        grid-column: span 6; /* 2 per row on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    #projectsGrid {
+        grid-template-columns: 1fr;
+    }
+    .project-card,
+    .project-card:nth-child(n) {
+        grid-column: auto; /* 1 per row on mobile */
+    }
 }
 
 /* Accent top line animation on hover */
