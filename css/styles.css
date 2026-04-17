@@ -967,6 +967,38 @@ section:nth-child(5) {
     gap: 30px;
 }
 
+.card-terminal-header {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 12px;
+}
+
+.card-terminal-header .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.card-terminal-header .red { background: #ff5f56; }
+.card-terminal-header .yellow { background: #ffbd2e; }
+.card-terminal-header .green { background: #27c93f; }
+
+.project-card:hover .card-terminal-header .dot {
+    opacity: 1;
+}
+
+.project-card h3 i {
+    color: var(--accent-primary);
+    margin-right: 12px;
+    font-size: 1.1rem;
+    filter: drop-shadow(0 0 5px var(--accent-dim));
+}
+
+
 .project-card {
     background: rgba(15, 15, 15, 0.7);
     backdrop-filter: blur(10px);
