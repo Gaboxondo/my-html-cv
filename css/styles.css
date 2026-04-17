@@ -967,6 +967,18 @@ section:nth-child(5) {
     gap: 30px;
 }
 
+.project-card--featured {
+    grid-column: 1 / -1;
+    border-left: 5px solid var(--accent-primary);
+    background: linear-gradient(135deg, var(--bg-panel) 0%, #151515 100%);
+}
+
+@media (max-width: 768px) {
+    .project-card--featured {
+        grid-column: auto;
+    }
+}
+
 .project-card {
     background: var(--bg-panel);
     border: 1px solid var(--border-color);
