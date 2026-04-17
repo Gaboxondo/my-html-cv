@@ -967,43 +967,86 @@ section:nth-child(5) {
     gap: 30px;
 }
 
+.project-card {
+    background: rgba(15, 15, 15, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 35px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Accent top line animation on hover */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    background: rgba(20, 20, 20, 0.9);
+    border-color: rgba(255, 0, 60, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 60, 0.1);
+}
+
+.project-card:hover::before {
+    transform: translateX(100%);
+}
+
 .project-card--featured {
     grid-column: 1 / -1;
-    border-left: 5px solid var(--accent-primary);
-    background: linear-gradient(135deg, var(--bg-panel) 0%, #151515 100%);
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(5, 5, 5, 0.9) 100%);
+    border-left: 4px solid var(--accent-primary);
+}
+
+.project-type {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+    background: rgba(255, 0, 60, 0.1);
+    padding: 4px 12px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    width: fit-content;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 0, 60, 0.2);
+}
+
+.project-card h3 {
+    margin: 0 0 15px 0;
+    color: var(--text-main);
+    font-size: 1.35rem;
+    letter-spacing: 0.5px;
+}
+
+.project-card p {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+    flex-grow: 1;
+}
+
+.project-card p + p {
+    margin-top: 15px;
 }
 
 @media (max-width: 768px) {
     .project-card--featured {
         grid-column: auto;
     }
-}
-
-.project-card {
-    background: var(--bg-panel);
-    border: 1px solid var(--border-color);
-    padding: 30px;
-    transition: 0.3s;
-}
-
-.project-card:hover {
-    border-color: var(--accent-primary);
-}
-
-.project-type {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-.project-card h3 {
-    margin: 15px 0;
-    color: var(--text-main);
-}
-
-.project-card p {
-    color: #bbb;
-    font-size: 0.9rem;
 }
 
 /* =========================================
