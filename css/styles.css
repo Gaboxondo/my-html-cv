@@ -605,6 +605,10 @@ a.accordion.active {
 }
 
 /* Certifications */
+#certifications {
+    margin-top: 80px;
+}
+
 #certificationsContainer {
     display: flex;
     flex-wrap: wrap;
