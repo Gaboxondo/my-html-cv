@@ -1000,7 +1000,7 @@ section:nth-child(5) {
 
 
 .project-card {
-    grid-column: span 4; /* Default for 3 per row */
+    grid-column: span 4;
     background: rgba(15, 15, 15, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -1015,15 +1015,11 @@ section:nth-child(5) {
 }
 
 /* Symmetric 2-3-2 Layout Logic */
-/* First row: 2 items (6 units each) */
 .project-card:nth-child(1),
 .project-card:nth-child(2) {
     grid-column: span 6;
 }
 
-/* Second row: 3 items (4 units each) - Already set by default */
-
-/* Third row: 2 items (6 units each) */
 .project-card:nth-child(6),
 .project-card:nth-child(7) {
     grid-column: span 6;
@@ -1035,7 +1031,7 @@ section:nth-child(5) {
     .project-card:nth-child(2),
     .project-card:nth-child(6),
     .project-card:nth-child(7) {
-        grid-column: span 6; /* 2 per row on tablets */
+        grid-column: span 6;
     }
 }
 
@@ -1045,21 +1041,60 @@ section:nth-child(5) {
     }
     .project-card,
     .project-card:nth-child(n) {
-        grid-column: auto; /* 1 per row on mobile */
+        grid-column: auto;
     }
 }
 
-/* Accent top line animation on hover */
-.project-card::before {
-    content: '';
+
+/* Glowing Lines Animation */
+.glow-line {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
+    background: linear-gradient(var(--direction), 
+                transparent 10%, 
+                var(--accent-primary) 50%, 
+                transparent 90%);
+    background-size: 200% 200%;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 5;
+}
+
+.project-card:hover .glow-line {
+    opacity: 1;
+}
+
+.glow-line--top {
+    top: 0; left: 0; width: 100%; height: 2px;
+    --direction: 90deg;
+    animation: moveLineX 2s linear infinite;
+}
+
+.glow-line--bottom {
+    bottom: 0; left: 0; width: 100%; height: 2px;
+    --direction: 90deg;
+    animation: moveLineX 2s linear infinite reverse;
+}
+
+.glow-line--left {
+    top: 0; left: 0; width: 2px; height: 100%;
+    --direction: 0deg;
+    animation: moveLineY 2s linear infinite;
+}
+
+.glow-line--right {
+    top: 0; right: 0; width: 2px; height: 100%;
+    --direction: 0deg;
+    animation: moveLineY 2s linear infinite reverse;
+}
+
+@keyframes moveLineX {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes moveLineY {
+    0% { background-position: 0 -200%; }
+    100% { background-position: 0 200%; }
 }
 
 .project-card:hover {
@@ -1067,10 +1102,6 @@ section:nth-child(5) {
     background: rgba(20, 20, 20, 0.9);
     border-color: rgba(255, 0, 60, 0.5);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 60, 0.1);
-}
-
-.project-card:hover::before {
-    transform: translateX(100%);
 }
 
 .project-card--featured {
