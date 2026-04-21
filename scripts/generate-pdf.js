@@ -21,12 +21,12 @@ async function generatePDF() {
         const getText = (sel) => document.querySelector(sel)?.innerText.trim() || '';
         
         // Scraping Skills (Name only)
-        const skills = Array.from(document.querySelectorAll('.skill')).map(el => {
-            return {
-                name: el.querySelector('.details span:first-child')?.innerText.trim(),
-                level: el.querySelector('.details span:last-child')?.innerText.trim() || '0%',
-                img: el.querySelector('.skillImage img')?.src
-            };
+        const skills = Array.from(document.querySelectorAll('.accordion')).map(acc => {
+            const category = acc.innerText.trim();
+            const panel = acc.nextElementSibling;
+            const itemNames = Array.from(panel.querySelectorAll('.details span:first-child'))
+                                   .map(s => s.innerText.trim());
+            return { category, skills: itemNames };
         });
 
         // Scraping Education
@@ -82,19 +82,11 @@ async function generatePDF() {
     let template = fs.readFileSync(path.resolve(__dirname, '../cv-pdf-template.html'), 'utf8');
 
     // Helper functions to format HTML
-    const formatSkills = (skills) => skills.map(s => `
-        <div class="skill-item">
-            <div class="skill-main">
-                ${s.img ? `<img src="${s.img}" class="skill-icon" alt="">` : ''}
-                <div class="skill-text">
-                    <div class="skill-info">
-                        <span>${s.name}</span>
-                        <span class="skill-level">${s.level}</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" style="width: ${s.level}"></div>
-                    </div>
-                </div>
+    const formatSkills = (skillGroups) => skillGroups.map(g => `
+        <div class="skill-category">
+            <div class="category-name">${g.category}</div>
+            <div class="category-skills">
+                ${g.skills.map(s => `<span class="skill-pill">${s}</span>`).join('')}
             </div>
         </div>
     `).join('\n');

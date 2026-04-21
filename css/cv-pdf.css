@@ -22,6 +22,8 @@ body {
     color: var(--text-main);
 }
 
+
+
 .a4-page {
     width: 210mm;
     background: var(--bg-white);
@@ -136,53 +138,36 @@ h3 {
     margin-bottom: 3mm; /* Further reduced */
 }
 
-.skill-item {
-    margin-bottom: 1.5mm; /* Ultra-compact */
+.skill-category {
+    margin-bottom: 4mm;
     break-inside: avoid;
 }
 
-.skill-main {
+.category-name {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: var(--text-main);
+    text-transform: uppercase;
+    margin-bottom: 1.5mm;
+    font-family: var(--font-sans);
+    border-left: 2px solid var(--primary);
+    padding-left: 2mm;
+}
+
+.category-skills {
     display: flex;
-    align-items: center;
-    gap: 2mm; /* Narrower gap */
+    flex-wrap: wrap;
+    gap: 1.5mm;
 }
 
-.skill-icon {
-    width: 4.5mm; /* Shrink icons */
-    height: 4.5mm;
-    object-fit: contain;
-    flex-shrink: 0;
-}
-
-.skill-text {
-    flex-grow: 1;
-}
-
-.skill-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 7.5pt; /* Smaller font */
-    margin-bottom: 0.2mm;
-    font-family: var(--font-mono);
-}
-
-.skill-level {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.skill-bar {
-    width: 100%;
-    height: 0.6mm; /* Thinner bar */
+.skill-pill {
     background: var(--bg-gray);
-    border-radius: 1mm;
-    overflow: hidden;
-    border: none;
-}
-
-.skill-progress {
-    height: 100%;
-    background: var(--primary);
+    color: var(--text-sec);
+    border: 1px solid var(--border);
+    padding: 0.8mm 2mm;
+    font-size: 8pt;
+    border-radius: 3px;
+    font-family: var(--font-mono);
 }
 
 /* Main Content */
