@@ -58,7 +58,12 @@ async function generatePDF() {
         return {
             name: getText('.glitch-text'),
             title: getText('.titleText'),
-            summary: Array.from(document.querySelectorAll('#aboutmeletter p')).map(p => p.innerText).join('\n\n'),
+            summary: Array.from(document.querySelectorAll('#aboutmeletter p:not(#galeryButton)'))
+                .map(p => p.innerText.trim())
+                .map(t => t.replace(/You can view my photography portfolio here:?|GitHub Profile|Photography Gallery/gi, ''))
+                .filter(t => t.length > 0)
+                .join('\n\n')
+                .replace(/^Hello, I'm Gabriel\. /i, ''),
             skills,
             education,
             certs,
@@ -132,7 +137,7 @@ async function generatePDF() {
         '{{EXPERIENCE}}': formatExperience(data.experience),
         '{{CONTACT}}': contactHtml,
         '{{PROFILE_IMG}}': data.profileImg,
-        '{{DATE}}': new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })
+        '{{DATE}}': new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
     };
 
     let resultHtml = template;
