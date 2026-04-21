@@ -1,0 +1,58 @@
+name: Build and Deploy CV
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install system dependencies for Puppeteer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 \
+            libatk-bridge2.0-0 \
+            libcups2 \
+            libdrm2 \
+            libxcomposite1 \
+            libxdamage1 \
+            libxfixes3 \
+            libxrandr2 \
+            libgbm1 \
+            libasound2 \
+            libpangocairo-1.0-0 \
+            libx11-xcb1 \
+            libxss1 \
+            libgtk-3-0
+
+      - name: Generate PDF
+        run: npm run build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: './'
+          production-deploy: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overrules-job-status: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

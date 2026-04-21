@@ -5,7 +5,10 @@ const path = require('path');
 async function generatePDF() {
     console.log('🚀 Starting PDF generation process...');
 
-    const browser = await puppeteer.launch({ headless: "new" });
+    const browser = await puppeteer.launch({ 
+        headless: "new",
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
 
     // 1. Scrape data from index.html
@@ -143,7 +146,10 @@ async function generatePDF() {
 
     // 2. Generate PDF using Puppeteer on the generated HTML
     console.log('📄 Generating PDF from cv-pdf.html...');
-    const browserPdf = await puppeteer.launch({ headless: "new" });
+    const browserPdf = await puppeteer.launch({ 
+        headless: "new",
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const pagePdf = await browserPdf.newPage();
     const cvHtmlPath = 'file://' + outputHtmlPath;
     
