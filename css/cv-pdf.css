@@ -40,7 +40,7 @@ body {
         margin: 0;
         box-shadow: none;
         width: 100%;
-        padding: 10mm; /* Slightly smaller padding for print */
+        padding: 0; /* Marginal padding removed as Puppeteer now handles 15mm page margins */
     }
 }
 
