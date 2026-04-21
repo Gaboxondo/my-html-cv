@@ -94,15 +94,16 @@ async function generatePDF() {
             <div class="category-skills">
                 ${g.skills.map(s => {
                     let lvl = '';
-                    let label = '';
-                    if (s.pct >= 90) { lvl = 'l6'; label = ''; }
-                    else if (s.pct >= 75) { lvl = 'l5'; label = ''; }
-                    else if (s.pct >= 60) { lvl = 'l4'; label = 'Proficient'; }
-                    else if (s.pct >= 45) { lvl = 'l3'; label = 'Intermediate'; }
-                    else if (s.pct >= 30) { lvl = 'l2'; label = 'Familiar'; }
-                    else { lvl = 'l1'; label = 'Concepts'; }
+                    if (s.pct >= 90) lvl = 'l8';
+                    else if (s.pct >= 80) lvl = 'l7';
+                    else if (s.pct >= 70) lvl = 'l6';
+                    else if (s.pct >= 60) lvl = 'l5';
+                    else if (s.pct >= 50) lvl = 'l4';
+                    else if (s.pct >= 40) lvl = 'l3';
+                    else if (s.pct >= 30) lvl = 'l2';
+                    else lvl = 'l1';
                     
-                    return `<span class="skill-pill skill-pill--${lvl}">${s.name}${label ? ` <span class="level-label level-label--${lvl}">${label}</span>` : ''}</span>`;
+                    return `<span class="skill-pill skill-pill--${lvl}">${s.name}</span>`;
                 }).join('')}
             </div>
         </div>

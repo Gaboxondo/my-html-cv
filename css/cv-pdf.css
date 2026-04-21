@@ -192,71 +192,66 @@ h3 {
     gap: 1.5mm;
 }
 
-.level-label {
-    font-size: 5.5pt;
-    font-family: var(--font-sans);
-    text-transform: uppercase;
-    font-weight: 800;
-    padding: 0.2mm 0.8mm;
-    border-radius: 2px;
-}
-
-/* Level 6: Muy Alto - Deep Red */
-.skill-pill--l6 {
+/* Level 8: >= 90% - Deep Red */
+.skill-pill--l8 {
     border-color: #be123c;
     background: #fff1f2;
-}
-.level-label--l6 {
-    background: #be123c;
-    color: white;
+    color: #9f1239;
+    font-weight: 800;
 }
 
-/* Level 5: Alto - Red/Orange */
-.skill-pill--l5 {
+/* Level 7: >= 80% - Strong Red */
+.skill-pill--l7 {
     border-color: #e11d48;
-}
-.level-label--l5 {
-    background: #fb7185;
-    color: white;
+    background: #fff1f2;
+    color: #be123c;
+    font-weight: 700;
 }
 
-/* Level 4: Int. Alto - Amber/Gold */
+/* Level 6: >= 70% - Red/Coral */
+.skill-pill--l6 {
+    border-color: #f43f5e;
+    background: #fff;
+    color: #e11d48;
+    font-weight: 600;
+}
+
+/* Level 5: >= 60% - Amber */
+.skill-pill--l5 {
+    border-color: #f59e0b;
+    background: #fff;
+    color: #d97706;
+    font-weight: 600;
+}
+
+/* Level 4: >= 50% - Medium Slate */
 .skill-pill--l4 {
-    border-color: #d97706;
-}
-.level-label--l4 {
-    background: #f59e0b;
-    color: white;
+    border-color: #64748b;
+    background: #fff;
+    color: #475569;
+    font-weight: 600;
 }
 
-/* Level 3: Medio - Slate/Blue */
+/* Level 3: >= 40% - Slate/Gray */
 .skill-pill--l3 {
-    border-color: #475569;
-}
-.level-label--l3 {
-    background: #64748b;
-    color: white;
-}
-
-/* Level 2: Bajo - Grey */
-.skill-pill--l2 {
     border-color: #94a3b8;
     background: #f8fafc;
-}
-.level-label--l2 {
-    background: #94a3b8;
-    color: white;
+    color: #475569;
 }
 
-/* Level 1: Muy Bajo - Light Grey */
+/* Level 2: >= 30% - Light Gray */
+.skill-pill--l2 {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+    color: #64748b;
+}
+
+/* Level 1: < 30% - Very Light Gray */
 .skill-pill--l1 {
     border-color: #e2e8f0;
     background: #fdfdfd;
-    opacity: 0.7;
-}
-.level-label--l1 {
-    background: #e2e8f0;
-    color: #64748b;
+    color: #94a3b8;
+    opacity: 0.8;
 }
 
 /* Main Content */
