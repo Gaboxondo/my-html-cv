@@ -1,0 +1,236 @@
+:root {
+    --primary: #ff003c;
+    --text-main: #1a1a1a;
+    --text-sec: #4a4a4a;
+    --text-light: #666666;
+    --bg-white: #ffffff;
+    --bg-gray: #f9f9f9;
+    --border: #e0e0e0;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Fira Code', 'Courier New', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #d0d0d0;
+    font-family: var(--font-sans);
+    color: var(--text-main);
+}
+
+.a4-page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--bg-white);
+    margin: 20mm auto;
+    padding: 15mm;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+@media print {
+    body {
+        background: none;
+    }
+    .a4-page {
+        margin: 0;
+        box-shadow: none;
+    }
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 8mm;
+    margin-bottom: 8mm;
+}
+
+.profile-img {
+    width: 35mm;
+    height: 35mm;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    object-fit: cover;
+    margin-right: 8mm;
+}
+
+.header-info h1 {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 28pt;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 1mm;
+}
+
+.header-info h2 {
+    font-family: var(--font-mono);
+    color: var(--primary);
+    font-size: 14pt;
+    font-weight: 500;
+    margin-bottom: 3mm;
+}
+
+.contact-row {
+    display: flex;
+    gap: 4mm;
+    font-size: 9pt;
+    color: var(--text-sec);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5mm;
+}
+
+.contact-item i {
+    color: var(--primary);
+}
+
+/* Layout */
+.cv-content {
+    display: grid;
+    grid-template-columns: 65mm 1fr;
+    gap: 10mm;
+    flex-grow: 1;
+}
+
+h3 {
+    font-family: var(--font-mono);
+    font-size: 12pt;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 4mm;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1mm;
+    display: flex;
+    align-items: center;
+    gap: 2mm;
+}
+
+/* Sidebar */
+.sidebar section {
+    margin-bottom: 8mm;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2mm;
+}
+
+.skill-badge {
+    background: var(--bg-gray);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    padding: 1mm 2.5mm;
+    font-size: 8.5pt;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+}
+
+/* Main Content */
+.main-col section {
+    margin-bottom: 8mm;
+}
+
+.summary p {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: var(--text-sec);
+}
+
+.exp-item {
+    margin-bottom: 6mm;
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5mm;
+}
+
+.exp-title {
+    font-weight: 700;
+    font-size: 11pt;
+}
+
+.exp-company {
+    color: var(--primary);
+    font-family: var(--font-mono);
+    font-size: 9.5pt;
+    font-weight: 600;
+}
+
+.exp-date {
+    font-size: 9pt;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.exp-desc {
+    font-size: 9.5pt;
+    line-height: 1.4;
+    color: var(--text-sec);
+}
+
+.role-subitem {
+    margin-top: 3mm;
+    padding-left: 4mm;
+    border-left: 1px solid var(--primary);
+}
+
+.certifications-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+}
+
+.cert-item {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    font-size: 9.5pt;
+}
+
+.cert-item img {
+    height: 10mm;
+}
+
+.edu-item {
+    margin-bottom: 4mm;
+}
+
+.edu-school {
+    font-weight: 700;
+    font-size: 10.5pt;
+}
+
+.edu-title {
+    font-size: 9.5pt;
+    color: var(--text-sec);
+}
+
+.edu-date {
+    font-size: 8.5pt;
+    color: var(--text-light);
+}
+
+footer.cv-footer {
+    text-align: center;
+    font-size: 8pt;
+    color: var(--text-light);
+    border-top: 1px solid var(--border);
+    padding-top: 4mm;
+    margin-top: auto;
+}

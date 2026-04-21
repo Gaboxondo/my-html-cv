@@ -1,0 +1,23 @@
+{
+  "name": "my-html-cv",
+  "version": "1.0.0",
+  "description": "This project is a personal online curriculum vitae (CV) for Gabriel García Garrido, meticulously crafted using pure HTML, CSS, and JavaScript. It serves as a comprehensive showcase of professional background, technical skills, education, and experience, demonstrating a strong command of front-end web development without relying on external frameworks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gaboxondo/my-html-cv.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gaboxondo/my-html-cv/issues"
+  },
+  "homepage": "https://github.com/Gaboxondo/my-html-cv#readme",
+  "devDependencies": {
+    "puppeteer": "^24.42.0"
+  }
+}

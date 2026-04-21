@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{NAME}} - CV</title>
+    <link rel="stylesheet" href="css/cv-pdf.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="a4-page">
+        <header>
+            <img src="{{PROFILE_IMG}}" alt="{{NAME}}" class="profile-img">
+            <div class="header-info">
+                <h1>{{NAME}}</h1>
+                <h2>// {{TITLE}}</h2>
+                <div class="contact-row">
+                    {{CONTACT}}
+                </div>
+            </div>
+        </header>
+
+        <div class="cv-content">
+            <aside class="sidebar">
+                <section>
+                    <h3><i class="fa fa-microchip"></i> Skills</h3>
+                    <div class="skill-list">
+                        {{SKILLS}}
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fa fa-graduation-cap"></i> Education</h3>
+                    <div class="education-list">
+                        {{EDUCATION}}
+                    </div>
+                </section>
+
+                <section>
+                    <h3><i class="fa fa-certificate"></i> Certs</h3>
+                    <div class="certifications-list">
+                        {{CERTIFICATIONS}}
+                    </div>
+                </section>
+            </aside>
+
+            <main class="main-col">
+                <section class="summary">
+                    <h3><i class="fa fa-user"></i> Profile</h3>
+                    {{SUMMARY}}
+                </section>
+
+                <section class="experience">
+                    <h3><i class="fa fa-code-fork"></i> Experience</h3>
+                    {{EXPERIENCE}}
+                </section>
+            </main>
+        </div>
+
+        <footer class="cv-footer">
+            Generated from index.html — {{DATE}}
+        </footer>
+    </div>
+</body>
+</html>

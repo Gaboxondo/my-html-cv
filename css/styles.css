@@ -1859,3 +1859,77 @@ footer {
     }
 
 }
+
+/* =========================================
+   NAV & HERO DOWNLOAD BUTTONS
+   ========================================= */
+.nav-download-btn {
+    border: 1px solid var(--accent-primary) !important;
+    padding: 5px 15px !important;
+    border-radius: 4px;
+    margin-left: 10px;
+    color: var(--accent-primary) !important;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.nav-download-btn:hover {
+    background: var(--accent-primary);
+    color: #fff !important;
+    box-shadow: 0 0 10px var(--accent-dim);
+}
+
+.hero-actions {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 30px;
+    border: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(255, 0, 60, 0.05);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.hero-btn:hover::before {
+    left: 100%;
+}
+
+.hero-btn:hover {
+    background: var(--accent-primary);
+    color: #fff;
+    box-shadow: 0 0 25px var(--accent-primary);
+    transform: translateY(-3px);
+}
+
+.hero-btn i {
+    font-size: 1.1rem;
+}
