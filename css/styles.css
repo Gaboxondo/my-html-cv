@@ -667,16 +667,18 @@ a.accordion.active {
 
 .bookshelf {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 30px;
     perspective: 1000px;
     margin-bottom: 40px;
+    padding: 0 15px;
 }
 
 .book-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .book {
