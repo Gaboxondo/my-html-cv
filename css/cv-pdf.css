@@ -180,60 +180,83 @@ h3 {
 }
 
 .skill-pill {
-    background: #f8fafc;
+    background: #ffffff;
     color: var(--text-sec);
     border: 1px solid #e2e8f0;
-    padding: 0.6mm 1.8mm;
+    padding: 0.6mm 1.5mm;
     font-size: 7.5pt;
     border-radius: 3px;
     font-family: var(--font-mono);
     display: flex;
     align-items: center;
+    gap: 1.5mm;
 }
 
-/* Level 6: Muy Alto (Expert) */
-.skill-pill--l6 {
-    border-color: var(--primary);
-    background: rgba(255, 0, 60, 0.08);
-    color: var(--primary);
+.level-label {
+    font-size: 5.5pt;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
     font-weight: 800;
+    padding: 0.2mm 0.8mm;
+    border-radius: 2px;
 }
 
-/* Level 5: Alto (Advanced+) */
+/* Level 6: Muy Alto - Deep Red */
+.skill-pill--l6 {
+    border-color: #be123c;
+    background: #fff1f2;
+}
+.level-label--l6 {
+    background: #be123c;
+    color: white;
+}
+
+/* Level 5: Alto - Red/Orange */
 .skill-pill--l5 {
-    border-color: var(--primary);
-    color: var(--primary);
-    font-weight: 600;
+    border-color: #e11d48;
+}
+.level-label--l5 {
+    background: #fb7185;
+    color: white;
 }
 
-/* Level 4: Intermedio Alto */
+/* Level 4: Int. Alto - Amber/Gold */
 .skill-pill--l4 {
-    border-color: var(--text-sec);
-    color: var(--text-main);
-    font-weight: 700;
+    border-color: #d97706;
+}
+.level-label--l4 {
+    background: #f59e0b;
+    color: white;
 }
 
-/* Level 3: Medio */
+/* Level 3: Medio - Slate/Blue */
 .skill-pill--l3 {
-    border-color: #cbd5e1;
-    color: var(--text-sec);
+    border-color: #475569;
+}
+.level-label--l3 {
+    background: #64748b;
+    color: white;
 }
 
-/* Level 2: Bajo */
+/* Level 2: Bajo - Grey */
 .skill-pill--l2 {
-    border-style: dotted;
-    border-color: #e2e8f0;
-    color: var(--text-light);
-    background: transparent;
+    border-color: #94a3b8;
+    background: #f8fafc;
+}
+.level-label--l2 {
+    background: #94a3b8;
+    color: white;
 }
 
-/* Level 1: Muy Bajo */
+/* Level 1: Muy Bajo - Light Grey */
 .skill-pill--l1 {
-    border: none;
-    background: transparent;
-    color: #999;
-    font-style: italic;
-    padding-left: 0;
+    border-color: #e2e8f0;
+    background: #fdfdfd;
+    opacity: 0.7;
+}
+.level-label--l1 {
+    background: #e2e8f0;
+    color: #64748b;
 }
 
 /* Main Content */
