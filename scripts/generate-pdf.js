@@ -24,7 +24,8 @@ async function generatePDF() {
         const skills = Array.from(document.querySelectorAll('.skill')).map(el => {
             return {
                 name: el.querySelector('.details span:first-child')?.innerText.trim(),
-                level: el.querySelector('.details span:last-child')?.innerText.trim() || '0%'
+                level: el.querySelector('.details span:last-child')?.innerText.trim() || '0%',
+                img: el.querySelector('.skillImage img')?.src
             };
         });
 
@@ -83,12 +84,17 @@ async function generatePDF() {
     // Helper functions to format HTML
     const formatSkills = (skills) => skills.map(s => `
         <div class="skill-item">
-            <div class="skill-info">
-                <span>${s.name}</span>
-                <span class="skill-level">${s.level}</span>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: ${s.level}"></div>
+            <div class="skill-main">
+                ${s.img ? `<img src="${s.img}" class="skill-icon" alt="">` : ''}
+                <div class="skill-text">
+                    <div class="skill-info">
+                        <span>${s.name}</span>
+                        <span class="skill-level">${s.level}</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: ${s.level}"></div>
+                    </div>
+                </div>
             </div>
         </div>
     `).join('\n');
