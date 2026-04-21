@@ -25,13 +25,15 @@ body {
 .a4-page {
     width: 210mm;
     background: var(--bg-white);
-    margin: 20mm auto;
+    margin: 10mm auto;
     padding: 15mm;
     position: relative;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    /* Guía visual para saltos de página en el navegador */
-    background-image: linear-gradient(to bottom, transparent 296mm, rgba(0,0,0,0.05) 296mm, rgba(0,0,0,0.05) 297mm);
-    background-size: 100% 297mm;
+}
+
+@page {
+    size: A4;
+    margin: 15mm;
 }
 
 @media print {
@@ -42,7 +44,7 @@ body {
         margin: 0;
         box-shadow: none;
         width: 100%;
-        padding: 0; /* Marginal padding removed as Puppeteer now handles 15mm page margins */
+        padding: 0; /* Native @page margin handles this now */
     }
 }
 
@@ -164,7 +166,8 @@ h3 {
 
 .exp-item {
     margin-bottom: 6mm;
-    break-inside: avoid;
+    /* Allowed to split to avoid huge gaps on page 1 */
+    break-inside: auto;
 }
 
 .exp-header {
