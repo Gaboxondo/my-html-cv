@@ -191,8 +191,8 @@ h3 {
 }
 
 .summary p {
-    font-size: 10pt;
-    line-height: 1.5;
+    font-size: 9pt; /* Reduced from 10pt */
+    line-height: 1.4;
     color: var(--text-sec);
 }
 
@@ -211,71 +211,80 @@ h3 {
 
 .exp-title {
     font-weight: 700;
-    font-size: 11pt;
+    font-size: 10pt; /* Reduced from 11 */
 }
 
 .exp-company {
     color: var(--primary);
     font-family: var(--font-mono);
-    font-size: 9.5pt;
+    font-size: 9pt; /* Reduced from 9.5 */
     font-weight: 600;
 }
 
 .exp-date {
-    font-size: 9pt;
+    font-size: 8.5pt; /* Reduced from 9 */
     color: var(--text-light);
     font-style: italic;
 }
 
 .exp-desc {
-    font-size: 9.5pt;
-    line-height: 1.4;
+    font-size: 9pt; /* Reduced from 9.5 */
+    line-height: 1.35;
     color: var(--text-sec);
     orphans: 3;
     widows: 3;
 }
 
 .role-subitem {
-    margin-top: 3mm;
-    padding-left: 4mm;
+    margin-top: 1.5mm; /* Reduced from 3 */
+    padding-left: 3mm; /* Reduced from 4 */
     border-left: 1px solid var(--primary);
     break-inside: avoid;
 }
 
 .certifications-list {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* 3 columns since it's in the main area now */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns and smaller icons */
     gap: 3mm;
 }
 
 .cert-item {
     display: flex;
+    flex-direction: column; /* Stacked layout for more columns */
     align-items: center;
-    gap: 3mm;
-    font-size: 9.5pt;
+    text-align: center;
+    gap: 1.5mm;
+    font-size: 8pt;
 }
 
 .cert-item img {
-    height: 10mm;
+    height: 8mm; /* Reduced from 10 */
+}
+
+.education-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns for education! */
+    gap: 5mm;
 }
 
 .edu-item {
-    margin-bottom: 4mm;
+    margin-bottom: 2mm; /* Further reduced */
     break-inside: avoid;
 }
 
 .edu-school {
     font-weight: 700;
-    font-size: 10.5pt;
+    font-size: 9.5pt; /* Reduced from 10.5 */
 }
 
 .edu-title {
-    font-size: 9.5pt;
+    font-size: 8.5pt; /* Reduced from 9.5 */
     color: var(--text-sec);
+    line-height: 1.2;
 }
 
 .edu-date {
-    font-size: 8.5pt;
+    font-size: 8pt; /* Reduced from 8.5 */
     color: var(--text-light);
 }
 
