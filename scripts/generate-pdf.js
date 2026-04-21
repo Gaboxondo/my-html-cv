@@ -20,13 +20,19 @@ async function generatePDF() {
     const data = await page.evaluate(() => {
         const getText = (sel) => document.querySelector(sel)?.innerText.trim() || '';
         
-        // Scraping Skills (Name only)
+        // Scraping Skills (Name and Percentages)
         const skills = Array.from(document.querySelectorAll('.accordion')).map(acc => {
             const category = acc.innerText.trim();
             const panel = acc.nextElementSibling;
-            const itemNames = Array.from(panel.querySelectorAll('.details span:first-child'))
-                                   .map(s => s.innerText.trim());
-            return { category, skills: itemNames };
+            const itemData = Array.from(panel.querySelectorAll('.skill')).map(item => {
+                const name = item.querySelector('.details span:first-child')?.innerText.trim();
+                const pctText = item.querySelector('.details span:last-child')?.innerText.trim() || '0%';
+                const pct = parseInt(pctText.replace('%', ''));
+                return { name, pct };
+            });
+            // Keep sorting by pct within each category
+            itemData.sort((a, b) => b.pct - a.pct);
+            return { category, skills: itemData };
         });
 
         // Scraping Education
@@ -86,7 +92,17 @@ async function generatePDF() {
         <div class="skill-category">
             <div class="category-name">${g.category}</div>
             <div class="category-skills">
-                ${g.skills.map(s => `<span class="skill-pill">${s}</span>`).join('')}
+                ${g.skills.map(s => {
+                    let lvl = '';
+                    if (s.pct >= 90) lvl = 'l6';      // Muy Alto
+                    else if (s.pct >= 75) lvl = 'l5'; // Alto
+                    else if (s.pct >= 60) lvl = 'l4'; // Intermedio Alto
+                    else if (s.pct >= 45) lvl = 'l3'; // Medio
+                    else if (s.pct >= 30) lvl = 'l2'; // Bajo
+                    else lvl = 'l1';                  // Muy Bajo
+                    
+                    return `<span class="skill-pill skill-pill--${lvl}">${s.name}</span>`;
+                }).join('')}
             </div>
         </div>
     `).join('\n');

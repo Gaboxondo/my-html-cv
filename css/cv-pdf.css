@@ -163,30 +163,77 @@ h3 {
 
 .category-name {
     font-size: 8.5pt;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--text-main);
     text-transform: uppercase;
     margin-bottom: 1.5mm;
     font-family: var(--font-sans);
     border-left: 2px solid var(--primary);
     padding-left: 2mm;
-    break-after: avoid; /* Don't leave category name alone */
+    break-after: avoid;
 }
 
 .category-skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5mm;
+    gap: 1.25mm;
 }
 
 .skill-pill {
-    background: var(--bg-gray);
+    background: #f8fafc;
     color: var(--text-sec);
-    border: 1px solid var(--border);
-    padding: 0.8mm 2mm;
-    font-size: 8pt;
+    border: 1px solid #e2e8f0;
+    padding: 0.6mm 1.8mm;
+    font-size: 7.5pt;
     border-radius: 3px;
     font-family: var(--font-mono);
+    display: flex;
+    align-items: center;
+}
+
+/* Level 6: Muy Alto (Expert) */
+.skill-pill--l6 {
+    border-color: var(--primary);
+    background: rgba(255, 0, 60, 0.08);
+    color: var(--primary);
+    font-weight: 800;
+}
+
+/* Level 5: Alto (Advanced+) */
+.skill-pill--l5 {
+    border-color: var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Level 4: Intermedio Alto */
+.skill-pill--l4 {
+    border-color: var(--text-sec);
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+/* Level 3: Medio */
+.skill-pill--l3 {
+    border-color: #cbd5e1;
+    color: var(--text-sec);
+}
+
+/* Level 2: Bajo */
+.skill-pill--l2 {
+    border-style: dotted;
+    border-color: #e2e8f0;
+    color: var(--text-light);
+    background: transparent;
+}
+
+/* Level 1: Muy Bajo */
+.skill-pill--l1 {
+    border: none;
+    background: transparent;
+    color: #999;
+    font-style: italic;
+    padding-left: 0;
 }
 
 /* Main Content */
