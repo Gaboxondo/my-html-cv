@@ -45,7 +45,26 @@ Finally, Puppeteer opens the newly created `cv-pdf.html` and uses its Chromium p
 - **Generate PDF**: `node scripts/generate-pdf.js`
 - **Verify HTML**: Open `cv-pdf.html` in a browser.
 
-## Troubleshooting
+## Verification Process
 
-- **Puppeteer errors**: If Puppeteer fails to launch, ensure Chromium is correctly installed by running `npm install`.
-- **Missing data**: If some fields are empty in the PDF, check the CSS selectors in `scripts/generate-pdf.js` and ensure they match the structure of `index.html`.
+Before assuming the PDF is correct, follow these verification steps:
+
+### 1. Manual HTML Inspection (Fastest)
+The script generates an intermediate file: **`cv-pdf.html`**.
+1.  Run the generator: `npm run build`.
+2.  Open `cv-pdf.html` in your browser.
+3.  **Simulate A4**: Open DevTools (F12), toggle Device Toolbar (Ctrl+Shift+M), and set dimensions to **794px x 1123px** (approximate A4 at 96dpi).
+4.  Check for:
+    -   Blank pages or huge gaps.
+    -   Content being cut in half.
+    -   Correct hacker-theme colors.
+
+### 2. Final PDF Check
+Open the final **`Gabriel_Garcia_CV.pdf`** in a PDF viewer.
+-   Ensure all fonts rendered correctly (Puppeteer sometimes has issues with system fonts if not properly loaded).
+-   Check that links (if any) are clickable.
+
+### 3. CI/CD Logs
+If deploying via GitHub Actions:
+-   Check the **Actions** tab in GitHub.
+-   Monitor the "Generate PDF" step for any Puppeteer warnings or errors.
