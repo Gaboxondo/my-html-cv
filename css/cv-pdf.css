@@ -24,12 +24,14 @@ body {
 
 .a4-page {
     width: 210mm;
-    /* Removed min-height to allow natural flow between pages */
     background: var(--bg-white);
     margin: 20mm auto;
     padding: 15mm;
     position: relative;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    /* Guía visual para saltos de página en el navegador */
+    background-image: linear-gradient(to bottom, transparent 296mm, rgba(0,0,0,0.05) 296mm, rgba(0,0,0,0.05) 297mm);
+    background-size: 100% 297mm;
 }
 
 @media print {
