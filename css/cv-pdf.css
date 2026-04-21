@@ -246,19 +246,20 @@ h3 {
 }
 
 .education-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columns for education! */
-    gap: 5mm;
+    display: flex;
+    flex-direction: column;
+    gap: 3mm;
 }
 
 .edu-item {
-    margin-bottom: 2mm; /* Further reduced */
+    margin-bottom: 2mm;
     break-inside: avoid;
 }
 
 .edu-school {
     font-weight: 700;
-    font-size: 9.5pt; /* Reduced from 10.5 */
+    font-size: 9pt;
+    line-height: 1.2;
 }
 
 .edu-title {
