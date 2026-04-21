@@ -22,7 +22,10 @@ async function generatePDF() {
         
         // Scraping Skills (Name only)
         const skills = Array.from(document.querySelectorAll('.skill')).map(el => {
-            return el.querySelector('span').innerText.trim();
+            return {
+                name: el.querySelector('.details span:first-child')?.innerText.trim(),
+                level: el.querySelector('.details span:last-child')?.innerText.trim() || '0%'
+            };
         });
 
         // Scraping Education
@@ -78,7 +81,17 @@ async function generatePDF() {
     let template = fs.readFileSync(path.resolve(__dirname, '../cv-pdf-template.html'), 'utf8');
 
     // Helper functions to format HTML
-    const formatSkills = (skills) => skills.map(s => `<span class="skill-badge">${s}</span>`).join('\n');
+    const formatSkills = (skills) => skills.map(s => `
+        <div class="skill-item">
+            <div class="skill-info">
+                <span>${s.name}</span>
+                <span class="skill-level">${s.level}</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: ${s.level}"></div>
+            </div>
+        </div>
+    `).join('\n');
     
     const formatEducation = (edu) => edu.map(e => `
         <div class="edu-item">
@@ -95,7 +108,6 @@ async function generatePDF() {
         </div>
     `).join('\n');
 
-    const formatExperience = (exp) => exp.map(e => `
         <div class="exp-item">
             <div class="exp-header">
                 <div>

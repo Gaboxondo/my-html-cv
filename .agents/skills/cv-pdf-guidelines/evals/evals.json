@@ -1,0 +1,17 @@
+{
+  "skill_name": "cv-pdf-guidelines",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Revisa mi CV actual (index.html) y dime si cumple con las 10 claves de Santander. Si no, dime qué cambiarías.",
+      "expected_output": "Análisis detallado basado en las 10 claves, mencionando orden cronológico, extensión, descripción de funciones y aspecto visual.",
+      "files": ["index.html"]
+    },
+    {
+      "id": 2,
+      "prompt": "Optimiza la sección de idiomas y tecnología de mi CV para que sea más 'visual' según las recomendaciones de Santander.",
+      "expected_output": "Propuesta de diseño (probablemente CSS/HTML) que use barras de progreso, iconos o niveles visuales para los idiomas y herramientas.",
+      "files": ["index.html", "css/style.css"]
+    }
+  ]
+}

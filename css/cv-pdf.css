@@ -136,21 +136,37 @@ h3 {
     margin-bottom: 8mm;
 }
 
-.skill-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2mm;
+.skill-item {
+    margin-bottom: 3.5mm;
+    break-inside: avoid;
 }
 
-.skill-badge {
-    background: var(--bg-gray);
-    color: var(--text-main);
-    border: 1px solid var(--border);
-    padding: 1mm 2.5mm;
+.skill-info {
+    display: flex;
+    justify-content: space-between;
     font-size: 8.5pt;
-    border-radius: 4px;
+    margin-bottom: 1mm;
     font-family: var(--font-mono);
-    break-inside: avoid;
+}
+
+.skill-level {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 1.5mm;
+    background: var(--bg-gray);
+    border-radius: 1mm;
+    overflow: hidden;
+    border: 0.5px solid var(--border);
+}
+
+.skill-progress {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 1mm;
 }
 
 /* Main Content */
