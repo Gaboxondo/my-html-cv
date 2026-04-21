@@ -228,22 +228,21 @@ h3 {
 }
 
 .certifications-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns and smaller icons */
+    display: flex;
+    flex-direction: column;
     gap: 3mm;
 }
 
 .cert-item {
     display: flex;
-    flex-direction: column; /* Stacked layout for more columns */
     align-items: center;
-    text-align: center;
-    gap: 1.5mm;
+    gap: 2.5mm;
     font-size: 8pt;
 }
 
 .cert-item img {
-    height: 8mm; /* Reduced from 10 */
+    height: 7mm; /* Scaled for sidebar */
+    width: auto;
 }
 
 .education-list {
