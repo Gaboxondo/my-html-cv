@@ -119,10 +119,10 @@ header {
 
 h3 {
     font-family: var(--font-mono);
-    font-size: 12pt;
+    font-size: 11pt; /* Slightly smaller */
     text-transform: uppercase;
     color: var(--primary);
-    margin-bottom: 4mm;
+    margin-bottom: 3mm; /* Reduced */
     border-bottom: 1px solid var(--border);
     padding-bottom: 1mm;
     display: flex;
@@ -133,23 +133,23 @@ h3 {
 
 /* Sidebar */
 .sidebar section {
-    margin-bottom: 5mm; /* Reduced from 8mm */
+    margin-bottom: 3mm; /* Further reduced */
 }
 
 .skill-item {
-    margin-bottom: 2.5mm; /* Reduced from 3.5mm */
+    margin-bottom: 1.5mm; /* Ultra-compact */
     break-inside: avoid;
 }
 
 .skill-main {
     display: flex;
     align-items: center;
-    gap: 3mm;
+    gap: 2mm; /* Narrower gap */
 }
 
 .skill-icon {
-    width: 6mm;
-    height: 6mm;
+    width: 4.5mm; /* Shrink icons */
+    height: 4.5mm;
     object-fit: contain;
     flex-shrink: 0;
 }
@@ -161,8 +161,8 @@ h3 {
 .skill-info {
     display: flex;
     justify-content: space-between;
-    font-size: 8pt; /* Reduced from 8.5 */
-    margin-bottom: 0.5mm;
+    font-size: 7.5pt; /* Smaller font */
+    margin-bottom: 0.2mm;
     font-family: var(--font-mono);
 }
 
@@ -173,11 +173,11 @@ h3 {
 
 .skill-bar {
     width: 100%;
-    height: 0.8mm; /* Reduced from 1.5mm */
+    height: 0.6mm; /* Thinner bar */
     background: var(--bg-gray);
     border-radius: 1mm;
     overflow: hidden;
-    border: none; /* Removed border to save pixel space */
+    border: none;
 }
 
 .skill-progress {
@@ -244,8 +244,8 @@ h3 {
 
 .certifications-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4mm;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 columns since it's in the main area now */
+    gap: 3mm;
 }
 
 .cert-item {
