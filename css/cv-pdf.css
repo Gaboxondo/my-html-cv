@@ -115,11 +115,13 @@ h3 {
     display: flex;
     align-items: center;
     gap: 2mm;
+    break-after: avoid;
 }
 
 /* Sidebar */
 .sidebar section {
     margin-bottom: 8mm;
+    break-inside: avoid;
 }
 
 .skill-list {
@@ -136,6 +138,7 @@ h3 {
     font-size: 8.5pt;
     border-radius: 4px;
     font-family: var(--font-mono);
+    break-inside: avoid;
 }
 
 /* Main Content */
@@ -151,6 +154,7 @@ h3 {
 
 .exp-item {
     margin-bottom: 6mm;
+    break-inside: avoid;
 }
 
 .exp-header {
@@ -182,12 +186,15 @@ h3 {
     font-size: 9.5pt;
     line-height: 1.4;
     color: var(--text-sec);
+    orphans: 3;
+    widows: 3;
 }
 
 .role-subitem {
     margin-top: 3mm;
     padding-left: 4mm;
     border-left: 1px solid var(--primary);
+    break-inside: avoid;
 }
 
 .certifications-list {
@@ -209,6 +216,7 @@ h3 {
 
 .edu-item {
     margin-bottom: 4mm;
+    break-inside: avoid;
 }
 
 .edu-school {
