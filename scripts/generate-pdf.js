@@ -50,10 +50,11 @@ async function generatePDF() {
 
         // Scraping Experience (Handle GFT, Cognizant, and Grouped ones like Minsait)
         const experience = Array.from(document.querySelectorAll('.timeline-container')).map(el => {
-            const company = el.querySelector('.badge')?.innerText.trim();
-            const date = el.querySelector('.timeline-date')?.innerText.trim();
-            const job = el.querySelector('.timeline-job')?.innerText.trim();
-            const desc = el.querySelector('.timeline-desc')?.innerHTML.trim();
+            const body = el.querySelector('.timeline-body');
+            const company = body.querySelector('.badge')?.innerText.trim();
+            const date = body.querySelector(':scope > .timeline-date')?.innerText.trim();
+            const job = body.querySelector(':scope > .timeline-job')?.innerText.trim();
+            const desc = body.querySelector(':scope > .timeline-desc')?.innerHTML.trim();
             
             // Handle sub-roles (like Minsait/Tecnatom)
             const subRoles = Array.from(el.querySelectorAll('.timeline-role')).map(role => ({
@@ -126,14 +127,22 @@ async function generatePDF() {
 
     const formatExperience = (exp) => exp.map(e => `
         <div class="exp-item">
+            ${(e.job || e.desc) ? `
             <div class="exp-header">
                 <div>
                     <span class="exp-company">${e.company}</span>
-                    <span class="exp-title"> — ${e.job}</span>
+                    ${e.job ? `<span class="exp-title"> — ${e.job}</span>` : ''}
                 </div>
-                <div class="exp-date">${e.date}</div>
+                ${e.date ? `<div class="exp-date">${e.date}</div>` : ''}
             </div>
-            <div class="exp-desc">${e.desc}</div>
+            ${e.desc ? `<div class="exp-desc">${e.desc}</div>` : ''}
+            ` : `
+            <div class="exp-header">
+                <div>
+                    <span class="exp-company">${e.company}</span>
+                </div>
+            </div>
+            `}
             ${e.subRoles.map(r => `
                 <div class="role-subitem">
                     <div class="exp-header">
