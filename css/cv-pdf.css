@@ -33,17 +33,14 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Ensure sidebar background on every page */
-.a4-page::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 75mm; /* Covers sidebar + padding */
-    height: 100%;
-    background: var(--bg-gray);
-    z-index: 0;
-    border-right: 1px solid var(--border);
+.a4-page {
+    width: 210mm;
+    background: var(--bg-white);
+    margin: 10mm auto;
+    padding: 12mm;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
 @page {
@@ -69,10 +66,9 @@ header {
     align-items: center;
     gap: 8mm;
     border-bottom: 2px solid var(--primary);
-    padding-bottom: 6mm; /* Reduced */
+    padding-bottom: 6mm;
     margin-bottom: 8mm;
-    position: relative;
-    z-index: 1;
+    background: var(--bg-white); /* Ensure it's clean */
 }
 
 .profile-img {
@@ -121,8 +117,14 @@ header {
 .cv-content {
     display: flex;
     gap: 10mm;
-    position: relative;
-    z-index: 1; /* Above the ::before background */
+    /* This creates the continuous sidebar look safely */
+    background: linear-gradient(to right, 
+        var(--bg-gray) 0mm, 
+        var(--bg-gray) 68mm, 
+        transparent 68mm, 
+        transparent 100%);
+    margin: -1mm; /* Slight overlap to avoid cracks */
+    padding: 1mm;
 }
 
 .sidebar {
