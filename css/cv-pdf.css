@@ -98,9 +98,19 @@ header {
 
 /* Layout */
 .cv-content {
-    display: grid;
-    grid-template-columns: 65mm 1fr;
+    display: flex;
     gap: 10mm;
+    align-items: flex-start;
+}
+
+.sidebar {
+    width: 65mm;
+    flex-shrink: 0;
+}
+
+.main-col {
+    flex: 1;
+    min-width: 0;
 }
 
 h3 {
@@ -120,7 +130,6 @@ h3 {
 /* Sidebar */
 .sidebar section {
     margin-bottom: 8mm;
-    break-inside: avoid;
 }
 
 .skill-list {
