@@ -170,6 +170,7 @@ h3 {
     font-family: var(--font-sans);
     border-left: 2px solid var(--primary);
     padding-left: 2mm;
+    break-after: avoid; /* Don't leave category name alone */
 }
 
 .category-skills {
@@ -208,8 +209,9 @@ h3 {
 .exp-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1.5mm;
+    align-items: baseline;
+    margin-bottom: 1mm;
+    break-after: avoid; /* Title must stick to its description! */
 }
 
 .exp-title {
@@ -278,6 +280,7 @@ h3 {
     font-weight: 700;
     font-size: 8.5pt; /* Even smaller */
     line-height: 1.1;
+    break-after: avoid; /* Stick school name to degree title */
 }
 
 .edu-title {
