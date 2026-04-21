@@ -108,6 +108,7 @@ async function generatePDF() {
         </div>
     `).join('\n');
 
+    const formatExperience = (exp) => exp.map(e => `
         <div class="exp-item">
             <div class="exp-header">
                 <div>
