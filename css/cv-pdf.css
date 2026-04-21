@@ -121,16 +121,17 @@ header {
 .cv-content {
     display: flex;
     gap: 10mm;
-    align-items: flex-start;
+    position: relative;
+    z-index: 1; /* Above the ::before background */
 }
 
 .sidebar {
-    width: 65mm;
+    width: 63mm; /* Slightly adjusted to fit padding */
     flex-shrink: 0;
 }
 
 .main-col {
-    flex: 1;
+    flex-grow: 1;
     min-width: 0;
 }
 
