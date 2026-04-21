@@ -28,14 +28,27 @@ body {
     width: 210mm;
     background: var(--bg-white);
     margin: 10mm auto;
-    padding: 15mm;
+    padding: 12mm; /* Reduced from 15mm */
     position: relative;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Ensure sidebar background on every page */
+.a4-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75mm; /* Covers sidebar + padding */
+    height: 100%;
+    background: var(--bg-gray);
+    z-index: 0;
+    border-right: 1px solid var(--border);
+}
+
 @page {
     size: A4;
-    margin: 15mm;
+    margin: 10mm; /* Gain 10mm total height per page */
 }
 
 @media print {
@@ -54,35 +67,37 @@ body {
 header {
     display: flex;
     align-items: center;
+    gap: 8mm;
     border-bottom: 2px solid var(--primary);
-    padding-bottom: 8mm;
+    padding-bottom: 6mm; /* Reduced */
     margin-bottom: 8mm;
+    position: relative;
+    z-index: 1;
 }
 
 .profile-img {
-    width: 35mm;
-    height: 35mm;
+    width: 25mm; /* Smaller from 35mm */
+    height: 25mm;
     border-radius: 50%;
     border: 3px solid var(--primary);
     object-fit: cover;
-    margin-right: 8mm;
 }
 
 .header-info h1 {
     font-family: var(--font-sans);
     font-weight: 800;
-    font-size: 28pt;
+    font-size: 24pt; /* Smaller from 28 */
     text-transform: uppercase;
     letter-spacing: -1px;
-    margin-bottom: 1mm;
+    margin-bottom: 0.5mm;
 }
 
 .header-info h2 {
     font-family: var(--font-mono);
     color: var(--primary);
-    font-size: 14pt;
+    font-size: 13pt; /* Smaller from 14 */
     font-weight: 500;
-    margin-bottom: 3mm;
+    margin-bottom: 2mm;
 }
 
 .contact-row {
@@ -252,14 +267,14 @@ h3 {
 }
 
 .edu-item {
-    margin-bottom: 2mm;
+    margin-bottom: 1.5mm;
     break-inside: avoid;
 }
 
 .edu-school {
     font-weight: 700;
-    font-size: 9pt;
-    line-height: 1.2;
+    font-size: 8.5pt; /* Even smaller */
+    line-height: 1.1;
 }
 
 .edu-title {
