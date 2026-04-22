@@ -45,7 +45,7 @@ body {
 
 @page {
     size: A4;
-    margin: 10mm; /* Gain 10mm total height per page */
+    margin: 8mm; /* Gain extra vertical height */
 }
 
 @media print {
@@ -66,8 +66,8 @@ header {
     align-items: center;
     gap: 8mm;
     border-bottom: 2px solid var(--primary);
-    padding-bottom: 6mm;
-    margin-bottom: 8mm;
+    padding-bottom: 4mm;
+    margin-bottom: 5mm;
     background: var(--bg-white); /* Ensure it's clean */
 }
 
@@ -255,7 +255,7 @@ h3 {
 
 /* Main Content */
 .main-col section {
-    margin-bottom: 8mm;
+    margin-bottom: 5mm;
 }
 
 .summary p {
@@ -265,7 +265,7 @@ h3 {
 }
 
 .exp-item {
-    margin-bottom: 4mm; /* Reduced from 6mm */
+    margin-bottom: 3mm; /* Reduced from 4mm */
     /* Allowed to split to avoid huge gaps on page 1 */
     break-inside: auto;
 }
@@ -363,7 +363,7 @@ h3 {
 
 /* Web CTA */
 .web-cta {
-    margin-top: 10mm;
+    margin-top: 5mm;
     background: #f8fafc;
     border-left: 4px solid var(--primary);
     padding: 4mm 6mm;
@@ -412,5 +412,5 @@ footer.cv-footer {
     text-align: center;
     font-size: 8pt;
     color: var(--text-light);
-    margin-top: 8mm;
+    margin-top: 4mm;
 }
