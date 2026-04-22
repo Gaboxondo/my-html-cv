@@ -291,9 +291,12 @@ h3 {
 }
 
 .exp-date {
-    font-size: 8.5pt; /* Reduced from 9 */
-    color: var(--text-light);
+    font-size: 8.5pt;
+    color: var(--primary); /* Elegantly matches the red accent color */
     font-style: italic;
+    white-space: nowrap; /* Prevents wrapping */
+    flex-shrink: 0; /* Ensures the date takes full space needed */
+    margin-right: 4mm; /* Prevents it from touching the right edge of the PDF */
 }
 
 .exp-desc {
