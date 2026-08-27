@@ -60,6 +60,15 @@ if (titleWriter) {
 
 
 // --- 4. Accordion & Skill Bars Animation ---
+// Auto-assign --m CSS variable from skill percentage text (DRY approach)
+document.querySelectorAll('.skill').forEach(skill => {
+  const pctText = skill.querySelector('.details span:last-child')?.innerText.trim();
+  const bar = skill.querySelector('.bartoogle');
+  if (pctText && bar) {
+    bar.style.setProperty('--m', pctText);
+  }
+});
+
 var acc = document.getElementsByClassName("accordion");
 
 for (let i = 0; i < acc.length; i++) {
