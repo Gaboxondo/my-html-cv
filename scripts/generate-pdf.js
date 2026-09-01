@@ -160,6 +160,7 @@ async function generatePDF() {
     // Pre-formatting contact info (hardcoded or extracted)
     const contactHtml = `
         <div class="contact-item"><i class="fa fa-envelope"></i> gabigarciagar@gmail.com</div>
+        <div class="contact-item"><i class="fa fa-phone"></i> +34 690342350</div>
         <div class="contact-item"><i class="fa fa-linkedin"></i> In/gabriel-garcia-garrido</div>
         <div class="contact-item"><i class="fa fa-github"></i> @Gaboxondo</div>
     `;
