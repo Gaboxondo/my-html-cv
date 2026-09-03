@@ -35,29 +35,29 @@ async function generatePDF() {
             return { category, skills: itemData };
         });
 
-        // Scraping Education
-        const education = Array.from(document.querySelectorAll('.studyIcon')).map(el => ({
+        // Scraping Education (filtering out items marked with .pdf-hide)
+        const education = Array.from(document.querySelectorAll('.studyIcon:not(.pdf-hide)')).map(el => ({
             school: el.querySelector('.schoolName')?.innerText.trim(),
             date: el.querySelector('.dateIcon p')?.innerText.trim(),
             title: el.querySelector('.title')?.innerText.trim()
         }));
 
-        // Scraping Certifications
-        const certs = Array.from(document.querySelectorAll('.certification')).map(el => ({
+        // Scraping Certifications (filtering out items marked with .pdf-hide)
+        const certs = Array.from(document.querySelectorAll('.certification:not(.pdf-hide)')).map(el => ({
             name: el.querySelector('p')?.innerText.trim(),
             img: el.querySelector('img')?.src
         }));
 
-        // Scraping Experience (Handle GFT, Cognizant, and Grouped ones like Minsait)
-        const experience = Array.from(document.querySelectorAll('.timeline-container')).map(el => {
+        // Scraping Experience (filtering out elements marked with .pdf-hide)
+        const experience = Array.from(document.querySelectorAll('.timeline-container:not(.pdf-hide)')).map(el => {
             const body = el.querySelector('.timeline-body');
             const company = body.querySelector('.badge')?.innerText.trim();
             const date = body.querySelector(':scope > .timeline-date')?.innerText.trim();
             const job = body.querySelector(':scope > .timeline-job')?.innerText.trim();
             const desc = body.querySelector(':scope > .timeline-desc')?.innerHTML.trim();
             
-            // Handle sub-roles (like Minsait/Tecnatom)
-            const subRoles = Array.from(el.querySelectorAll('.timeline-role')).map(role => ({
+            // Handle sub-roles
+            const subRoles = Array.from(el.querySelectorAll('.timeline-role:not(.pdf-hide)')).map(role => ({
                 date: role.querySelector('.timeline-date')?.innerText.trim(),
                 job: role.querySelector('.timeline-job')?.innerText.trim(),
                 desc: role.querySelector('.timeline-desc')?.innerHTML.trim()
@@ -66,15 +66,13 @@ async function generatePDF() {
             return { company, date, job, desc, subRoles };
         });
 
+        // Summary extracted directly from index.html (.pdf-summary-text tag)
+        const pdfSummary = document.querySelector('.pdf-summary-text')?.innerText.trim() || '';
+
         return {
             name: getText('.glitch-text'),
-            title: getText('.titleText'),
-            summary: Array.from(document.querySelectorAll('#aboutmeletter p:not(#galeryButton)'))
-                .map(p => p.innerText.trim())
-                .map(t => t.replace(/You can view my photography portfolio here:?|GitHub Profile|Photography Gallery/gi, ''))
-                .filter(t => t.length > 0)
-                .join('\n\n')
-                .replace(/^Hello, I'm Gabriel\. /i, ''),
+            title: 'Senior Backend & Cloud Engineer',
+            summary: pdfSummary,
             skills,
             education,
             certs,
@@ -85,30 +83,61 @@ async function generatePDF() {
 
     await browser.close();
 
+    // Read profile image locally in Node.js and convert to base64 Data URL to guarantee PDF rendering
+    const profileImgPath = path.resolve(__dirname, '../images/profile.jpg');
+    let profileImgDataUrl = data.profileImg;
+    if (fs.existsSync(profileImgPath)) {
+        const imgBuffer = fs.readFileSync(profileImgPath);
+        profileImgDataUrl = `data:image/jpeg;base64,${imgBuffer.toString('base64')}`;
+    }
+
     console.log('🛠️  Injecting data into template...');
     let template = fs.readFileSync(path.resolve(__dirname, '../cv-pdf-template.html'), 'utf8');
 
-    // Helper functions to format HTML
-    const formatSkills = (skillGroups) => skillGroups.map(g => `
-        <div class="skill-category">
-            <div class="category-name">${g.category}</div>
-            <div class="category-skills">
-                ${g.skills.map(s => {
-                    let lvl = '';
-                    if (s.pct >= 90) lvl = 'l8';
-                    else if (s.pct >= 80) lvl = 'l7';
-                    else if (s.pct >= 70) lvl = 'l6';
-                    else if (s.pct >= 60) lvl = 'l5';
-                    else if (s.pct >= 50) lvl = 'l4';
-                    else if (s.pct >= 40) lvl = 'l3';
-                    else if (s.pct >= 30) lvl = 'l2';
-                    else lvl = 'l1';
-                    
-                    return `<span class="skill-pill skill-pill--${lvl}">${s.name}</span>`;
-                }).join('')}
-            </div>
-        </div>
-    `).join('\n');
+    // Filter noise and restructure skills specifically for ATS & Senior Backend focus
+    const formatSkillsForATS = (skillGroups) => {
+        // Defined categories tailored for Senior/Lead Backend & Cloud Engineer
+        const targetCategories = {
+            'Core Backend': ['Java', 'Spring boot', 'Spring Webflux', 'Project Reactor', 'Node JS', 'Python', 'C#', 'SQL', 'Liquibase', 'JUnit', 'Mockito'],
+            'Architecture & Security': ['Microservices', 'Event Driven', 'DDD (Domain Driven Design)', 'CQRS', 'Oauth2', 'Azure B2C', 'REST', 'WSO2'],
+            'Cloud & Data': ['Google Cloud cloud run', 'Google Cloud pubsub', 'Google Cloud storage', 'Google Cloud Dataflow', 'Azure App services', 'Azure Cosmos DB', 'Azure SQL Database', 'MongoDB', 'PostgreSQL', 'Redis'],
+            'DevOps & Containers': ['Kubernetes', 'Docker|compose', 'Helm', 'OpenShift', 'Jenkins', 'Github Actions', 'Azure devops', 'SonarQube', 'Grafana']
+        };
+
+        // Flatten all scraped skills
+        const allSkillsMap = new Map();
+        skillGroups.forEach(g => {
+            g.skills.forEach(s => {
+                allSkillsMap.set(s.name.toLowerCase(), s);
+            });
+        });
+
+        let resultHtml = '';
+
+        for (const [catName, skillNames] of Object.entries(targetCategories)) {
+            const matchedSkills = skillNames.map(name => {
+                const foundKey = Array.from(allSkillsMap.keys()).find(k => k === name.toLowerCase() || k.includes(name.toLowerCase()));
+                return foundKey ? allSkillsMap.get(foundKey) : { name, pct: 80 };
+            });
+
+            resultHtml += `
+            <div class="skill-category">
+                <div class="category-name">${catName}</div>
+                <div class="category-skills">
+                    ${matchedSkills.map(s => {
+                        let lvl = 'l6';
+                        if (s.pct >= 90) lvl = 'l8';
+                        else if (s.pct >= 80) lvl = 'l7';
+                        else if (s.pct >= 70) lvl = 'l6';
+                        else if (s.pct >= 50) lvl = 'l5';
+                        return `<span class="skill-pill skill-pill--${lvl}">${s.name}</span>`;
+                    }).join('')}
+                </div>
+            </div>`;
+        }
+
+        return resultHtml;
+    };
     
     const formatEducation = (edu) => edu.map(e => `
         <div class="edu-item">
@@ -125,7 +154,34 @@ async function generatePDF() {
         </div>
     `).join('\n');
 
-    const formatExperience = (exp) => exp.map(e => `
+    const formatExperience = (exp) => exp.map(e => {
+        // Special clean grouping for MINSAIT to prevent ATS date overlap issues
+        const isMinsait = e.company && e.company.toUpperCase().includes('MINSAIT');
+        if (isMinsait) {
+            return `
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-company">${e.company}</span>
+                        <span class="exp-title"> — Senior Backend & Cloud Architect</span>
+                    </div>
+                    <div class="exp-date">Oct 2017 – Jun 2022</div>
+                </div>
+                <div class="minsait-summary-tag">
+                    <em>Sub-roles / Project Focus: Azure B2C Developer | Cloud & DevOps Engineer | Java Backend Specialist</em>
+                </div>
+                ${e.subRoles.map(r => `
+                    <div class="role-subitem">
+                        <div class="exp-header">
+                            <div class="exp-title">${r.job}</div>
+                        </div>
+                        <div class="exp-desc">${r.desc}</div>
+                    </div>
+                `).join('')}
+            </div>`;
+        }
+
+        return `
         <div class="exp-item">
             ${(e.job || e.desc) ? `
             <div class="exp-header">
@@ -152,10 +208,10 @@ async function generatePDF() {
                     <div class="exp-desc">${r.desc}</div>
                 </div>
             `).join('')}
-        </div>
-    `).join('\n');
+        </div>`;
+    }).join('\n');
 
-    const formatSummary = (text) => text.split('\n\n').map(p => `<p>${p}</p>`).join('');
+    const formatSummary = (text) => `<p>${text}</p>`;
 
     // Pre-formatting contact info (hardcoded or extracted)
     const contactHtml = `
@@ -170,12 +226,12 @@ async function generatePDF() {
         '{{NAME}}': data.name,
         '{{TITLE}}': data.title,
         '{{SUMMARY}}': formatSummary(data.summary),
-        '{{SKILLS}}': formatSkills(data.skills),
+        '{{SKILLS}}': formatSkillsForATS(data.skills),
         '{{EDUCATION}}': formatEducation(data.education),
         '{{CERTIFICATIONS}}': formatCerts(data.certs),
         '{{EXPERIENCE}}': formatExperience(data.experience),
         '{{CONTACT}}': contactHtml,
-        '{{PROFILE_IMG}}': data.profileImg,
+        '{{PROFILE_IMG}}': profileImgDataUrl,
         '{{DATE}}': new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
     };
 
