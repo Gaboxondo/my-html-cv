@@ -1,0 +1,13 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Central Document / Knowledge Vector -->
+  <rect x="25" y="15" width="50" height="70" rx="8" fill="none" stroke="#64FFDA" stroke-width="4"/>
+  <line x1="37" y1="32" x2="63" y2="32" stroke="#64FFDA" stroke-width="4" stroke-linecap="round"/>
+  <line x1="37" y1="46" x2="63" y2="46" stroke="#64FFDA" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Search/Retrieval Magnifying Glass Overlay -->
+  <circle cx="45" cy="58" r="14" fill="none" stroke="#00E676" stroke-width="4"/>
+  <line x1="55" y1="68" x2="68" y2="81" stroke="#00E676" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Sparkle / Gen AI Icon top right -->
+  <path d="M72 16 L74 22 L80 24 L74 26 L72 32 L70 26 L64 24 L70 22 Z" fill="#64FFDA"/>
+</svg>
